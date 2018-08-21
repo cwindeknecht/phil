@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-// import '../css/Main.css';
+import '../css/Main.css';
+
+import Top from './Top';
+import Bottom from './Bottom';
 
 class Main extends Component {
     render() {
         return (
             <div className="MainContainer">
-                <this.props.current />
+                <Top />
+                <Bottom />
             </div>
         )
     }

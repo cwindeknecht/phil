@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import './App.css';
-
-import NavBar from './components/Navbar.js';
-import Main from './components/Main.js';
-import Adventure from './components/Adventure.js';
+import './css/App.css';
 
 class App extends Component {
   render() {
     return (
       <div>
-      <NavBar />
-      {/* <Main /> */}
-      <Adventure />
+        <this.props.current />
       </div>
     );
   }
