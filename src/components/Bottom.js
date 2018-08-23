@@ -12,58 +12,72 @@ var parchmentBackground = {
 class Bottom extends Component {
   state = {
     objects: this.props.currentRoom.objects,
-    coords: {
-      x: 0,
-      y: 0,
-    },
-    width: 0,
   };
 
   componentDidMount = () => {
-    this.handleSetup();
-    window.addEventListener('resize', this.handleSetup.bind(this));
-
     this.getObjectsXY();
+    window.addEventListener('resize', this.getObjectsXY.bind(this));
   };
 
   render() {
     // Print the mouse coordinates
-    // function printMousePos(event) {
-    //   console.log('clientX: ' + event.clientX + ' - clientY: ' + event.clientY);
-    // }
-    // document.addEventListener('click', printMousePos);
+    function printMousePos(event) {
+      console.log('clientX: ' + event.clientX + ' - clientY: ' + event.clientY);
+    }
+    document.addEventListener('click', printMousePos);
     return (
       <div id="Container" style={parchmentBackground} className="BottomContainer">
         {this.state.objects.map((item) => {
-          return (
-            <img
-              key={item.id}
-              src={item.image}
-              style={{ position: 'absolute', left: item.x, top: item.y}}
-            />
-          );
+          if (item.visible === true) {
+            return (
+              <img
+                id={item.name}
+                key={item.id}
+                className={item.clicked ? 'Clickable' : ''}
+                src={item.image}
+                style={{ position: 'absolute', left: item.x, top: item.y, zIndex: item.z }}
+                onClick={this.handleClick}
+              />
+            );
+          }
         })}
       </div>
     );
   }
 
   getObjectsXY = () => {
-    let main
-    let objects = this.state.objects.map((obj) => {
+    let updatedObjects = this.state.objects.map((obj) => {
       if (typeof obj.x !== 'number') {
-        let update = this.state.objects.filter((object) => {
-          return object.name === obj.x;
+        let updateClickable = this.state.objects.filter((object) => {
+          return object.name === obj.x[0];
         })[0];
-        return { ...obj, x: update.related.x, y: update.related.y + this.state.coords.y};
+        console.log(updateClickable);
+
+        if (updateClickable.related.type === 'single') {
+          return {
+            ...obj,
+            x: updateClickable.related.x1 + updateClickable.x,
+            y: updateClickable.related.y1 + updateClickable.y,
+          };
+        } else {
+          let xKey = 'x' + obj.x[1];
+          let yKey = 'y' + obj.y[1];
+          console.log(xKey);
+          return {
+            ...obj,
+            x: updateClickable.related[xKey] + updateClickable.x,
+            y: updateClickable.related[yKey] + updateClickable.y,
+          };
+        }
+      } else {
+        return { ...obj, x: (window.innerWidth - obj.width) / 2, y: obj.y };
       }
-      return obj;
     });
-    this.setState({ objects });
+    this.setState({ objects: updatedObjects });
   };
 
-  handleSetup = (visible) => {
-    let coords = document.getElementById('Container').getBoundingClientRect();
-    this.setState({ coords: { x: coords.x, y: coords.y }, width: coords.width });
+  handleClick = (event) => {
+    console.log(event.target.id);
   };
 }
 

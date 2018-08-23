@@ -6,7 +6,7 @@ import * as rooms from './rooms';
 
 const initialState = {
   current: Start,
-  currentRoom: rooms.room1,
+  currentRoom: rooms.room3,
 };
 
 export default (state = initialState, action) => {
