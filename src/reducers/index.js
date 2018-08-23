@@ -4,9 +4,13 @@ import Start from '../components/Bottom';
 
 import * as rooms from './rooms';
 
+let room = {
+  current: rooms.room5,
+}
+
 const initialState = {
   current: Start,
-  currentRoom: rooms.room3,
+  currentRoom: room.current,
 };
 
 export default (state = initialState, action) => {

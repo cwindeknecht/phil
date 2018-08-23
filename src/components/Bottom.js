@@ -29,6 +29,7 @@ class Bottom extends Component {
       <div id="Container" style={parchmentBackground} className="BottomContainer">
         {this.state.objects.map((item) => {
           if (item.visible === true) {
+            console.log(item.name, item.x)
             return (
               <img
                 id={item.name}
@@ -51,8 +52,6 @@ class Bottom extends Component {
         let updateClickable = this.state.objects.filter((object) => {
           return object.name === obj.x[0];
         })[0];
-        console.log(updateClickable);
-
         if (updateClickable.related.type === 'single') {
           return {
             ...obj,
@@ -62,7 +61,6 @@ class Bottom extends Component {
         } else {
           let xKey = 'x' + obj.x[1];
           let yKey = 'y' + obj.y[1];
-          console.log(xKey);
           return {
             ...obj,
             x: updateClickable.related[xKey] + updateClickable.x,
