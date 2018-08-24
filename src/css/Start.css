@@ -1,0 +1,29 @@
+.StartContainer {
+  height: 100vh;
+  width: 100vw;
+  font-family: Papyrus, fantasy;
+}
+.StartContainer .StartBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 95%;
+}
+.StartContainer .StartBody .StartTitle {
+  font-size: 6rem;
+}
+.StartContainer .StartBody .StartButton {
+  border: 0;
+  width: 8rem;
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+  font-family: Papyrus, fantasy;
+  border-radius: 25rem;
+}
+.StartContainer .StartFooter {
+  align-self: flex-start;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
