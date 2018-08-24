@@ -5,9 +5,10 @@ import Start from '../components/Start';
 import * as rooms from './rooms';
 
 const initialState = {
-  // start, main, character sheet, battle
+  // start, character sheet, main, battle
   current: Start,
   currentRoom: rooms.room1,
+  intro: true,
   character: {
     name: '---',
     ethnicity: '---',
@@ -39,6 +40,8 @@ export default (state = initialState, action) => {
       };
     case actions.HANDLE_CHARACTER_SAVE:
       return { ...state, characterSaved: action.payload };
+    case actions.HANDLE_INTRO:
+      return { ...state, intro: action.payload };
     case actions.HANDLE_TRANSITION:
       return { ...state, current: action.payload };
     default:

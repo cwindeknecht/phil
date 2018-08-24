@@ -22,6 +22,11 @@
   font-family: Papyrus, fantasy;
   border-radius: 25rem;
 }
+.StartContainer .StartBody .StartButton:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
 .StartContainer .StartFooter {
   align-self: flex-start;
   padding-left: 1rem;

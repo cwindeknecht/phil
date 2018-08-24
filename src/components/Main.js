@@ -16,7 +16,7 @@ class Main extends Component {
     render() {
         return (
             <div className="MainContainer" style={parchmentBackground}>
-                <Top />
+                {this.props.intro ? null : <Top />}
                 <Bottom />
             </div>
         )
@@ -26,6 +26,7 @@ class Main extends Component {
 const mapStateToProps = (state) => {
   return {
     current: state.current,
+    intro: state.intro,
   };
 };
 

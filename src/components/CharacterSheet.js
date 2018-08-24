@@ -6,6 +6,7 @@ import '../css/CharacterSheet.css';
 import damageIcon from '../imgs/Damage.png';
 import armorIcon from '../imgs/Armor.png';
 import healthIcon from '../imgs/Health.png';
+import parchment from '../imgs/parchment.jpg';
 
 import {
   handle_adventure_start,
@@ -14,7 +15,7 @@ import {
   handle_transition,
 } from '../actions/index';
 
-import parchment from '../imgs/parchment.jpg';
+import Main from './Main';
 
 let parchmentBackground = {
   backgroundImage: `url(${parchment})`,
@@ -31,50 +32,48 @@ let health = {
 
 class CharacterSheet extends Component {
   render() {
-    let gear = this.props.character.gear;
+    let character = this.props.character;
+    let gear = character.gear;
     gear.length % 2 === 1 ? gear.push('') : null;
-    console.log('Character Created', this.props.characterCreated);
-    console.log('Character Saved', this.props.characterSaved);
-    console.log('Adventure Started', this.props.adventureStarted);
     return (
       <div style={parchmentBackground} className="CSContainer">
         <div className="CSTitle"> Villager </div>
         <div className="CSStats">
           <div className="CSStatsHalf">
             <div className="CSStat">
-              Name: <div className="CSStats">{this.props.character.name}</div>
+              Name: <div className="CSStats">{character.name}</div>
             </div>
             <div className="CSStat">
-              Ethnicity: <div className="CSStats">{this.props.character.ethnicity}</div>
+              Ethnicity: <div className="CSStats">{character.ethnicity}</div>
             </div>
             <div className="CSStat">
-              Physical Trait: <div className="CSStats">{this.props.character.physical}</div>
+              Physical Trait: <div className="CSStats">{character.physical}</div>
             </div>
           </div>
           <div className="CSStatsHalf">
             <div id="CSLevel">
               <div className="CSStat">
-                Level: <div className="CSStats">{this.props.character.level}</div> XP:{' '}
-                <div className="CSStats">{this.props.character.xp}</div>
+                Level: <div id="level" className="CSStats">{character.level}</div>
+                XP: <div id="level"className="CSStats">{character.xp}</div>
               </div>
             </div>
             <div className="CSStat">
-              Gender: <div className="CSStats">{this.props.character.gender}</div>{' '}
+              Gender: <div className="CSStats">{character.gender}</div>{' '}
             </div>
             <div className="CSStat">
-              Personality Trait: <div className="CSStats">{this.props.character.personality} </div>
+              Personality Trait: <div className="CSStats">{character.personality} </div>
             </div>
           </div>
         </div>
         <div className="CSSymbols">
           <div style={damage} className="CSSymbol">
-            <div className="CSSymbolStat">{this.props.character.damageText}</div>
+            <div className="CSSymbolStat">{character.damageText}</div>
           </div>
           <div style={armor} className="CSSymbol">
-            <div className="CSSymbolStat">{this.props.character.armor}</div>
+            <div className="CSSymbolStat">{character.armor}</div>
           </div>
           <div style={health} className="CSSymbol">
-            <div className="CSSymbolStat">{this.props.character.health}</div>
+            <div className="CSSymbolStat">{character.health}</div>
           </div>
         </div>
         <div className="CSGear">
@@ -97,8 +96,7 @@ class CharacterSheet extends Component {
             <button className="CSButtonRoll" style={{ opacity: '0' }} />
           ) : (
             <button className="CSButtonRoll" onClick={this.createCharacter}>
-              {' '}
-              {this.props.character.name !== '---' ? 'Reroll' : 'Roll'}
+              {character.name !== '---' ? 'Reroll' : 'Roll'}
             </button>
           )}
           {this.props.characterCreated ? (
@@ -111,13 +109,11 @@ class CharacterSheet extends Component {
           {this.props.characterCreated && this.props.characterSaved ? (
             this.props.adventureStarted ? (
               <button className="CSButtonAdv" onClick={this.handleTransition}>
-                {' '}
-                Return to Adventure{' '}
+                Return to Adventure
               </button>
             ) : (
               <button className="CSButtonAdv" onClick={this.handleTransition}>
-                {' '}
-                Begin Adventure{' '}
+                Begin Adventure
               </button>
             )
           ) : (
@@ -133,7 +129,7 @@ class CharacterSheet extends Component {
 
   saveCharacter = () => {
     this.props.handle_character_save();
-    let element =document.getElementById('choose');
+    let element = document.getElementById('choose');
     element.style.opacity = 0;
   };
 
@@ -141,7 +137,7 @@ class CharacterSheet extends Component {
     if (this.props.character.name !== '---') {
       this.props.handle_adventure_start();
       // this needs to be changed to a different component (the starter text of the adventure)
-      this.props.handle_transition(CharacterSheet);
+      this.props.handle_transition(Main);
     }
   };
 }
