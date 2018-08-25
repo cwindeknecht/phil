@@ -26,6 +26,7 @@ const initialState = {
   characterCreated: false,
   characterSaved: false,
   adventureStarted: false,
+  returnTo: null,
 };
 
 export default (state = initialState, action) => {
@@ -40,6 +41,8 @@ export default (state = initialState, action) => {
       };
     case actions.HANDLE_CHARACTER_SAVE:
       return { ...state, characterSaved: action.payload };
+    case actions.HANDLE_CHARACTER_VIEW:
+      return { ...state, current: action.payload.current, returnTo: action.payload.returnTo };
     case actions.HANDLE_INTRO:
       return { ...state, intro: action.payload };
     case actions.HANDLE_TRANSITION:

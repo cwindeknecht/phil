@@ -3,6 +3,7 @@ import create from './create';
 export const HANDLE_ADVENTURE_START = 'HANDLE_ADVENTURE_START';
 export const HANDLE_CHARACTER_ROLL = 'HANDLE_CHARACTER_ROLL';
 export const HANDLE_CHARACTER_SAVE = 'HANDLE_CHARACTER_SAVE';
+export const HANDLE_CHARACTER_VIEW = 'HANDLE_CHARACTER_VIEW';
 export const HANDLE_INTRO = 'HANDLE_INTRO';
 export const HANDLE_TRANSITION = 'HANDLE_TRANSITION';
 
@@ -12,6 +13,8 @@ export const handle_adventure_start = () => {
     payload: { adventureStart: true },
   };
 };
+
+
 
 export const handle_character_roll = () => {
   let character = create();
@@ -27,6 +30,13 @@ export const handle_character_save = () => {
     payload: true,
   };
 };
+
+export const handle_character_view = (current, returnTo) => {
+  return {
+    type: 'HANDLE_CHARACTER_VIEW',
+    payload: {current,returnTo}
+  }
+}
 
 export const handle_intro = () => {
   return {

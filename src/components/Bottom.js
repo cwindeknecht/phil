@@ -27,7 +27,6 @@ class Bottom extends Component {
     //   console.log('clientX: ' + event.clientX + ' - clientY: ' + event.clientY);
     // }
     // document.addEventListener('click', printMousePos);
-    console.log(this.props.intro);
     return (
       <div id="Container" style={parchmentBackground} className="BottomContainer">
         {this.props.intro ? (
