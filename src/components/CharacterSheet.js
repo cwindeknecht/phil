@@ -53,8 +53,14 @@ class CharacterSheet extends Component {
           <div className="CSStatsHalf">
             <div id="CSLevel">
               <div className="CSStat">
-                Level: <div id="level" className="CSStats">{character.level}</div>
-                XP: <div id="level"className="CSStats">{character.xp}</div>
+                Level:{' '}
+                <div id="level" className="CSStats">
+                  {character.level}
+                </div>
+                XP:{' '}
+                <div id="level" className="CSStats">
+                  {character.xp}
+                </div>
               </div>
             </div>
             <div className="CSStat">
@@ -99,7 +105,8 @@ class CharacterSheet extends Component {
               {character.name !== '---' ? 'Reroll' : 'Roll'}
             </button>
           )}
-          {this.props.characterCreated ? (
+          {console.log("characerCreated",this.props.characterCreated, "adventureStarted",this.props.adventureStarted)}
+          {this.props.characterCreated && !this.props.adventureStarted ? (
             <button id="choose" className="CSButtonChoose" onClick={this.saveCharacter}>
               Choose This Character
             </button>

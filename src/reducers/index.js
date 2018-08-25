@@ -32,7 +32,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case actions.HANDLE_ADVENTURE_START:
-      return { ...state, adventureStart: action.payload };
+      return { ...state, adventureStarted: action.payload };
     case actions.HANDLE_CHARACTER_ROLL:
       return {
         ...state,
