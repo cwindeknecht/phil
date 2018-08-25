@@ -7,6 +7,8 @@ import parchment from '../imgs/parchment.jpg';
 
 import { handle_intro } from '../actions/index.js';
 
+import PopUp from './PopUp';
+
 var parchmentBackground = {
   backgroundImage: `url(${parchment})`,
 };
@@ -14,19 +16,19 @@ var parchmentBackground = {
 class Bottom extends Component {
   state = {
     objects: this.props.currentRoom.objects,
+    popups: [],
+    mouseX: null,
+    mouseY: null,
   };
 
   componentDidMount = () => {
+    this.handleInitial();
     this.getObjectsXY();
     window.addEventListener('resize', this.getObjectsXY.bind(this));
   };
 
   render() {
-    // Print the mouse coordinates
-    // function printMousePos(event) {
-    //   console.log('clientX: ' + event.clientX + ' - clientY: ' + event.clientY);
-    // }
-    // document.addEventListener('click', printMousePos);
+    document.addEventListener('click', this.mousePosition);
     return (
       <div id="Container" style={parchmentBackground} className="BottomContainer">
         {this.props.intro ? (
@@ -34,9 +36,14 @@ class Bottom extends Component {
             <div className="BottomIntroTitle">Intro</div>
             <div className="BottomIntroBody">
               {' '}
-              You are a villager and your village is under attack.<br/><br/>To help defend it, you have left
-              in search of an ancient artifact --- the Categorical Imperative.<br/><br/>Your search has
-              brought you to the resting place of a great hero: Kant, the Paladin.
+              You are a villager and your village is under attack.
+              <br />
+              <br />
+              To help defend it, you have left in search of an ancient artifact --- the Categorical
+              Imperative.
+              <br />
+              <br />
+              Your search has brought you to the resting place of a great hero: Kant, the Paladin.
             </div>
             <button className="BottomIntroButton" onClick={this.handleIntro}>
               Continue
@@ -47,17 +54,31 @@ class Bottom extends Component {
             if (item.visible === true) {
               return (
                 <img
-                  id={item.name}
-                  key={item.id}
+                  id={item.id}
+                  key={item.name}
                   className={item.clicked ? 'Clickable' : ''}
                   src={item.image}
                   style={{ position: 'absolute', left: item.x, top: item.y, zIndex: item.z }}
-                  onClick={this.handleClick}
+                  onClick={this.handlePopup}
                 />
               );
             }
           })
         )}
+        {this.state.popups.map(object => {
+          if (object.clicked.show) {
+            return (
+              <div>
+                <PopUp
+                  item={object}
+                  func={this.handlePopup}
+                  x={this.state.mouseX}
+                  y={this.state.mouseY}
+                />
+              </div>
+            );
+          }
+        })}
       </div>
     );
   }
@@ -89,15 +110,38 @@ class Bottom extends Component {
         return { ...obj, x: (window.innerWidth - obj.width) / 2, y: obj.y };
       }
     });
+
     this.setState({ objects: updatedObjects });
+  };
+
+  handleInitial = () => {
+    let popups = this.props.currentRoom.objects.filter(object => {
+      if (object.clicked) {
+        object.clicked.show = false;
+        return object;
+      }
+    });
+    this.setState({ popups });
   };
 
   handleIntro = () => {
     this.props.handle_intro();
   };
 
-  handleClick = event => {
-    console.log(event.target.id);
+  handlePopup = event => {
+    let popups = this.state.popups.map(object => {
+      if (object.id === Number(event.target.id)) {
+        object.clicked.show = true;
+        return object;
+      }
+      return object;
+    });
+    this.mousePosition(event);
+    this.setState({ popups });
+  };
+
+  mousePosition = event => {
+    this.setState({ mouseX: event.clientX, mouseY: event.clientY });
   };
 }
 

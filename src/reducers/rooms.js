@@ -56,11 +56,21 @@ export let room1 = {
         x: 525,
         // Where the new "modal" is rendered from the top of the container.
         y: 600,
-        yes: {
-          travel: true,
-          location: 'threeDoors',
-        },
-        no: null,
+        width: "15rem",
+        height: "5rem",
+        options: [
+          {
+            text: 'Yes',
+            action: {
+              type: 'travel',
+              location: 'threeDoors',
+            }
+          },
+          {
+            text: 'No',
+            action: null
+          }
+        ],
       },
       related: null,
       visible: true,
