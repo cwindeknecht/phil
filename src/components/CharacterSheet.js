@@ -51,12 +51,14 @@ class CharacterSheet extends Component {
             </div>
           </div>
           <div className="CSStatsHalf">
-            <div id="CSLevel">
-              <div className="CSStat">
+            <div id="cslevel">
+              <div id="level"className="CSStat">
                 Level:{' '}
                 <div id="level" className="CSStats">
                   {character.level}
                 </div>
+              </div>
+              <div id="level" className="CSStat">
                 XP:{' '}
                 <div id="level" className="CSStats">
                   {character.xp}
@@ -102,10 +104,9 @@ class CharacterSheet extends Component {
             <button className="CSButtonRoll" style={{ opacity: '0' }} />
           ) : (
             <button className="CSButtonRoll" onClick={this.createCharacter}>
-              {character.name !== '---' ? 'Reroll' : 'Roll'}
+              {character.name !== '' ? 'Reroll' : 'Roll'}
             </button>
           )}
-          {console.log("characerCreated",this.props.characterCreated, "adventureStarted",this.props.adventureStarted)}
           {this.props.characterCreated && !this.props.adventureStarted ? (
             <button id="choose" className="CSButtonChoose" onClick={this.saveCharacter}>
               Choose This Character
@@ -143,7 +144,6 @@ class CharacterSheet extends Component {
   handleTransition = () => {
     if (this.props.character.name !== '---') {
       this.props.handle_adventure_start();
-      // this needs to be changed to a different component (the starter text of the adventure)
       this.props.handle_transition(Main);
     }
   };
