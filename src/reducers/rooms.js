@@ -20,7 +20,7 @@ import warrior from '../imgs/clickables/DefeatedWarrior.png';
 // import corridorFacingRightBlocked from '../imgs/CorridorFacingRight.png';
 import doorway from '../imgs/clickables/NormalDoorway.png';
 
-export let room1 = {
+export let outside = {
   name: 'outside',
   initialTopBar: 'You approach the burial mound.  What do you do?',
   objects: [
@@ -62,8 +62,8 @@ export let room1 = {
           {
             text: 'Yes',
             action: {
-              type: 'travel',
-              location: 'threeDoors',
+              type: 'transition',
+              location: 'threeDoorsRoom',
             }
           },
           {
@@ -78,7 +78,7 @@ export let room1 = {
   ],
 };
 
-export let room2 = {
+export let threeDoorsRoom = {
   name: 'threedoors',
   initialTopBar:
     'You enter the room.  There are three doors, each blocked by a stone slab.  A sword is buried in a stone in the center of the room.  What do you do?',
@@ -152,7 +152,7 @@ export let room2 = {
   ],
 };
 
-export let room3 = {
+export let golemRoom = {
   name: 'golem',
   initialTopBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
   objects: [
@@ -225,7 +225,7 @@ export let room3 = {
   ],
 };
 
-export let room4 = {
+export let koboldRoom = {
   name: 'kobold',
   initialTopBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
   objects: [
@@ -348,7 +348,7 @@ export let room4 = {
   ],
 };
 
-export let room5 = {
+export let warriorRoom = {
   name: 'warrior',
   initialTopBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
   objects: [

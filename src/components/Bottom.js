@@ -15,8 +15,9 @@ var parchmentBackground = {
 
 class Bottom extends Component {
   state = {
-    objects: this.props.currentRoom.objects,
     popups: [],
+    // make another component for sedentary objects like examine/talk/etc.
+    roomOptions: [],
     mouseX: null,
     mouseY: null,
   };
@@ -29,66 +30,80 @@ class Bottom extends Component {
 
   render() {
     document.addEventListener('click', this.mousePosition);
+    console.log(this.props.currentRoom)
     return (
       <div id="Container" style={parchmentBackground} className="BottomContainer">
-        {this.props.intro ? (
-          <div className="BottomIntro">
-            <div className="BottomIntroTitle">Intro</div>
-            <div className="BottomIntroBody">
-              {' '}
-              You are a villager and your village is under attack.
-              <br />
-              <br />
-              To help defend it, you have left in search of an ancient artifact --- the Categorical
-              Imperative.
-              <br />
-              <br />
-              Your search has brought you to the resting place of a great hero: Kant, the Paladin.
-            </div>
-            <button className="BottomIntroButton" onClick={this.handleIntro}>
-              Continue
-            </button>
-          </div>
-        ) : (
-          this.state.objects.map(item => {
-            if (item.visible === true) {
-              return (
-                <img
-                  id={item.id}
-                  key={item.name}
-                  className={item.clicked ? 'Clickable' : ''}
-                  src={item.image}
-                  style={{ position: 'absolute', left: item.x, top: item.y, zIndex: item.z }}
-                  onClick={this.handlePopup}
-                />
-              );
-            }
-          })
-        )}
+        {this.props.intro ? this.getIntro() : this.getBottom()}
+      </div>
+    );
+  }
+
+  getIntro = () => {
+    return (
+      <div className="BottomIntro">
+        <div className="BottomIntroTitle">Intro</div>
+        <div className="BottomIntroBody">
+          {' '}
+          You are a villager and your village is under attack.
+          <br />
+          <br />
+          To help defend it, you have left in search of an ancient artifact --- the Categorical
+          Imperative.
+          <br />
+          <br />
+          Your search has brought you to the resting place of a great hero: Kant, the Paladin.
+        </div>
+        <button className="BottomIntroButton" onClick={this.handleIntro}>
+          Continue
+        </button>
+      </div>
+    );
+  };
+
+  getBottom = () => {
+    return (
+      <div>
+        {this.props.currentRoom.objects.map(item => {
+          if (item.visible === true) {
+            return (
+              <img
+                alt={item.name}
+                id={item.id}
+                key={item.name}
+                className={item.clicked ? 'Clickable' : ''}
+                src={item.image}
+                style={{ position: 'absolute', left: item.x, top: item.y, zIndex: item.z }}
+                onClick={this.handlePopup}
+              />
+            );
+          }
+          return null;
+        })}
         {this.state.popups.map(object => {
           if (object.clicked.show) {
             return (
-              <div>
+              <div key={object.name}>
                 <PopUp
                   item={object}
-                  func={this.handlePopup}
+                  close={this.closePopUp}
                   x={this.state.mouseX}
                   y={this.state.mouseY}
                 />
               </div>
             );
           }
+          return null;
         })}
       </div>
     );
-  }
+  };
 
   // Probably a better way to do this, but this is where
   // I make sure that no matter someone's screen size, the objects are placed correctly.
   getObjectsXY = () => {
-    let updatedObjects = this.state.objects.map(obj => {
+    let updatedObjects = this.props.currentRoom.objects.map(obj => {
       if (typeof obj.x !== 'number') {
-        let updateClickable = this.state.objects.filter(object => {
+        let updateClickable = this.props.currentRoom.objects.filter(object => {
           return object.name === obj.x[0];
         })[0];
         if (updateClickable.related.type === 'single') {
@@ -120,6 +135,7 @@ class Bottom extends Component {
         object.clicked.show = false;
         return object;
       }
+      return null;
     });
     this.setState({ popups });
   };
@@ -137,6 +153,17 @@ class Bottom extends Component {
       return object;
     });
     this.mousePosition(event);
+    this.setState({ popups });
+  };
+
+  closePopUp = event => {
+    let popups = this.state.popups.map(object => {
+      if (object.id === Number(event.target.id)) {
+        object.clicked.show = false;
+        return object;
+      }
+      return object;
+    });
     this.setState({ popups });
   };
 

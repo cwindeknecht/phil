@@ -7,7 +7,7 @@ import * as rooms from './rooms';
 const initialState = {
   // start, character sheet, main, battle
   current: Start,
-  currentRoom: rooms.room1,
+  currentRoom: rooms.outside,
   intro: true,
   character: {
     name: '',
@@ -43,6 +43,8 @@ export default (state = initialState, action) => {
       return { ...state, characterSaved: action.payload };
     case actions.HANDLE_CHARACTER_VIEW:
       return { ...state, current: action.payload.current, returnTo: action.payload.returnTo };
+    case actions.HANDLE_CURRENT_ROOM:
+      return { ...state, currentRoom: action.payload };
     case actions.HANDLE_INTRO:
       return { ...state, intro: action.payload };
     case actions.HANDLE_TRANSITION:
