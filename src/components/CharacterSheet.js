@@ -34,7 +34,7 @@ class CharacterSheet extends Component {
   render() {
     let character = this.props.character;
     let gear = character.gear;
-    gear.length % 2 === 1 ? gear.push('') : null;
+    gear.length % 2 === 1 ? gear.push('') : gear = character.gear;
     return (
       <div style={parchmentBackground} className="CSContainer">
         <div className="CSTitle"> Villager </div>

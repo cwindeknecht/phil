@@ -3,18 +3,13 @@ import { connect } from 'react-redux';
 
 import '../css/Bottom.css';
 
-import parchment from '../imgs/parchment.jpg';
-
 import { handle_intro } from '../actions/index.js';
 
 import PopUp from './PopUp';
 
-var parchmentBackground = {
-  backgroundImage: `url(${parchment})`,
-};
-
 class Bottom extends Component {
   state = {
+    objects: this.props.currentRoom.objects,
     popups: [],
     // make another component for sedentary objects like examine/talk/etc.
     roomOptions: [],
@@ -24,15 +19,20 @@ class Bottom extends Component {
 
   componentDidMount = () => {
     this.handleInitial();
-    this.getObjectsXY();
-    window.addEventListener('resize', this.getObjectsXY.bind(this));
+  };
+
+  componentDidUpdate = prevState => {
+    if (this.state.objects !== this.props.currentRoom.objects && !this.props.intro) {
+      this.setState({ objects: this.props.currentRoom.objects });
+      this.handleInitial();
+    }
   };
 
   render() {
     document.addEventListener('click', this.mousePosition);
-    console.log(this.props.currentRoom)
+    console.log("this.props.currentRoom",this.props.currentRoom)
     return (
-      <div id="Container" style={parchmentBackground} className="BottomContainer">
+      <div id="Container" className="BottomContainer">
         {this.props.intro ? this.getIntro() : this.getBottom()}
       </div>
     );
@@ -65,6 +65,7 @@ class Bottom extends Component {
       <div>
         {this.props.currentRoom.objects.map(item => {
           if (item.visible === true) {
+            {console.log("item in map",item)}
             return (
               <img
                 alt={item.name}
@@ -96,37 +97,6 @@ class Bottom extends Component {
         })}
       </div>
     );
-  };
-
-  // Probably a better way to do this, but this is where
-  // I make sure that no matter someone's screen size, the objects are placed correctly.
-  getObjectsXY = () => {
-    let updatedObjects = this.props.currentRoom.objects.map(obj => {
-      if (typeof obj.x !== 'number') {
-        let updateClickable = this.props.currentRoom.objects.filter(object => {
-          return object.name === obj.x[0];
-        })[0];
-        if (updateClickable.related.type === 'single') {
-          return {
-            ...obj,
-            x: updateClickable.related.x1 + updateClickable.x,
-            y: updateClickable.related.y1 + updateClickable.y,
-          };
-        } else {
-          let xKey = 'x' + obj.x[1];
-          let yKey = 'y' + obj.y[1];
-          return {
-            ...obj,
-            x: updateClickable.related[xKey] + updateClickable.x,
-            y: updateClickable.related[yKey] + updateClickable.y,
-          };
-        }
-      } else {
-        return { ...obj, x: (window.innerWidth - obj.width) / 2, y: obj.y };
-      }
-    });
-
-    this.setState({ objects: updatedObjects });
   };
 
   handleInitial = () => {
@@ -169,6 +139,8 @@ class Bottom extends Component {
 
   mousePosition = event => {
     this.setState({ mouseX: event.clientX, mouseY: event.clientY });
+
+    //figure out all the object coords that are clickable, then call closepopup if not in those coords.
   };
 }
 

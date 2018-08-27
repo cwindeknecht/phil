@@ -17,6 +17,7 @@
   width: 100%;
 }
 .PopUpContainer .PopUpOptions .PopUpButton {
+  cursor: pointer;
   background-color: black;
   border: 0;
   color: white;
@@ -24,4 +25,8 @@
   font-size: 1rem;
   border-radius: 5rem;
   width: 30%;
+}
+.PopUpContainer .PopUpOptions .PopUpButton:hover {
+  background: white;
+  color: black;
 }

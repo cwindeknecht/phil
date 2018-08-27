@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import '../css/Main.css';
 
@@ -13,19 +13,18 @@ var parchmentBackground = {
 };
 
 class Main extends Component {
-    render() {
-        return (
-            <div className="MainContainer" style={parchmentBackground}>
-                {this.props.intro ? null : <Top />}
-                <Bottom />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="MainContainer" style={parchmentBackground}>
+        {this.props.intro ? null : <Top />}
+        <Bottom />
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    current: state.current,
     intro: state.intro,
   };
 };
