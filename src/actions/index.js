@@ -7,6 +7,7 @@ export const HANDLE_CHARACTER_SAVE = 'HANDLE_CHARACTER_SAVE';
 export const HANDLE_CHARACTER_VIEW = 'HANDLE_CHARACTER_VIEW';
 export const HANDLE_CURRENT_ROOM = 'HANDLE_CURRENT_ROOM';
 export const HANDLE_INTRO = 'HANDLE_INTRO';
+export const HANDLE_INVENTORY_UPDATE = 'HANDLE_INVENTORY_UPDATE';
 export const HANDLE_OBJECT_VISIBILITY = 'HANDLE_OBJECT_VISIBILITY';
 export const HANDLE_TRANSITION = 'HANDLE_TRANSITION';
 
@@ -52,6 +53,24 @@ export const handle_intro = () => {
     payload: false,
   };
 };
+
+export const handle_inventory_update = (character, items, topBar) => {
+  let inventory = character.gear;
+  items.forEach(item => {
+    if (item.type === 'add'){
+      inventory.push(item.name);
+    }
+    else {
+      let index = inventory.indexOf(item.name);
+      inventory.splice(index,1);
+    }
+  character = {...character, gear: inventory};
+  })
+  return {
+    type: 'HANDLE_INVENTORY_UPDATE',
+    payload: character,
+  }
+}
 
 export const handle_object_visibility = (currentRoom, affects, topBar) => {
   let updatedObjects = currentRoom.objects.map(object => {

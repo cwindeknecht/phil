@@ -18,7 +18,7 @@ class Top extends Component {
   render() {
     return (
       <div className="TopContainer">
-        <div className="TopText">{this.props.currentRoom.initialTopBar}</div>
+        <div className="TopText">{this.props.currentRoom.topBar}</div>
         <div style={sheet} className="TopSheet" onClick={this.handleCharacterView} />
       </div>
     );

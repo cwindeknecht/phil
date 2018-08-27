@@ -22,7 +22,7 @@ import doorway from '../imgs/clickables/NormalDoorway.png';
 
 export let outside = {
   name: 'outside',
-  initialTopBar: 'You approach the burial mound.  What do you do?',
+  topBar: 'You approach the burial mound.  What do you do?',
   objects: [
     {
       id: 1,
@@ -73,7 +73,7 @@ export let outside = {
 
 export let threeDoorsRoom = {
   name: 'threeDoorsRoom',
-  initialTopBar:
+  topBar:
     'You enter the room.  There are three doors, each blocked by a stone slab.  A sword is buried in a stone in the center of the room.  What do you do?',
   objects: [
     {
@@ -141,7 +141,7 @@ export let threeDoorsRoom = {
               type: ['visible', 'inventory'],
               affects: [
                 [{ name: 'sword', visible: false }, { name: 'rightDoorway', visible: true }],
-                ['Formula of Universal Law'],
+                [{ name:'Formula of Universal Law', type: 'add'}],
               ],
               topBar:
                 'You take the half-sword.The Formula of Universal Law has been added to your gear.  The stone slab to the east moves from the doorway.',
@@ -168,7 +168,7 @@ export let threeDoorsRoom = {
 
 export let golemRoom = {
   name: 'golemRoom',
-  initialTopBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
+  topBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
   objects: [
     {
       id: 6,
@@ -235,7 +235,7 @@ export let golemRoom = {
 
 export let koboldRoom = {
   name: 'koboldRoom',
-  initialTopBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
+  topBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
   objects: [
     {
       id: 6,
@@ -348,7 +348,7 @@ export let koboldRoom = {
 
 export let warriorRoom = {
   name: 'warriorRoom',
-  initialTopBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
+  topBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
   objects: [
     {
       id: 6,

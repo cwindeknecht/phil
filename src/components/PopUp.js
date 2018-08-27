@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { handle_current_room, handle_object_visibility } from '../actions/index';
+import { handle_current_room, handle_object_visibility, handle_inventory_update } from '../actions/index';
 
 import '../css/PopUp.css';
 
@@ -49,13 +49,11 @@ class PopUp extends Component {
             this.props.handle_current_room(action.location);
             break;
           case 'visible':
-            // figure this shit out
             this.props.handle_object_visibility(this.props.currentRoom, action.affects[i], action.topBar);
             break;
-          // case 'inventory':
-          //   // figure this shit out
-          //   this.props.handle_inventory_update();
-          //   break;
+          case 'inventory':
+            this.props.handle_inventory_update(this.props.character, action.affects[i], action.topBar);
+            break;
           default:
             console.log('nope');
         }
@@ -68,10 +66,11 @@ class PopUp extends Component {
 const mapStateToProps = state => {
   return {
     currentRoom: state.currentRoom,
+    character: state.character,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { handle_current_room, handle_object_visibility },
+  { handle_current_room, handle_object_visibility, handle_inventory_update },
 )(PopUp);

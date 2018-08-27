@@ -30,7 +30,6 @@ class Bottom extends Component {
 
   render() {
     document.addEventListener('click', this.mousePosition);
-    console.log("this.props.currentRoom",this.props.currentRoom)
     return (
       <div id="Container" className="BottomContainer">
         {this.props.intro ? this.getIntro() : this.getBottom()}
@@ -65,7 +64,6 @@ class Bottom extends Component {
       <div>
         {this.props.currentRoom.objects.map(item => {
           if (item.visible === true) {
-            {console.log("item in map",item)}
             return (
               <img
                 alt={item.name}

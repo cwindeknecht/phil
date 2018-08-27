@@ -47,6 +47,8 @@ export default (state = initialState, action) => {
       return { ...state, currentRoom: action.payload };
     case actions.HANDLE_INTRO:
       return { ...state, intro: action.payload };
+    case actions.HANDLE_INVENTORY_UPDATE:
+      return { ...state, character: action.payload };
     case actions.HANDLE_OBJECT_VISIBILITY:
       return { ...state, currentRoom: action.payload };
     case actions.HANDLE_TRANSITION:
