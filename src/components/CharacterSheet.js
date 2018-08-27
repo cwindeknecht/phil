@@ -34,7 +34,11 @@ class CharacterSheet extends Component {
   render() {
     let character = this.props.character;
     let gear = character.gear;
-    gear.length % 2 === 1 ? gear.push('') : gear = character.gear;
+    let index = gear.indexOf('');
+    if (index > -1) {
+      gear.splice(index, 1);
+    }
+    gear.length % 2 === 1 ? gear.push('') : (gear = character.gear);
     return (
       <div style={parchmentBackground} className="CSContainer">
         <div className="CSTitle"> Villager </div>
@@ -52,7 +56,7 @@ class CharacterSheet extends Component {
           </div>
           <div className="CSStatsHalf">
             <div id="cslevel">
-              <div id="level"className="CSStat">
+              <div id="level" className="CSStat">
                 Level:{' '}
                 <div id="level" className="CSStats">
                   {character.level}

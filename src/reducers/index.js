@@ -27,6 +27,8 @@ const initialState = {
   characterSaved: false,
   adventureStarted: false,
   returnTo: null,
+  link: false,
+  pageNumber: 0,
 };
 
 export default (state = initialState, action) => {
@@ -48,7 +50,22 @@ export default (state = initialState, action) => {
     case actions.HANDLE_INTRO:
       return { ...state, intro: action.payload };
     case actions.HANDLE_INVENTORY_UPDATE:
-      return { ...state, character: action.payload };
+      console.log('payload', action.payload.pageNumber);
+      if ('link' in action.payload) {
+        console.log('Yup');
+        return {
+          ...state,
+          character: action.payload.character,
+          currentRoom: action.payload.currentRoom,
+          link: action.payload.link,
+          pageNumber: action.payload.pageNumber,
+        };
+      }
+      return {
+        ...state,
+        character: action.payload.character,
+        currentRoom: action.payload.currentRoom,
+      };
     case actions.HANDLE_OBJECT_VISIBILITY:
       return { ...state, currentRoom: action.payload };
     case actions.HANDLE_TRANSITION:

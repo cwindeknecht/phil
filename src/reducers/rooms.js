@@ -58,6 +58,10 @@ export let outside = {
               type: ['transition'],
               location: 'threeDoorsRoom',
             },
+            link: {
+              show: false,
+              page: 0,
+            },
           },
           {
             text: 'No',
@@ -108,6 +112,10 @@ export let threeDoorsRoom = {
             action: {
               type: ['transition'],
               location: 'golemRoom',
+              link: {
+                show: false,
+                page: 0,
+              },
             },
           },
           {
@@ -141,10 +149,14 @@ export let threeDoorsRoom = {
               type: ['visible', 'inventory'],
               affects: [
                 [{ name: 'sword', visible: false }, { name: 'rightDoorway', visible: true }],
-                [{ name:'Formula of Universal Law', type: 'add'}],
+                [{ name: 'Formula of Universal Law', type: 'add' }],
               ],
               topBar:
                 'You take the half-sword.The Formula of Universal Law has been added to your gear.  The stone slab to the east moves from the doorway.',
+              link: {
+                show: true,
+                page: 24,
+              },
             },
           },
           {

@@ -54,23 +54,26 @@ export const handle_intro = () => {
   };
 };
 
-export const handle_inventory_update = (character, items, topBar) => {
+export const handle_inventory_update = (character, currentRoom, items, topBar, link) => {
   let inventory = character.gear;
+  let payload = {};
   items.forEach(item => {
-    if (item.type === 'add'){
+    if (item.type === 'add') {
       inventory.push(item.name);
-    }
-    else {
+    } else {
       let index = inventory.indexOf(item.name);
-      inventory.splice(index,1);
+      inventory.splice(index, 1);
     }
-  character = {...character, gear: inventory};
-  })
+    payload['link'] = link.show;
+    payload['pageNumber'] = link.page;
+  });
+  payload['character'] = { ...character, gear: inventory };
+  payload['currentRoom'] = { ...currentRoom, topBar };
   return {
     type: 'HANDLE_INVENTORY_UPDATE',
-    payload: character,
-  }
-}
+    payload,
+  };
+};
 
 export const handle_object_visibility = (currentRoom, affects, topBar) => {
   let updatedObjects = currentRoom.objects.map(object => {
@@ -79,7 +82,7 @@ export const handle_object_visibility = (currentRoom, affects, topBar) => {
     }
     return object;
   });
-  currentRoom = { ...currentRoom, objects: updatedObjects, initialTopBar: topBar};
+  currentRoom = { ...currentRoom, objects: updatedObjects, topBar };
   return {
     type: 'HANDLE_OBJECT_VISIBILITY',
     payload: currentRoom,

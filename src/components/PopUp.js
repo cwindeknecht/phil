@@ -49,10 +49,10 @@ class PopUp extends Component {
             this.props.handle_current_room(action.location);
             break;
           case 'visible':
-            this.props.handle_object_visibility(this.props.currentRoom, action.affects[i], action.topBar);
+            this.props.handle_object_visibility(this.props.currentRoom, action.affects[i], action.topBar,);
             break;
           case 'inventory':
-            this.props.handle_inventory_update(this.props.character, action.affects[i], action.topBar);
+            this.props.handle_inventory_update(this.props.character, this.props.currentRoom, action.affects[i], action.topBar, action.link);
             break;
           default:
             console.log('nope');
