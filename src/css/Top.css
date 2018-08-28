@@ -8,13 +8,31 @@
 .TopContainer .TopText {
   background: lightgray;
   border: 0.5rem solid black;
-  width: 80vw;
+  width: 70vw;
   height: 20vh;
-  font-size: 2rem;
+  font-size: 1.75rem;
   border-radius: 2rem;
   padding: 2rem;
   margin: 2rem 0;
   text-align: center;
+  overflow: unset;
+}
+.TopContainer .TopLink {
+  width: 15vw;
+  height: 5rem;
+  background: lightgray;
+  border: 0.5rem solid black;
+  font-size: 2rem;
+  border-radius: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Papyrus, fantasy;
+}
+.TopContainer .TopLink:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
 }
 .TopContainer .TopSheet {
   width: 100px;

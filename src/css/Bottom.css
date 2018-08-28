@@ -32,11 +32,28 @@
   font-family: Papyrus, fantasy;
   border-radius: 25rem;
 }
-.BottomContainer .BottomIntro .BottomIntroButton:Hover {
+.BottomContainer .BottomIntro .BottomIntroButton:hover {
   cursor: pointer;
   background-color: white;
   color: black;
 }
 .BottomContainer .Clickable:hover {
   cursor: pointer;
+}
+.BottomContainer .BottomOptions {
+  width: 15rem;
+  height: 5rem;
+  position: absolute;
+  background: lightgray;
+  border: 0.5rem solid black;
+  font-size: 2rem;
+  border-radius: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.BottomContainer .BottomOptions:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
 }

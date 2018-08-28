@@ -1,28 +1,46 @@
-.TopContainer{
+.TopContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-family: Papyrus, fantasy;
+  .TopText {
+    background: lightgray;
+    border: 0.5rem solid black;
+    width: 70vw;
+    height: 20vh;
+    font-size: 1.75rem;
+    border-radius: 2rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+    overflow: unset;
+  }
+  .TopLink {
+    width: 15vw;
+    height: 5rem;
+    background: lightgray;
+    border: 0.5rem solid black;
+    font-size: 2rem;
+    border-radius: 5rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     font-family: Papyrus, fantasy;
-    .TopText {
-        background: lightgray;
-        border: .5rem solid black;
-        width: 80vw;
-        height: 20vh;
-        font-size: 2rem;
-        border-radius: 2rem;
-        padding: 2rem;
-        margin: 2rem 0;
-        text-align: center;
-    }
-    .TopSheet {
-        width: 100px;
-        height: 120px;
-        opacity: .5;
-    }
-    .TopSheet:hover{
-        opacity: 1;
-        transform: scale(1.1);
-        cursor: pointer;
-    }
+  }
+  .TopLink:hover {
+    cursor: pointer;
+    background: white;
+    color: black;
+  }
+  .TopSheet {
+    width: 100px;
+    height: 120px;
+    opacity: 0.5;
+  }
+  .TopSheet:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 }

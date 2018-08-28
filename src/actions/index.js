@@ -9,6 +9,7 @@ export const HANDLE_CURRENT_ROOM = 'HANDLE_CURRENT_ROOM';
 export const HANDLE_INTRO = 'HANDLE_INTRO';
 export const HANDLE_INVENTORY_UPDATE = 'HANDLE_INVENTORY_UPDATE';
 export const HANDLE_OBJECT_VISIBILITY = 'HANDLE_OBJECT_VISIBILITY';
+export const HANDLE_ROOM_OPTIONS = 'HANDLE_ROOM_OPTIONS';
 export const HANDLE_TRANSITION = 'HANDLE_TRANSITION';
 
 export const handle_adventure_start = () => {
@@ -54,7 +55,7 @@ export const handle_intro = () => {
   };
 };
 
-export const handle_inventory_update = (character, currentRoom, items, topBar, link) => {
+export const handle_inventory_update = (character, currentRoom, items, topBar, link=null) => {
   let inventory = character.gear;
   let payload = {};
   items.forEach(item => {
@@ -64,9 +65,15 @@ export const handle_inventory_update = (character, currentRoom, items, topBar, l
       let index = inventory.indexOf(item.name);
       inventory.splice(index, 1);
     }
+  });
+  if(link !== null) {
     payload['link'] = link.show;
     payload['pageNumber'] = link.page;
-  });
+  }
+  else {
+    payload['link'] = false;
+    payload['pageNumber'] = 0;
+  }
   payload['character'] = { ...character, gear: inventory };
   payload['currentRoom'] = { ...currentRoom, topBar };
   return {
@@ -88,6 +95,35 @@ export const handle_object_visibility = (currentRoom, affects, topBar) => {
     payload: currentRoom,
   };
 };
+
+export const handle_room_options = (currentRoom, option) => {
+  let options = currentRoom.options.map(opt => {
+    if(opt.type === option.type) {
+      return {...opt, visible: false};
+    }
+    return opt;
+  })
+  let payload = currentRoom;
+  switch(option.type){
+    case 'examine':
+      payload = {...currentRoom, options, topBar:option.topBar};
+      break;
+    default:
+      console.log('nope');
+  }
+  if(option.link !== null) {
+    payload['link'] = option.link.show;
+    payload['pageNumber'] = option.link.page;
+  }
+  else {
+    payload['link'] = false;
+    payload['pageNumber'] = 0;
+  }
+  return {
+    type: 'HANDLE_ROOM_OPTIONS',
+    payload,
+  }
+} 
 
 export const handle_transition = (component, stat = null) => {
   return {

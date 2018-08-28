@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import '../css/Bottom.css';
 
-import { handle_intro } from '../actions/index.js';
+import { handle_intro, handle_room_options } from '../actions/index.js';
 
 import PopUp from './PopUp';
 
@@ -11,8 +11,7 @@ class Bottom extends Component {
   state = {
     objects: this.props.currentRoom.objects,
     popups: [],
-    // make another component for sedentary objects like examine/talk/etc.
-    roomOptions: [],
+    roomOptions: this.props.currentRoom.options,
     mouseX: null,
     mouseY: null,
   };
@@ -23,7 +22,7 @@ class Bottom extends Component {
 
   componentDidUpdate = prevState => {
     if (this.state.objects !== this.props.currentRoom.objects && !this.props.intro) {
-      this.setState({ objects: this.props.currentRoom.objects });
+      this.setState({ objects: this.props.currentRoom.objects, roomOptions: this.props.currentRoom.options });
       this.handleInitial();
     }
   };
@@ -46,8 +45,7 @@ class Bottom extends Component {
           You are a villager and your village is under attack.
           <br />
           <br />
-          To help defend it, you have left in search of an ancient artifact --- the Categorical
-          Imperative.
+          To help defend it, you have left in search of an ancient artifact --- the Categorical Imperative.
           <br />
           <br />
           Your search has brought you to the resting place of a great hero: Kant, the Paladin.
@@ -82,12 +80,21 @@ class Bottom extends Component {
           if (object.clicked.show) {
             return (
               <div key={object.name}>
-                <PopUp
-                  item={object}
-                  close={this.closePopUp}
-                  x={this.state.mouseX}
-                  y={this.state.mouseY}
-                />
+                <PopUp item={object} close={this.closePopUp} x={this.state.mouseX} y={this.state.mouseY} />
+              </div>
+            );
+          }
+          return null;
+        })}
+        {this.state.roomOptions.map(option => {
+          if (option.visible) {
+            return (
+              <div
+                className="BottomOptions"
+                id={option.type}
+                onClick={this.handleOptions.bind(this, option)}
+                style={{ position: 'absolute', left: option.x, top: option.y, zIndex: option.z }}>
+                {option.text}
               </div>
             );
           }
@@ -95,6 +102,9 @@ class Bottom extends Component {
         })}
       </div>
     );
+  };
+  handleOptions = (option, event) => {
+    this.props.handle_room_options(this.props.currentRoom, option);
   };
 
   handleInitial = () => {
@@ -152,5 +162,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { handle_intro },
+  { handle_intro, handle_room_options },
 )(Bottom);

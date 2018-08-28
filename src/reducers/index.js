@@ -50,24 +50,22 @@ export default (state = initialState, action) => {
     case actions.HANDLE_INTRO:
       return { ...state, intro: action.payload };
     case actions.HANDLE_INVENTORY_UPDATE:
-      console.log('payload', action.payload.pageNumber);
-      if ('link' in action.payload) {
-        console.log('Yup');
-        return {
-          ...state,
-          character: action.payload.character,
-          currentRoom: action.payload.currentRoom,
-          link: action.payload.link,
-          pageNumber: action.payload.pageNumber,
-        };
-      }
       return {
         ...state,
         character: action.payload.character,
         currentRoom: action.payload.currentRoom,
+        link: action.payload.link,
+        pageNumber: action.payload.pageNumber,
       };
     case actions.HANDLE_OBJECT_VISIBILITY:
       return { ...state, currentRoom: action.payload };
+    case actions.HANDLE_ROOM_OPTIONS:
+      return {
+        ...state,
+        currentRoom: action.payload,
+        link: action.payload.link,
+        pageNumber: action.payload.pageNumber,
+      };
     case actions.HANDLE_TRANSITION:
       return { ...state, current: action.payload };
     default:

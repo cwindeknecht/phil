@@ -73,6 +73,7 @@ export let outside = {
       visible: true,
     },
   ],
+  options: [],
 };
 
 export let threeDoorsRoom = {
@@ -153,10 +154,7 @@ export let threeDoorsRoom = {
               ],
               topBar:
                 'You take the half-sword.The Formula of Universal Law has been added to your gear.  The stone slab to the east moves from the doorway.',
-              link: {
-                show: true,
-                page: 24,
-              },
+              link: null
             },
           },
           {
@@ -171,9 +169,18 @@ export let threeDoorsRoom = {
   ],
   options: [
     {
+      visible: true,
+      x: 400,
+      y: 600,
+      z: 2,
       type: 'examine',
+      text: 'Examine Room?',
       topBar:
-        'You examine the sword, or rather half-sword.  An inscription on the blade reads, "act as though the maxim of your action were to become, through your will, a universal law of nature. Further reading page 24"',
+        'You examine the sword, or rather half-sword.  An inscription on the blade reads, "act as though the maxim of your action were to become, through your will, a universal law of nature.',
+      link: {
+        show: true,
+        page: 24,
+      },
     },
   ],
 };
