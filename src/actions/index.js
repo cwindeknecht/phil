@@ -5,8 +5,10 @@ export const HANDLE_ADVENTURE_START = 'HANDLE_ADVENTURE_START';
 export const HANDLE_BATTLE = 'HANDLE_BATTLE';
 export const HANDLE_CHARACTER_ROLL = 'HANDLE_CHARACTER_ROLL';
 export const HANDLE_CHARACTER_SAVE = 'HANDLE_CHARACTER_SAVE';
+export const HANDLE_CHARACTER_UPDATE = 'HANDLE_CHARACTER_UPDATE';
 export const HANDLE_CHARACTER_VIEW = 'HANDLE_CHARACTER_VIEW';
 export const HANDLE_CURRENT_ROOM = 'HANDLE_CURRENT_ROOM';
+export const HANDLE_DEATH_MESSAGE = 'HANDLE_DEATH_MESSAGE';
 export const HANDLE_EXAMINE = 'HANDLE_EXAMINE';
 export const HANDLE_INTRO = 'HANDLE_INTRO';
 export const HANDLE_INVENTORY_UPDATE = 'HANDLE_INVENTORY_UPDATE';
@@ -42,6 +44,15 @@ export const handle_character_save = () => {
   };
 };
 
+// rename this to handle_victory or something
+export const handle_character_update = (current, character, currentRoom) => {
+  return {
+    type: 'HANDLE_CHARACTER_UPDATE',
+    payload: {current, character, currentRoom}
+  }
+  
+}
+
 export const handle_character_view = (current, returnTo) => {
   return {
     type: 'HANDLE_CHARACTER_VIEW',
@@ -63,6 +74,13 @@ export const handle_intro = () => {
   };
 };
 
+export const handle_death_message = message => {
+  return {
+    type: 'HANDLE_DEATH_MESSAGE',
+    payload: message,
+  };
+};
+
 export const handle_examine = (currentRoom, option) => {
   console.log('OPTION in ation', option);
   let options = currentRoom.options.map(opt => {
@@ -80,7 +98,7 @@ export const handle_examine = (currentRoom, option) => {
     payload['link'] = false;
     payload['pageNumber'] = 0;
   }
-  console.log('payload in action', payload)
+  console.log('payload in action', payload);
   return {
     type: 'HANDLE_EXAMINE',
     payload,

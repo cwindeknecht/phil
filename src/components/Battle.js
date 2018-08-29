@@ -6,7 +6,7 @@ import '../css/Battle.css';
 import Main from './Main';
 import Death from './Death';
 
-import { handle_transition } from '../actions/index';
+import { handle_transition, handle_death_message, handle_character_update } from '../actions/index';
 
 import parchment from '../imgs/parchment.jpg';
 
@@ -17,18 +17,14 @@ import four from '../imgs/DiceFour.png';
 import five from '../imgs/DiceFive.png';
 import six from '../imgs/DiceSix.png';
 
-let parchmentBackground = {
-  backgroundImage: `url(${parchment})`,
-};
-
 class Battle extends Component {
   state = {
     character: this.props.character,
     opponent: this.props.opponent,
     rolls: [],
     neverMind: true,
-    battleText: this.props.opponent.initialText,
-    won: false,
+    battleText: [],
+    victory: false,
     roll: false,
   };
 
@@ -36,52 +32,62 @@ class Battle extends Component {
     // If I have time, make a villager character that looks puny
     // have the opponent on one side, the villager on the other side
     return (
-      <div className="BattleContainer" style={parchmentBackground}>
+      <div className="BattleContainer">
         <div className="BattleHeader">
           {/* have this be a modal that pops up */}
           {/* <img className="BattleExplanation"> */}
-          {!this.state.roll ? (
-            <div>
-              <img alt="dice1" className="BattleDice" style={{ opacity: '0' }} />{' '}
-              <img alt="dice2" className="BattleDice" style={{ opacity: '0' }} />{' '}
+          <div className="BattleTitle"> {this.state.opponent.initialText}</div>
+          {this.state.roll ? (
+            <div className="BattleDiceContainer">
+              <img alt="dice1" src={this.state.rolls[0][0].image} className="BattleDice" />
+              <img alt="dice2" src={this.state.rolls[0][1].image} className="BattleDice" />
             </div>
           ) : (
-            <div>
-              <img alt="dice1" src={this.state.rolls[0].image} className="BattleDice" style={{ opacity: '0' }} />{' '}
-              <img alt="dice2" src={this.state.rolls[1].image} className="BattleDice" style={{ opacity: '0' }} />{' '}
+            <div className="BattleDiceContainer">
+              <img alt="dice1" className="BattleDice" style={{ opacity: '0' }} />
+              <img alt="dice2" className="BattleDice" style={{ opacity: '0' }} />
             </div>
           )}
-          <button onClick={this.handleRoll}> Roll </button>
-          {this.state.neverMind ? (
+          {this.state.roll ? (
+            <button className="BattleButton" style={{ opacity: '0' }} />
+          ) : (
             <button className="BattleButton" onClick={this.handleTransition}>
               Nevermind
             </button>
-          ) : (
-            <button className="BattleButton" style={{ opacity: '0' }} />
           )}
-          <div> {this.state.opponent.initialText}</div>
+          {this.state.victory ? (
+            <button className="BattleButton" onClick={this.handleCharacterUpdate}>
+              Victory!
+            </button>
+          ) : (
+            <button className="BattleButton" onClick={this.handleRoll}>
+              Roll
+            </button>
+          )}
         </div>
-        {this.state.rolls.map(roll => {
-          return (
-            <div>
-              {' '}
-              {this.state.battleText}
-              {roll.num}{' '}
-            </div>
-          );
-        })}
+        <div className="BattleTextContainer">
+          {this.state.battleText.map((text, i) => {
+            return (
+              <li className="BattleText" key={i}>
+                {text}
+              </li>
+            );
+          })}
+        </div>
       </div>
     );
   }
   handleTransition = () => {
     this.props.handle_transition(Main);
   };
-  // change nevermind to false after the first roll
+  // I NEED TO MAKE IT SO IT ROLLS A D4 FOR THIS SHIT TOO IF THEY LAND A HIT
+  // EVEN THOUGH THAT BASICALLY NEVER HAPPENS
+  // BUT THEN AGAIN NEITHER WILL FUCKING BATTLE
   handleRoll = () => {
-    let rolls = this.state.rolls;
+    let rolls = [];
     let opponent = this.state.opponent;
     let character = this.state.character;
-    let battleText = '';
+    let battleText = this.state.battleText;
     let dice1 = Math.floor(Math.random() * 6) + 1;
     let dice2 = Math.floor(Math.random() * 6) + 1;
     let diceArray = [dice1, dice2].map(dice => {
@@ -105,11 +111,19 @@ class Battle extends Component {
     rolls.push(diceArray);
     let dam = diceArray[0].num + diceArray[1].num - opponent.detriment;
     // damage to opponent
-    if (dam === opponent.crit) {
+    if (dam >= opponent.crit) {
       let opponentDamage = Math.floor(Math.random() * character.damage) + 1 - opponent.detriment;
       if (opponentDamage < 0) opponentDamage = 0;
-      opponent.health -= opponentDamage;
-      battleText = opponent.critText;
+      // opponent.health -= opponentDamage;
+      opponent.health -= 8;
+      if (opponentDamage > 0) {
+        battleText.push(opponent.critText + `You deal ${opponentDamage} daamge.  `);
+      } else {
+        battleText.push(
+          opponent.critText +
+            `You deal ${opponentDamage} damage.  Guess attacking a ${this.props.opponent.name} was a terrible idea.`,
+        );
+      }
     }
     // damage to both
     else if (dam <= opponent.tradeHigh && dam >= opponent.tradeLow) {
@@ -117,7 +131,15 @@ class Battle extends Component {
       let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
       character.health -= characterDamage - character.armor;
       opponent.health -= opponentDamage;
-      battleText = opponent.tradeText;
+      battleText.push(opponent.tradeText);
+      if (opponentDamage > 0) {
+        battleText.push(opponent.critText + `You deal ${opponentDamage} daamge.  `);
+      } else {
+        battleText.push(
+          opponent.critText +
+            `You deal ${opponentDamage} damage.  Guess attacking a ${this.props.opponent.name} was a terrible idea.`,
+        );
+      }
     }
     // damage to player
     else if (dam === 0) {
@@ -125,10 +147,14 @@ class Battle extends Component {
     } else {
       let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
       character.health -= characterDamage - character.armor;
-      battleText = opponent.hitText;
+      battleText.push(opponent.hitText);
     }
-    if (character.health <= 0) this.props.handle_transition(Death);
-    if (opponent.health <= 0) this.handleCharacterUpdate();
+    if (character.health <= 0) {
+      this.props.handle_death_message(`You were obliterated by the ${this.props.opponent.name}.`);
+      this.props.handle_transition(Death);
+      return;
+    }
+    if (opponent.health <= 0) this.handleVictory();
     this.setState({ rolls, character, opponent, battleText, roll: true });
   };
   // this is for if the character actually beats the opponent
@@ -138,17 +164,34 @@ class Battle extends Component {
   // update the topbar text with the victory text
   // since the warrior is connected to the tv/bag, just say in the midst of battle you destroy the tv set and bag of holding.
   // update the clickables on the screen (doors, chest, spear, etc)
-  handleCharacterUpdate = () => {};
+  handleVictory = () => {
+    this.setState({ victory: true });
+  };
+
+  handleCharacterUpdate = () => {
+    let objects = this.props.currentRoom.objects.map(object => {
+      if (object.name === this.props.opponent.name) {
+        object.visible = false;
+      }
+      if (object.name === 'doorway') {
+        object.visible = true;
+      }
+      return object;
+    });
+    let currentRoom = { ...this.props.currentRoom, topBar: this.props.opponent.victory, objects };
+    this.props.handle_character_update(Main, this.state.character, currentRoom);
+  };
 }
 
 const mapStateToProps = state => {
   return {
     character: state.character,
     opponent: state.opponent,
+    currentRoom: state.currentRoom,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { handle_transition },
+  { handle_transition, handle_death_message, handle_character_update },
 )(Battle);

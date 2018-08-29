@@ -30,6 +30,7 @@ const initialState = {
   link: false,
   pageNumber: 0,
   opponent: null,
+  deathMessage: null,
 };
 
 export default (state = initialState, action) => {
@@ -46,10 +47,19 @@ export default (state = initialState, action) => {
       };
     case actions.HANDLE_CHARACTER_SAVE:
       return { ...state, characterSaved: action.payload };
+    case actions.HANDLE_CHARACTER_UPDATE:
+      return {
+        ...state,
+        current: action.payload.current,
+        character: action.payload.character,
+        currentRoom: action.payload.currentRoom,
+      };
     case actions.HANDLE_CHARACTER_VIEW:
       return { ...state, current: action.payload.current, returnTo: action.payload.returnTo };
     case actions.HANDLE_CURRENT_ROOM:
       return { ...state, currentRoom: action.payload };
+    case actions.HANDLE_DEATH_MESSAGE:
+      return { ...state, deathMessage: action.payload };
     case actions.HANDLE_EXAMINE:
       return {
         ...state,

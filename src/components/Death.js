@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import '../css/Battle.css';
-
-import { handle_transition } from '../actions/index';
-
-import deathBackdrop from '../imgs/DeathBackdrop.png';
-
-let death = {
-  backgroundImage: `url(${deathBackdrop})`,
-};
+import '../css/Death.css';
 
 class Death extends Component {
   render() {
     return (
-      <div className="Death Container" style={death}>
-        You've Died. Good Job {this.props.deathMessage}
+      <div className="DeathContainer">
+        <div className="DeathMessage">{this.props.deathMessage}</div>
       </div>
     );
   }
@@ -23,11 +15,11 @@ class Death extends Component {
 
 const mapStateToProps = state => {
   return {
-    ...state,
+    deathMessage: state.deathMessage,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { handle_transition },
+  null,
 )(Death);
