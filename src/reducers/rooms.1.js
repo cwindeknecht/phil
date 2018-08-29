@@ -20,67 +20,67 @@ import warrior from '../imgs/clickables/DefeatedWarrior.png';
 // import corridorFacingRightBlocked from '../imgs/CorridorFacingRight.png';
 import doorway from '../imgs/clickables/NormalDoorway.png';
 
+import * as opponents from './opponents';
+
 export let outside = {
   name: 'outside',
-  initialTopBar: 'You approach the burial mound.  What do you do?',
+  topBar: 'You approach the burial mound.  What do you do?',
   objects: [
     {
       id: 1,
       name: 'mound',
       image: mound,
-      // x position from left of container
       width: 1200,
       height: 700,
-      x: (window.innerWidth - 1200) / 2,
+      // x position from left of container
+      x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
       // y position from top of container
       y: 200,
       z: 0,
       clicked: null,
-      related: {
-        x1: 525,
-        y1: 216,
-      },
       visible: true,
     },
     {
       id: 2,
       name: 'doorway',
       image: doorway,
-      x: ['mound', 1],
-      y: ['mound', 1],
+      x: 690,
+      y: 420,
       z: 1,
       // what happens on click
       clicked: {
+        show: false,
         text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
-        x: 525,
-        // Where the new "modal" is rendered from the top of the container.
-        y: 600,
-        width: "15rem",
-        height: "5rem",
+        width: '15rem',
+        height: '5rem',
         options: [
           {
             text: 'Yes',
             action: {
-              type: 'transition',
+              type: ['transition'],
               location: 'threeDoorsRoom',
-            }
+            },
+            link: {
+              show: false,
+              page: 0,
+            },
           },
           {
             text: 'No',
-            action: null
-          }
+            action: null,
+          },
         ],
       },
       related: null,
       visible: true,
     },
   ],
+  options: [],
 };
 
 export let threeDoorsRoom = {
   name: 'threeDoorsRoom',
-  initialTopBar:
+  topBar:
     'You enter the room.  There are three doors, each blocked by a stone slab.  A sword is buried in a stone in the center of the room.  What do you do?',
   objects: [
     {
@@ -90,46 +90,41 @@ export let threeDoorsRoom = {
       // x position from left of container
       width: 1200,
       height: 700,
-      x: (window.innerWidth - 1200) / 2,
+      x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
       // y position from top of container
       y: 200,
       z: 0,
       clicked: null,
-      related: {
-        x1: 781,
-        y1: 113,
-        x2: 505,
-        y2: 235,
-      },
       visible: true,
     },
     {
       id: 4,
       name: 'rightDoorway',
       image: rightDoorway,
-      x: ['threeDoors', 1],
-      y: ['threeDoors', 1],
+      x: 951,
+      y: 313,
       z: 1,
       clicked: {
         text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
-        x: 525,
-        // Where the new "modal" is rendered from the top of the container.
-        y: 600,
-        width: "15rem",
-        height: "5rem",
+        show: false,
+        width: '15rem',
+        height: '5rem',
         options: [
           {
             text: 'Yes',
             action: {
-              type: 'transition',
+              type: ['transition'],
               location: 'golemRoom',
-            }
+              link: {
+                show: false,
+                page: 0,
+              },
+            },
           },
           {
             text: 'No',
-            action: null
-          }
+            action: null,
+          },
         ],
       },
       related: null,
@@ -139,41 +134,62 @@ export let threeDoorsRoom = {
       id: 5,
       name: 'sword',
       image: sword,
-      x: ['threeDoors', 2],
-      y: ['threeDoors', 2],
+      x: 675,
+      y: 440,
       z: 2,
       // what happens on click
       clicked: {
-        text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
-        x: 525,
-        // Where the new "modal" is rendered from the top of the container.
-        y: 600,
-        width: "15rem",
-        height: "5rem",
+        show: false,
+        text: 'Take the Sword',
+        width: '20rem',
+        height: '5rem',
         options: [
           {
             text: 'Yes',
             action: {
-              type: 'transition',
-              location: 'golemRoom',
-            }
+              //index is linked to what it affects
+              // so in this instance, 0 would be visible, and it should alter sword and rightDoorway
+              type: ['visible', 'inventory'],
+              affects: [
+                [{ name: 'sword', visible: false }, { name: 'rightDoorway', visible: true }],
+                [{ name: 'Formula of Universal Law', type: 'add' }],
+              ],
+              topBar:
+                'You take the half-sword.The Formula of Universal Law has been added to your gear.  The stone slab to the east moves from the doorway.',
+              link: null,
+            },
           },
           {
             text: 'No',
-            action: null
-          }
+            action: null,
+          },
         ],
       },
       related: null,
       visible: true,
     },
   ],
+  options: [
+    {
+      visible: true,
+      x: 400,
+      y: 600,
+      z: 2,
+      type: 'examine',
+      text: 'Examine Room?',
+      topBar:
+        'You examine the sword, or rather half-sword.  An inscription on the blade reads, "act as though the maxim of your action were to become, through your will, a universal law of nature."',
+      link: {
+        show: true,
+        page: 24,
+      },
+    },
+  ],
 };
 
 export let golemRoom = {
   name: 'golemRoom',
-  initialTopBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
+  topBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
   objects: [
     {
       id: 6,
@@ -182,32 +198,26 @@ export let golemRoom = {
       // x position from left of container
       width: 1200,
       height: 700,
-      x: (window.innerWidth - 1200) / 2,
+      x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
       // y position from top of container
       y: 200,
       z: 0,
       clicked: null,
-      related: {
-        x1: 525,
-        y1: 216,
-        x2: 435,
-        y2: 160,
-      },
       visible: true,
     },
     {
       id: 7,
       name: 'doorway',
       image: doorway,
-      x: ['golemDoorway', 1],
-      y: ['golemDoorway', 1],
+      x: 690,
+      y: 410,
       z: 1,
       // what happens on click
       clicked: {
         text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
+        // Where the new popup is rendered from the left of the container.
         x: 525,
-        // Where the new "modal" is rendered from the top of the container.
+        // Where the new popup is rendered from the top of the container.
         y: 600,
         yes: {
           travel: true,
@@ -216,21 +226,21 @@ export let golemRoom = {
         no: null,
       },
       related: null,
-      visible: true,
+      visible: false,
     },
     {
       id: 8,
       name: 'golem',
       image: golem,
-      x: ['golemDoorway', 2],
-      y: ['golemDoorway', 2],
+      x: 600,
+      y: 350,
       z: 2,
       // what happens on click
       clicked: {
         text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
+        // Where the new popup is rendered from the left of the container.
         x: 525,
-        // Where the new "modal" is rendered from the top of the container.
+        // Where the new popup is rendered from the top of the container.
         y: 600,
         yes: {
           travel: true,
@@ -242,11 +252,38 @@ export let golemRoom = {
       visible: true,
     },
   ],
+  options: [
+    {
+      visible: true,
+      x: 350,
+      y: 600,
+      z: 2,
+      type: 'examine',
+      text: 'Examine Room?',
+      topBar:
+        'You examine the sword, or rather half-sword.  An inscription on the blade reads, "act as though the maxim of your action were to become, through your will, a universal law of nature."',
+      link: {
+        show: true,
+        page: 24,
+      },
+    },
+    {
+      visible: true,
+      x: 925,
+      y: 600,
+      z: 2,
+      type: 'battle',
+      text: 'Battle?',
+      topBar: null,
+      link: null,
+      opponent: opponents.golem,
+    },
+  ],
 };
 
 export let koboldRoom = {
   name: 'koboldRoom',
-  initialTopBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
+  topBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
   objects: [
     {
       id: 6,
@@ -255,36 +292,26 @@ export let koboldRoom = {
       // x position from left of container
       width: 1200,
       height: 700,
-      x: (window.innerWidth - 1200) / 2,
+      x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
       // y position from top of container
       y: 200,
       z: 0,
       clicked: null,
-      related: {
-        x1: 100,
-        y1: 0,
-        x2: 934,
-        y2: 113,
-        x3: 370,
-        y3: 0,
-        x4: 270,
-        y4: 200,
-      },
       visible: true,
     },
     {
       id: 7,
       name: 'kobold',
       image: kobold,
-      x: ['koboldDoorway', 1],
-      y: ['koboldDoorway', 1],
+      x: 525,
+      y: 216,
       z: 3,
       // what happens on click
       clicked: {
         text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
+        // Where the new popup is rendered from the left of the container.
         x: 525,
-        // Where the new "modal" is rendered from the top of the container.
+        // Where the new popup is rendered from the top of the container.
         y: 600,
         yes: {
           travel: true,
@@ -299,15 +326,15 @@ export let koboldRoom = {
       id: 7,
       name: 'doorway',
       image: doorway,
-      x: ['koboldDoorway', 2],
-      y: ['koboldDoorway', 2],
+      x: 525,
+      y: 216,
       z: 3,
       // what happens on click
       clicked: {
         text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
+        // Where the new popup is rendered from the left of the container.
         x: 525,
-        // Where the new "modal" is rendered from the top of the container.
+        // Where the new popup is rendered from the top of the container.
         y: 600,
         yes: {
           travel: true,
@@ -322,15 +349,15 @@ export let koboldRoom = {
       id: 8,
       name: 'koboldSpear',
       image: koboldSpear,
-      x: ['koboldDoorway', 3],
-      y: ['koboldDoorway', 3],
+      x: 525,
+      y: 216,
       z: 2,
       // what happens on click
       clicked: {
         text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
+        // Where the new popup is rendered from the left of the container.
         x: 525,
-        // Where the new "modal" is rendered from the top of the container.
+        // Where the new popup is rendered from the top of the container.
         y: 600,
         yes: {
           travel: true,
@@ -345,15 +372,15 @@ export let koboldRoom = {
       id: 9,
       name: 'koboldTreasure',
       image: koboldTreasure,
-      x: ['koboldDoorway', 4],
-      y: ['koboldDoorway', 4],
+      x: 525,
+      y: 216,
       z: 1,
       // what happens on click
       clicked: {
         text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
+        // Where the new popup is rendered from the left of the container.
         x: 525,
-        // Where the new "modal" is rendered from the top of the container.
+        // Where the new popup is rendered from the top of the container.
         y: 600,
         yes: {
           travel: true,
@@ -369,7 +396,7 @@ export let koboldRoom = {
 
 export let warriorRoom = {
   name: 'warriorRoom',
-  initialTopBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
+  topBar: 'You enter the room.  There is a door, blocked by a stone golem.  What do you do?',
   objects: [
     {
       id: 6,
@@ -378,32 +405,26 @@ export let warriorRoom = {
       // x position from left of container
       width: 1200,
       height: 700,
-      x: (window.innerWidth - 1200) / 2,
+      x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
       // y position from top of container
       y: 200,
       z: 0,
       clicked: null,
-      related: {
-        x1: 934,
-        y1: 113,
-        x2: 100,
-        y2: 115,
-      },
       visible: true,
     },
     {
       id: 7,
       name: 'doorway',
       image: doorway,
-      x: ['warriorDoorway', 1],
-      y: ['warriorDoorway', 1],
+      x: 525,
+      y: 216,
       z: 1,
       // what happens on click
       clicked: {
         text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
+        // Where the new popup is rendered from the left of the container.
         x: 525,
-        // Where the new "modal" is rendered from the top of the container.
+        // Where the new popup is rendered from the top of the container.
         y: 600,
         yes: {
           travel: true,
@@ -418,13 +439,13 @@ export let warriorRoom = {
       id: 8,
       name: 'warrior',
       image: warrior,
-      x: ['warriorDoorway', 2],
-      y: ['warriorDoorway', 2],
+      x: 525,
+      y: 216,
       z: 2,
       // what happens on click
       clicked: {
         text: 'Go inside?',
-        // Where the new "modal" is rendered from the left of the container.
+        // Where the new popup is rendered from the left of the container.
         x: 525,
         // Where the new "modal" is rendered from the top of the container.
         y: 600,
@@ -439,5 +460,3 @@ export let warriorRoom = {
     },
   ],
 };
-
-// module.exports =  ({outside, threeDoorsRoom, golemRoom, koboldRoom, warriorRoom})

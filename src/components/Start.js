@@ -5,9 +5,9 @@ import '../css/Start.css';
 
 import { handle_transition } from '../actions/index';
 
-import CharacterSheet from '../components/CharacterSheet';
-
 import parchment from '../imgs/parchment.jpg';
+
+import CharacterSheet from '../components/CharacterSheet'
 
 var parchmentBackground = {
   backgroundImage: `url(${parchment})`,

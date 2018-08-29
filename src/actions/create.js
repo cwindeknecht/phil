@@ -4,12 +4,11 @@ export default function create() {
   let level = 0;
   let xp = 0;
   let damageText = 'd4';
-  // Damage set to 3, when "rolling", do math.random() * 3 + 1
+  // Damage set to 3, when "rolling", do math.random() * damage + 1
   let damage = 3;
   let armor = 0;
   // health 1-4
   let health = Math.floor(Math.random() * 3) + 1;
-
   // 1-2 for gender
   let gender = Math.random() > 0.5 ? 'Male' : 'Female';
 

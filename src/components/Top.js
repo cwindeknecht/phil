@@ -6,7 +6,6 @@ import '../css/Top.css';
 import character from '../imgs/clickables/CharacterSheet.png';
 
 import { handle_transition } from '../actions/index';
-
 import CharacterSheet from './CharacterSheet';
 
 let sheet = {
@@ -15,7 +14,6 @@ let sheet = {
 
 class Top extends Component {
   render() {
-    console.log('Link', this.props.link);
     let philosophyText = `https://www.earlymoderntexts.com/assets/pdfs/kant1785.pdf#page=${this.props.pageNumber}`;
     return (
       <div className="TopContainer">
@@ -32,9 +30,6 @@ class Top extends Component {
       </div>
     );
   }
-  // handlePage = () => {
-  //   document.getElementById('page-indicator').style.top('317.741')
-  // }
 
   handleCharacterView = () => {
     this.props.handle_transition(CharacterSheet);

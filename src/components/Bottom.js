@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 
 import '../css/Bottom.css';
 
-import { handle_intro, handle_room_options } from '../actions/index.js';
+import { handle_intro, handle_examine, handle_battle } from '../actions/index.js';
 
 import PopUp from './PopUp';
+import Battle from './Battle';
 
 class Bottom extends Component {
   state = {
@@ -25,6 +26,10 @@ class Bottom extends Component {
       this.setState({ objects: this.props.currentRoom.objects, roomOptions: this.props.currentRoom.options });
       this.handleInitial();
     }
+  };
+
+  componentWillUnmount = () => {
+    document.removeEventListener('click',this.mousePosition);
   };
 
   render() {
@@ -86,13 +91,18 @@ class Bottom extends Component {
           }
           return null;
         })}
-        {this.state.roomOptions.map(option => {
+        {this.state.roomOptions.map((option,i) => {
           if (option.visible) {
             return (
               <div
+                key={i}
                 className="BottomOptions"
                 id={option.type}
-                onClick={this.handleOptions.bind(this, option)}
+                onClick={
+                  option.type === 'examine'
+                    ? this.handleExamine.bind(this, option)
+                    : this.handleBattle.bind(this, option.opponent)
+                }
                 style={{ position: 'absolute', left: option.x, top: option.y, zIndex: option.z }}>
                 {option.text}
               </div>
@@ -103,8 +113,12 @@ class Bottom extends Component {
       </div>
     );
   };
-  handleOptions = (option, event) => {
-    this.props.handle_room_options(this.props.currentRoom, option);
+  handleExamine = (option, event) => {
+    this.props.handle_examine(this.props.currentRoom, option);
+  };
+
+  handleBattle = (opponent, event) => {
+    this.props.handle_battle(Battle, opponent);
   };
 
   handleInitial = () => {
@@ -162,5 +176,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { handle_intro, handle_room_options },
+  { handle_intro, handle_examine, handle_battle},
 )(Bottom);

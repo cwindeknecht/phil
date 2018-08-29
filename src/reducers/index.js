@@ -29,12 +29,16 @@ const initialState = {
   returnTo: null,
   link: false,
   pageNumber: 0,
+  opponent: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actions.HANDLE_ADVENTURE_START:
       return { ...state, adventureStarted: action.payload };
+    case actions.HANDLE_BATTLE:
+      console.log("reducer firing")
+      return { ...state, current: action.payload.current, opponent: action.payload.opponent };
     case actions.HANDLE_CHARACTER_ROLL:
       return {
         ...state,
@@ -59,7 +63,7 @@ export default (state = initialState, action) => {
       };
     case actions.HANDLE_OBJECT_VISIBILITY:
       return { ...state, currentRoom: action.payload };
-    case actions.HANDLE_ROOM_OPTIONS:
+    case actions.HANDLE_EXAMINE:
       return {
         ...state,
         currentRoom: action.payload,

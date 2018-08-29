@@ -8,14 +8,14 @@ import armorIcon from '../imgs/Armor.png';
 import healthIcon from '../imgs/Health.png';
 import parchment from '../imgs/parchment.jpg';
 
+import Main from './Main.js';
+
 import {
   handle_adventure_start,
   handle_character_save,
   handle_character_roll,
   handle_transition,
 } from '../actions/index';
-
-import Main from './Main';
 
 let parchmentBackground = {
   backgroundImage: `url(${parchment})`,
@@ -93,10 +93,7 @@ class CharacterSheet extends Component {
           <div className="CSGearItems">
             {gear.map((item, i) => {
               return (
-                <li
-                  key={i}
-                  className="CSGearItem"
-                  style={item === '' ? { opacity: '0' } : { opacity: '1' }}>
+                <li key={i} className="CSGearItem" style={item === '' ? { opacity: '0' } : { opacity: '1' }}>
                   {item}
                 </li>
               );

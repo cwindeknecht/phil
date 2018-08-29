@@ -8,7 +8,7 @@ import Bottom from './Bottom';
 
 import parchment from '../imgs/parchment.jpg';
 
-var parchmentBackground = {
+let parchmentBackground = {
   backgroundImage: `url(${parchment})`,
 };
 

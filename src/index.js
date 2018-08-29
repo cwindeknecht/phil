@@ -8,7 +8,10 @@ import reducers from './reducers/index.js';
 
 import './css/index.css';
 
-const store = createStore(reducers);
+const store = createStore(
+  reducers, /* preloadedState, */
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <Provider store={store}>

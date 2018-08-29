@@ -20,6 +20,8 @@ import warrior from '../imgs/clickables/DefeatedWarrior.png';
 // import corridorFacingRightBlocked from '../imgs/CorridorFacingRight.png';
 import doorway from '../imgs/clickables/NormalDoorway.png';
 
+import * as opponents from './opponents';
+
 export let outside = {
   name: 'outside',
   topBar: 'You approach the burial mound.  What do you do?',
@@ -154,7 +156,7 @@ export let threeDoorsRoom = {
               ],
               topBar:
                 'You take the half-sword.The Formula of Universal Law has been added to your gear.  The stone slab to the east moves from the doorway.',
-              link: null
+              link: null,
             },
           },
           {
@@ -176,7 +178,7 @@ export let threeDoorsRoom = {
       type: 'examine',
       text: 'Examine Room?',
       topBar:
-        'You examine the sword, or rather half-sword.  An inscription on the blade reads, "act as though the maxim of your action were to become, through your will, a universal law of nature.',
+        'You examine the sword, or rather half-sword.  An inscription on the blade reads, "act as though the maxim of your action were to become, through your will, a universal law of nature."',
       link: {
         show: true,
         page: 24,
@@ -207,8 +209,8 @@ export let golemRoom = {
       id: 7,
       name: 'doorway',
       image: doorway,
-      x: 525,
-      y: 216,
+      x: 690,
+      y: 410,
       z: 1,
       // what happens on click
       clicked: {
@@ -224,14 +226,14 @@ export let golemRoom = {
         no: null,
       },
       related: null,
-      visible: true,
+      visible: false,
     },
     {
       id: 8,
       name: 'golem',
       image: golem,
-      x: 525,
-      y: 216,
+      x: 600,
+      y: 350,
       z: 2,
       // what happens on click
       clicked: {
@@ -248,6 +250,33 @@ export let golemRoom = {
       },
       related: null,
       visible: true,
+    },
+  ],
+  options: [
+    {
+      visible: true,
+      x: 350,
+      y: 600,
+      z: 2,
+      type: 'examine',
+      text: 'Examine Room?',
+      topBar:
+        'You examine the sword, or rather half-sword.  An inscription on the blade reads, "act as though the maxim of your action were to become, through your will, a universal law of nature."',
+      link: {
+        show: true,
+        page: 24,
+      },
+    },
+    {
+      visible: true,
+      x: 925,
+      y: 600,
+      z: 2,
+      type: 'battle',
+      text: 'Battle?',
+      topBar: null,
+      link: null,
+      opponent: opponents.golem,
     },
   ],
 };
@@ -431,5 +460,3 @@ export let warriorRoom = {
     },
   ],
 };
-
-// module.exports =  ({outside, threeDoorsRoom, golemRoom, koboldRoom, warriorRoom})
