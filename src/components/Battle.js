@@ -35,7 +35,6 @@ class Battle extends Component {
   render() {
     // If I have time, make a villager character that looks puny
     // have the opponent on one side, the villager on the other side
-    console.log('this.props in battle', this.props);
     return (
       <div className="BattleContainer" style={parchmentBackground}>
         <div className="BattleHeader">
@@ -116,7 +115,7 @@ class Battle extends Component {
     else if (dam <= opponent.tradeHigh && dam >= opponent.tradeLow) {
       let opponentDamage = Math.floor(Math.random() * character.damage) + 1 - opponent.detriment;
       let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
-      character.health -= characterDamage;
+      character.health -= characterDamage - character.armor;
       opponent.health -= opponentDamage;
       battleText = opponent.tradeText;
     }
@@ -125,7 +124,7 @@ class Battle extends Component {
       battleText = opponent.dodgeText;
     } else {
       let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
-      character.health -= characterDamage;
+      character.health -= characterDamage - character.armor;
       battleText = opponent.hitText;
     }
     if (character.health <= 0) this.props.handle_transition(Death);
@@ -139,9 +138,7 @@ class Battle extends Component {
   // update the topbar text with the victory text
   // since the warrior is connected to the tv/bag, just say in the midst of battle you destroy the tv set and bag of holding.
   // update the clickables on the screen (doors, chest, spear, etc)
-  handleCharacterUpdate = () => {
-    console.log('fuck');
-  };
+  handleCharacterUpdate = () => {};
 }
 
 const mapStateToProps = state => {

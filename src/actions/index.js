@@ -7,7 +7,7 @@ export const HANDLE_CHARACTER_ROLL = 'HANDLE_CHARACTER_ROLL';
 export const HANDLE_CHARACTER_SAVE = 'HANDLE_CHARACTER_SAVE';
 export const HANDLE_CHARACTER_VIEW = 'HANDLE_CHARACTER_VIEW';
 export const HANDLE_CURRENT_ROOM = 'HANDLE_CURRENT_ROOM';
-export const HANDLE_EXAMINE = 'HANDLE_ROOM_OPTIONS';
+export const HANDLE_EXAMINE = 'HANDLE_EXAMINE';
 export const HANDLE_INTRO = 'HANDLE_INTRO';
 export const HANDLE_INVENTORY_UPDATE = 'HANDLE_INVENTORY_UPDATE';
 export const HANDLE_OBJECT_VISIBILITY = 'HANDLE_OBJECT_VISIBILITY';
@@ -20,8 +20,7 @@ export const handle_adventure_start = () => {
   };
 };
 
-export const handle_battle = (component,opponent) => {
-  console.log('action.firing')
+export const handle_battle = (component, opponent) => {
   return {
     type: 'HANDLE_BATTLE',
     payload: { current: component, opponent },
@@ -65,6 +64,7 @@ export const handle_intro = () => {
 };
 
 export const handle_examine = (currentRoom, option) => {
+  console.log('OPTION in ation', option);
   let options = currentRoom.options.map(opt => {
     if (opt.type === option.type) {
       return { ...opt, visible: false };
@@ -80,6 +80,7 @@ export const handle_examine = (currentRoom, option) => {
     payload['link'] = false;
     payload['pageNumber'] = 0;
   }
+  console.log('payload in action', payload)
   return {
     type: 'HANDLE_EXAMINE',
     payload,

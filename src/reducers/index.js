@@ -37,7 +37,6 @@ export default (state = initialState, action) => {
     case actions.HANDLE_ADVENTURE_START:
       return { ...state, adventureStarted: action.payload };
     case actions.HANDLE_BATTLE:
-      console.log("reducer firing")
       return { ...state, current: action.payload.current, opponent: action.payload.opponent };
     case actions.HANDLE_CHARACTER_ROLL:
       return {
@@ -51,6 +50,14 @@ export default (state = initialState, action) => {
       return { ...state, current: action.payload.current, returnTo: action.payload.returnTo };
     case actions.HANDLE_CURRENT_ROOM:
       return { ...state, currentRoom: action.payload };
+    case actions.HANDLE_EXAMINE:
+      return {
+        ...state,
+        currentRoom: action.payload.currentRoom,
+        topBar: action.payload.topbar,
+        link: action.payload.link,
+        pageNumber: action.payload.pageNumber,
+      };
     case actions.HANDLE_INTRO:
       return { ...state, intro: action.payload };
     case actions.HANDLE_INVENTORY_UPDATE:
@@ -63,13 +70,7 @@ export default (state = initialState, action) => {
       };
     case actions.HANDLE_OBJECT_VISIBILITY:
       return { ...state, currentRoom: action.payload };
-    case actions.HANDLE_EXAMINE:
-      return {
-        ...state,
-        currentRoom: action.payload,
-        link: action.payload.link,
-        pageNumber: action.payload.pageNumber,
-      };
+
     case actions.HANDLE_TRANSITION:
       return { ...state, current: action.payload };
     default:

@@ -29,7 +29,7 @@ class Bottom extends Component {
   };
 
   componentWillUnmount = () => {
-    document.removeEventListener('click',this.mousePosition);
+    document.removeEventListener('click', this.mousePosition);
   };
 
   render() {
@@ -91,7 +91,7 @@ class Bottom extends Component {
           }
           return null;
         })}
-        {this.state.roomOptions.map((option,i) => {
+        {this.state.roomOptions.map((option, i) => {
           if (option.visible) {
             return (
               <div
@@ -114,6 +114,7 @@ class Bottom extends Component {
     );
   };
   handleExamine = (option, event) => {
+    console.log('bottom function working');
     this.props.handle_examine(this.props.currentRoom, option);
   };
 
@@ -176,5 +177,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { handle_intro, handle_examine, handle_battle},
+  { handle_intro, handle_examine, handle_battle },
 )(Bottom);
