@@ -61,7 +61,7 @@ export default (state = initialState, action) => {
       return { ...state, current: action.payload.current, returnTo: action.payload.returnTo };
     case actions.HANDLE_CURRENT_ROOM:
       return { ...state, currentRoom: action.payload };
-    case actions.HANDLE_DEATH_MESSAGE:
+    case actions.HANDLE_DEATH:
       return { ...state, deathMessage: action.payload };
     case actions.HANDLE_EXAMINE:
       return {

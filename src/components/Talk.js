@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { handle_character_update, handle_current_room, handle_transition } from '../actions/index';
+import { handle_character_update, handle_current_room, handle_transition, handle_battle } from '../actions/index';
 
 import Main from './Main';
+import Battle from './Battle';
 
 import '../css/Talk.css';
 
@@ -13,6 +14,8 @@ class Talk extends Component {
     display: [],
     xp: 0,
     removed: [],
+    options: [],
+    objects: [],
   };
   componentDidMount = () => {
     this.initializeDisplay();
@@ -28,18 +31,30 @@ class Talk extends Component {
     );
   }
 
-  elements = id => {
-    let display = this.props.talk.action[this.state.option];
-    display = display.filter(option => {
+  elements = (id = null, next = this.state.option) => {
+    let display = this.props.talk.action[next];
+    let index = -1;
+    let flag = false;
+    display = display.filter((option, i) => {
+      console.log(option, option.id, option.id === 11);
       if (id) {
-        if (option.id === Number(id) || option.id === 0) {
+        if (option.id === 11) {
+          flag = true;
+          return option;
+        } else if (option.id === Number(id) || option.id === 10 || Number(id) === 10) {
+          if (option.id === 10) index = i;
           return option;
         }
+        return null;
       } else {
         return option;
       }
-      return null;
     });
+    console.log(index);
+    console.log(display);
+    if (index > -1 && flag === true) {
+      display.splice(index, 1);
+    }
     return (
       <div className="talk__elements">
         {display.map((element, i) => {
@@ -50,13 +65,12 @@ class Talk extends Component {
               className={element.className}
               href={element.href}
               target={element.target}
-              // Everything in my gut tells me this is wrong, but it is working, so...
               onClick={
                 element.id
-                  ? element.id === 0
-                    ? null
+                  ? element.action === 'return'
+                    ? this.handleReturn.bind(this, element)
                     : this.updateDisplay.bind(this, element)
-                  : this.handleReturn.bind(this, element)
+                  : null
               }>
               {element.remove ? this.handleRemove(element) : null}
               {element.hasOwnProperty('giveXP') ? this.handleCharacter() : null}
@@ -66,9 +80,6 @@ class Talk extends Component {
         })}
       </div>
     );
-  };
-  shit = (element, event) => {
-    console.log('AND YET IT IS GOING TO SHIT', element);
   };
 
   initializeDisplay = () => {
@@ -80,34 +91,35 @@ class Talk extends Component {
   updateDisplay = (element, event) => {
     let xp = this.state.xp;
     if (element.giveXP) xp += 1;
-    let elements = this.elements(event.target.id);
+    this.setState({ option: element.next });
+    let elements = this.elements(event.target.id, element.next);
     let display = [elements];
-    this.setState({ display, option: 'third', xp });
+    this.setState({ display, option: element.next, xp });
+    if (element.transition) this.props.handle_battle(Battle, this.props.currentRoom.bonusOpponent);
   };
 
   handleRemove = element => {
     let currentRoom = this.props.currentRoom;
-    let removed = this.state.removed;
-    let objects = this.props.currentRoom;
-    let options = this.props.currentRoom;
-    element.remove.forEach(rem => {
-      console.log("REM",rem)
-      if (!removed.includes(rem)) {
-        removed.push(rem);
-        if (rem.type === 'option') {
-          options = currentRoom.options.filter(option => {
-            return option.type !== rem.name
-          })
-        }
-        else {
-          objects = currentRoom.objects.filter(object => {
-            return object.name !== rem.name;
-          }).map(obj => {
-            return obj.name === element.add ? {...obj, visible: true} : obj; 
-          });
-        }
+    let objects = currentRoom.objects;
+    let options = currentRoom.options;
+    element.remove.forEach(remove => {
+      if (remove.type === 'option') {
+        options = options.filter(option => {
+          return option.type !== remove.name;
+        });
+      } else {
+        objects = objects.filter(object => {
+          return object.name !== remove.name;
+        });
       }
-    })
+    });
+    objects.map(object => {
+      if (object.name === element.add) {
+        object.visible = true;
+        return object;
+      }
+      return object;
+    });
     this.props.handle_current_room({ ...currentRoom, objects, options });
   };
 
@@ -133,5 +145,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { handle_character_update, handle_current_room, handle_transition },
+  { handle_character_update, handle_current_room, handle_transition, handle_battle },
 )(Talk);

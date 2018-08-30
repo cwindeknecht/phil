@@ -6,7 +6,7 @@ import '../css/Battle.css';
 import Main from './Main';
 import Death from './Death';
 
-import { handle_transition, handle_death_message, handle_victory } from '../actions/index';
+import { handle_transition, handle_death, handle_victory } from '../actions/index';
 
 import one from '../imgs/DiceOne.png';
 import two from '../imgs/DiceTwo.png';
@@ -115,11 +115,11 @@ class Battle extends Component {
       // opponent.health -= opponentDamage;
       opponent.health -= 8;
       if (opponentDamage > 0) {
-        battleText.push(opponent.critText + `You deal ${opponentDamage} daamge.  `);
+        battleText.push(opponent.critText + `You deal ${opponentDamage} damage.  `);
       } else {
         battleText.push(
           opponent.critText +
-            `You deal ${opponentDamage} damage.  Guess attacking a ${this.props.opponent.name} was a terrible idea.`,
+            `You deal ${opponentDamage} damage.  Attacking a ${this.props.opponent.name} was a terrible idea.`,
         );
       }
     }
@@ -131,28 +131,28 @@ class Battle extends Component {
       opponent.health -= opponentDamage;
       battleText.push(opponent.tradeText);
       if (opponentDamage > 0) {
-        battleText.push(opponent.critText + `You deal ${opponentDamage} daamge.  `);
+        battleText.push(`You deal ${opponentDamage} damage.  `);
       } else {
         battleText.push(
-          opponent.critText +
-            `You deal ${opponentDamage} damage.  Guess attacking a ${this.props.opponent.name} was a terrible idea.`,
+          opponent.tradeText +
+            `You deal ${opponentDamage} damage.  Attack a ${this.props.opponent.name} was a terrible idea.`,
         );
       }
     }
     // damage to player
     else if (dam === 0) {
-      battleText = opponent.dodgeText;
+      battleText.push(opponent.dodgeText);
     } else {
       let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
       character.health -= characterDamage - character.armor;
       battleText.push(opponent.hitText);
     }
     if (character.health <= 0) {
-      this.props.handle_death_message(`You were obliterated by the ${this.props.opponent.name}.`);
+      this.props.handle_death(this.props.opponent.deathMessage);
       this.props.handle_transition(Death);
       return;
     }
-    if (opponent.health <= 0) this.handleVictory();
+    if (opponent.health <= 0) this.handleVictory(this.props.currentRoom);
     this.setState({ rolls, character, opponent, battleText, roll: true });
   };
   // this is for if the character actually beats the opponent
@@ -174,6 +174,9 @@ class Battle extends Component {
       if (object.name === 'doorway') {
         object.visible = true;
       }
+      if (object.clickable === false) {
+        object.clickable = true;
+      }
       return object;
     });
     let currentRoom = { ...this.props.currentRoom, topBar: this.props.opponent.victory, objects };
@@ -191,5 +194,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { handle_transition, handle_death_message, handle_victory },
+  { handle_transition, handle_death, handle_victory },
 )(Battle);

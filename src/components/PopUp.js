@@ -19,8 +19,8 @@ class PopUp extends Component {
           width: item.clicked.width,
           height: item.clicked.height,
         }}>
-        {item.clicked.text}
-        {item.clicked.options ? this.populatePopup(item) : ''}
+        {item.clickable === false ? item.unclickable : item.clicked.text}
+        {item.clicked.options && item.clickable !== false ? this.populatePopup(item) : ''}
       </div>
     );
   }
@@ -34,7 +34,7 @@ class PopUp extends Component {
               key={i}
               data-option={option}
               id={item.id}
-              onClick={this.handleChoice.bind(this, option.action)}>
+              onClick={this.handleChoice.bind(this, option.action, option.id)}>
               {option.text}
             </button>
           );
@@ -43,7 +43,7 @@ class PopUp extends Component {
     );
   };
 
-  handleChoice = (action, event) => {
+  handleChoice = (action, id, event) => {
     if (action) {
       action.type.forEach((act, i) => {
         switch (act) {
@@ -51,16 +51,22 @@ class PopUp extends Component {
             this.props.handle_current_room(action.location);
             break;
           case 'visible':
-            this.props.handle_object_visibility(this.props.currentRoom, action.affects[i], action.topBar,);
+            this.props.handle_object_visibility(this.props.currentRoom, action.affects[i], action.topBar);
             break;
           case 'inventory':
-            this.props.handle_inventory_update(this.props.character, this.props.currentRoom, action.affects[i], action.topBar, action.link);
+            this.props.handle_inventory_update(
+              this.props.character,
+              this.props.currentRoom,
+              action.affects[i],
+              action.topBar,
+              action.link,
+            );
             break;
           case 'talk':
-            this.props.handle_talk(Talk, this.props.currentRoom)
+            this.props.handle_talk(Talk, this.props.currentRoom, id);
             break;
           default:
-            console.log('nope');
+            break;
         }
       });
     }

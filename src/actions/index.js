@@ -9,7 +9,7 @@ export const HANDLE_CHARACTER_UPDATE = 'HANDLE_CHARACTER_UPDATE';
 export const HANDLE_VICTORY = 'HANDLE_VICTORY';
 export const HANDLE_CHARACTER_VIEW = 'HANDLE_CHARACTER_VIEW';
 export const HANDLE_CURRENT_ROOM = 'HANDLE_CURRENT_ROOM';
-export const HANDLE_DEATH_MESSAGE = 'HANDLE_DEATH_MESSAGE';
+export const HANDLE_DEATH = 'HANDLE_DEATH';
 export const HANDLE_EXAMINE = 'HANDLE_EXAMINE';
 export const HANDLE_INTRO = 'HANDLE_INTRO';
 export const HANDLE_INVENTORY_UPDATE = 'HANDLE_INVENTORY_UPDATE';
@@ -53,7 +53,12 @@ export const handle_character_update = (character) => {
   }
 }
 
-export const handle_victory = (current, character, currentRoom) => {
+export const handle_victory = (current,character, currentRoom) => {
+  let objects = currentRoom.objects.map(object => {
+    if(object.clickable === false) object.clickable = true;
+    return object;
+  })
+  currentRoom = {...currentRoom, objects};
   return {
     type: 'HANDLE_VICTORY',
     payload: { current, character, currentRoom },
@@ -84,10 +89,11 @@ export const handle_intro = () => {
   };
 };
 
-export const handle_death_message = message => {
+export const handle_death = (deathMessage) => {
+
   return {
-    type: 'HANDLE_DEATH_MESSAGE',
-    payload: message,
+    type: 'HANDLE_DEATH',
+    payload: deathMessage,
   };
 };
 
@@ -153,10 +159,13 @@ export const handle_object_visibility = (currentRoom, affects, topBar) => {
   };
 };
 
-export const handle_talk = (current, currentRoom) => {
+export const handle_talk = (current, currentRoom, id) => {
+  let talk = currentRoom.objects.filter(object => {
+    return object.id === id;
+  })[0].clicked.options[0];
   return {
     type: 'HANDLE_TALK',
-    payload: { current, talk: currentRoom.objects[2].clicked.options[0] },
+    payload: { current, talk },
   };
 };
 

@@ -79,7 +79,7 @@ class Bottom extends Component {
               />
             );
           }
-          return null;
+          return <div key={item.id} id="fuckyou" style={{display:'none'}}></div>;
         })}
         {this.state.popups.map(object => {
           if (object.clicked.show) {
@@ -138,6 +138,7 @@ class Bottom extends Component {
 
   handlePopup = event => {
     let popups = this.state.popups.map(object => {
+      object.clicked.show = false;
       if (object.id === Number(event.target.id)) {
         object.clicked.show = true;
         return object;
