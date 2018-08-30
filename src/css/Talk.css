@@ -1,0 +1,56 @@
+.talk {
+  font-size: 2rem;
+  font-family: Papyrus, fantasy;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(../imgs/parchment.jpg);
+}
+.talk .talk__elements {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.talk .talk__elements .talk__elements__text {
+  width: 80%;
+  margin-top: 5rem;
+}
+.talk .talk__elements .talk__elements__button {
+  border: 0;
+  height: 10rem;
+  width: 30%;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-family: Papyrus, fantasy;
+  border-radius: 25rem;
+  margin: 2rem;
+}
+.talk .talk__elements .talk__elements__button:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+.talk .talk__elements .talk__elements__link {
+  border: 0;
+  width: 25%;
+  height: 5rem;
+  margin: 2rem;
+  padding: 1rem;
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+  font-family: Papyrus, fantasy;
+  border-radius: 25rem;
+  text-align: center;
+}
+.talk .talk__elements .talk__elements__link:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+#return {
+  width: 21%;
+  height: 5rem;
+}

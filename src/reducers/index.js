@@ -31,6 +31,7 @@ const initialState = {
   pageNumber: 0,
   opponent: null,
   deathMessage: null,
+  talk: null,
 };
 
 export default (state = initialState, action) => {
@@ -48,6 +49,8 @@ export default (state = initialState, action) => {
     case actions.HANDLE_CHARACTER_SAVE:
       return { ...state, characterSaved: action.payload };
     case actions.HANDLE_CHARACTER_UPDATE:
+      return { ...state, character: action.payload };
+    case actions.HANDLE_VICTORY:
       return {
         ...state,
         current: action.payload.current,
@@ -80,7 +83,8 @@ export default (state = initialState, action) => {
       };
     case actions.HANDLE_OBJECT_VISIBILITY:
       return { ...state, currentRoom: action.payload };
-
+    case actions.HANDLE_TALK:
+      return { ...state, current: action.payload.current, talk: action.payload.talk };
     case actions.HANDLE_TRANSITION:
       return { ...state, current: action.payload };
     default:

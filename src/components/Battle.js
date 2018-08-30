@@ -6,9 +6,7 @@ import '../css/Battle.css';
 import Main from './Main';
 import Death from './Death';
 
-import { handle_transition, handle_death_message, handle_character_update } from '../actions/index';
-
-import parchment from '../imgs/parchment.jpg';
+import { handle_transition, handle_death_message, handle_victory } from '../actions/index';
 
 import one from '../imgs/DiceOne.png';
 import two from '../imgs/DiceTwo.png';
@@ -179,7 +177,7 @@ class Battle extends Component {
       return object;
     });
     let currentRoom = { ...this.props.currentRoom, topBar: this.props.opponent.victory, objects };
-    this.props.handle_character_update(Main, this.state.character, currentRoom);
+    this.props.handle_victory(Main, this.state.character, currentRoom);
   };
 }
 
@@ -193,5 +191,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { handle_transition, handle_death_message, handle_character_update },
+  { handle_transition, handle_death_message, handle_victory },
 )(Battle);

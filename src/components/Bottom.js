@@ -114,7 +114,6 @@ class Bottom extends Component {
     );
   };
   handleExamine = (option, event) => {
-    console.log('bottom function working');
     this.props.handle_examine(this.props.currentRoom, option);
   };
 

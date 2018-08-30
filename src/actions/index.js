@@ -6,6 +6,7 @@ export const HANDLE_BATTLE = 'HANDLE_BATTLE';
 export const HANDLE_CHARACTER_ROLL = 'HANDLE_CHARACTER_ROLL';
 export const HANDLE_CHARACTER_SAVE = 'HANDLE_CHARACTER_SAVE';
 export const HANDLE_CHARACTER_UPDATE = 'HANDLE_CHARACTER_UPDATE';
+export const HANDLE_VICTORY = 'HANDLE_VICTORY';
 export const HANDLE_CHARACTER_VIEW = 'HANDLE_CHARACTER_VIEW';
 export const HANDLE_CURRENT_ROOM = 'HANDLE_CURRENT_ROOM';
 export const HANDLE_DEATH_MESSAGE = 'HANDLE_DEATH_MESSAGE';
@@ -13,6 +14,7 @@ export const HANDLE_EXAMINE = 'HANDLE_EXAMINE';
 export const HANDLE_INTRO = 'HANDLE_INTRO';
 export const HANDLE_INVENTORY_UPDATE = 'HANDLE_INVENTORY_UPDATE';
 export const HANDLE_OBJECT_VISIBILITY = 'HANDLE_OBJECT_VISIBILITY';
+export const HANDLE_TALK = 'HANDLE_TALK';
 export const HANDLE_TRANSITION = 'HANDLE_TRANSITION';
 
 export const handle_adventure_start = () => {
@@ -44,14 +46,19 @@ export const handle_character_save = () => {
   };
 };
 
-// rename this to handle_victory or something
-export const handle_character_update = (current, character, currentRoom) => {
+export const handle_character_update = (character) => {
   return {
     type: 'HANDLE_CHARACTER_UPDATE',
-    payload: {current, character, currentRoom}
+    payload: character,
   }
-  
 }
+
+export const handle_victory = (current, character, currentRoom) => {
+  return {
+    type: 'HANDLE_VICTORY',
+    payload: { current, character, currentRoom },
+  };
+};
 
 export const handle_character_view = (current, returnTo) => {
   return {
@@ -61,9 +68,12 @@ export const handle_character_view = (current, returnTo) => {
 };
 
 export const handle_current_room = currentRoom => {
+  let payload = {};
+  if (typeof currentRoom === 'string') payload = rooms[currentRoom];
+  else payload = currentRoom;
   return {
     type: 'HANDLE_CURRENT_ROOM',
-    payload: rooms[currentRoom],
+    payload: payload,
   };
 };
 
@@ -82,7 +92,6 @@ export const handle_death_message = message => {
 };
 
 export const handle_examine = (currentRoom, option) => {
-  console.log('OPTION in ation', option);
   let options = currentRoom.options.map(opt => {
     if (opt.type === option.type) {
       return { ...opt, visible: false };
@@ -98,7 +107,6 @@ export const handle_examine = (currentRoom, option) => {
     payload['link'] = false;
     payload['pageNumber'] = 0;
   }
-  console.log('payload in action', payload);
   return {
     type: 'HANDLE_EXAMINE',
     payload,
@@ -142,6 +150,13 @@ export const handle_object_visibility = (currentRoom, affects, topBar) => {
   return {
     type: 'HANDLE_OBJECT_VISIBILITY',
     payload: currentRoom,
+  };
+};
+
+export const handle_talk = (current, currentRoom) => {
+  return {
+    type: 'HANDLE_TALK',
+    payload: { current, talk: currentRoom.objects[2].clicked.options[0] },
   };
 };
 

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { handle_current_room, handle_object_visibility, handle_inventory_update } from '../actions/index';
+import { handle_current_room, handle_object_visibility, handle_inventory_update, handle_talk } from '../actions/index';
 
 import '../css/PopUp.css';
+
+import Talk from './Talk';
 
 class PopUp extends Component {
   render() {
@@ -54,6 +56,9 @@ class PopUp extends Component {
           case 'inventory':
             this.props.handle_inventory_update(this.props.character, this.props.currentRoom, action.affects[i], action.topBar, action.link);
             break;
+          case 'talk':
+            this.props.handle_talk(Talk, this.props.currentRoom)
+            break;
           default:
             console.log('nope');
         }
@@ -72,5 +77,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { handle_current_room, handle_object_visibility, handle_inventory_update },
+  { handle_current_room, handle_object_visibility, handle_inventory_update, handle_talk },
 )(PopUp);

@@ -5,7 +5,7 @@ import '../css/Top.css';
 
 import character from '../imgs/clickables/CharacterSheet.png';
 
-import { handle_transition } from '../actions/index';
+import { handle_transition, handle_current_room  } from '../actions/index';
 import CharacterSheet from './CharacterSheet';
 
 let sheet = {
@@ -46,5 +46,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { handle_transition },
+  { handle_transition,handle_current_room },
 )(Top);

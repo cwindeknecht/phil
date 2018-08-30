@@ -22,6 +22,8 @@ import doorway from '../imgs/clickables/NormalDoorway.png';
 
 import * as opponents from './opponents';
 
+let golemHint = `https://www.earlymoderntexts.com/assets/pdfs/kant1785.pdf#page=24`;
+
 export let outside = {
   name: 'outside',
   topBar: 'You approach the burial mound.  What do you do?',
@@ -215,15 +217,26 @@ export let golemRoom = {
       // what happens on click
       clicked: {
         text: 'Go inside?',
-        // Where the new popup is rendered from the left of the container.
-        x: 525,
-        // Where the new popup is rendered from the top of the container.
-        y: 600,
-        yes: {
-          travel: true,
-          location: 'threeDoors',
-        },
-        no: null,
+        show: false,
+        width: '15rem',
+        height: '5rem',
+        options: [
+          {
+            text: 'Yes',
+            action: {
+              type: ['transition'],
+              location: 'koboldRoom',
+              link: {
+                show: false,
+                page: 0,
+              },
+            },
+          },
+          {
+            text: 'No',
+            action: null,
+          },
+        ],
       },
       related: null,
       visible: false,
@@ -237,16 +250,111 @@ export let golemRoom = {
       z: 2,
       // what happens on click
       clicked: {
-        text: 'Go inside?',
-        // Where the new popup is rendered from the left of the container.
-        x: 525,
-        // Where the new popup is rendered from the top of the container.
-        y: 600,
-        yes: {
-          travel: true,
-          location: 'threeDoors',
-        },
-        no: null,
+        show: false,
+        text: 'Talk to the Golem?',
+        width: '25rem',
+        height: '5rem',
+        options: [
+          {
+            text: 'Yes',
+            action: {
+              //index is linked to what it affects
+              // so in this instance, 0 would be visible, and it should alter sword and rightDoorway
+              type: ['talk'],
+              affects: null,
+              first: [
+                {
+                  type: 'div',
+                  className: 'talk__elements__text',
+                  value: '*The golem is muttering to himself "you shall not..." over and over*',
+                },
+                {
+                  type: 'div',
+                  className: 'talk__elements__text',
+                  value:
+                    "*Oh what's the use... Do you know my purpose, the whole reason I exist, is to stand in front of this doorway? What sort of life is that...",
+                },
+                {
+                  id: 1,
+                  type: 'button',
+                  className: 'talk__elements__button',
+                  value:
+                    "Tell him to do what he wants. It's his life, he should be able to end it if he wants to end it.",
+                },
+                {
+                  id: 2,
+                  type: 'button',
+                  className: 'talk__elements__button',
+                  value: 'Tell him that suicide is never the answer.',
+                  giveXP: 1,
+                },
+                {
+                  type: 'a',
+                  className: 'talk__elements__link',
+                  href: golemHint,
+                  target: '_blank',
+                  value: 'See p.24',
+                },
+              ],
+              second: [
+                {
+                  id: 1,
+                  type: 'div',
+                  className: 'talk__elements__text',
+                  value:
+                    'The golem looks at you, tears running down the channels beneath his eyes.  His expression is incredulous because of what you just said.',
+                  action: 'remove',
+                  remove: 'golem',
+                },
+                {
+                  id: 1,
+                  type: 'div',
+                  className: 'talk__elements__text',
+                  value: '"Thank you for understanding."',
+                  action: 'remove',
+                  remove: 'golem',
+                },
+                {
+                  id: 1,
+                  type: 'div',
+                  className: 'talk__elements__text',
+                  value: 'Summoning the force of a thousand gods, he explodes shards of splintered stone.',
+                  action: 'remove',
+                  remove: 'golem',
+                },
+                {
+                  id: 2,
+                  type: 'div',
+                  className: 'talk__elements__text',
+                  value: 'The golem looks at you, his eyes blazing like two coals aflame.',
+                  action: 'remove',
+                  remove: 'golem',
+                },
+                {
+                  id: 2,
+                  type: 'div',
+                  className: 'talk__elements__text',
+                  value: 'Begrudgingly, he says, "You shall...pass..." <<< +1 XP >>>',
+                  action: 'remove',
+                  remove: 'golem',
+                },
+                {
+                  id: 0,
+                  type: 'button',
+                  className: 'talk__elements__button',
+                  value: 'Return',
+                  action: 'return',
+                  return: 'Main',
+                },
+              ],
+              link: null,
+            },
+          },
+          {
+            text: 'No',
+            action: null,
+          },
+        ],
       },
       related: null,
       visible: true,
@@ -261,11 +369,8 @@ export let golemRoom = {
       type: 'examine',
       text: 'Examine Room?',
       topBar:
-        'You examine the sword, or rather half-sword.  An inscription on the blade reads, "act as though the maxim of your action were to become, through your will, a universal law of nature."',
-      link: {
-        show: true,
-        page: 24,
-      },
+        'You examine the room.  A golem stands in front of the doorway and looks lost, sad even.  Tears have eroded shallow channels beneath his eyes',
+      link: null,
     },
     {
       visible: true,
