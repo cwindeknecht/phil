@@ -130,11 +130,11 @@ class Battle extends Component {
       character.health -= characterDamage - character.armor;
       opponent.health -= opponentDamage;
       if (opponentDamage > 0) {
-        battleText.push(opponent.tradeText, `You deal ${opponentDamage} damage.  `);
+        battleText.push(opponent.tradeText, `The ${opponent.name} deals ${characterDamage} to you.  You deal ${opponentDamage} damage.  `);
       } else {
         battleText.push(
           opponent.tradeText +
-            `the ${opponent.name} deals ${characterDamage} to you.  You deal ${opponentDamage} damage.  Attacking a ${this.props.opponent.name} was a terrible idea.`,
+            `The ${opponent.name} deals ${characterDamage} to you.  You deal ${opponentDamage} damage.  Attacking a ${this.props.opponent.name} was a terrible idea.`,
         );
       }
     }
