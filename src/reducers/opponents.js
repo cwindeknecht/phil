@@ -89,7 +89,7 @@ export let warrior = {
   dodgeText:
     "You somehow miss the lackadaisical warrior, and she doesn't bother striking back.",
   victory: "The warrior lays dead on the ground.  She doesn't look much different.  You destroy her belongings to ensure no one else falls victim to their sloth enducing powers.  You grab the remote and hit 'exit' and the stone slab opens.",
-  deathMessage: 'You were stabbed to death by the kobold.',
+  deathMessage: 'The warrior bludgeoned you carefully with her tv.',
 };
 
 export let bagOfChips = {

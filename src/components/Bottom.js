@@ -63,6 +63,7 @@ class Bottom extends Component {
   };
 
   getBottom = () => {
+    console.log(this.props.character);
     return (
       <div>
         {this.props.currentRoom.objects.map(item => {
@@ -172,6 +173,7 @@ const mapStateToProps = state => {
     current: state.current,
     currentRoom: state.currentRoom,
     intro: state.intro,
+    character: state.character,
   };
 };
 

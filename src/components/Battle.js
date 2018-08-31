@@ -110,7 +110,8 @@ class Battle extends Component {
     let dam = diceArray[0].num + diceArray[1].num - opponent.detriment;
     // damage to opponent
     if (dam >= opponent.crit) {
-      let opponentDamage = Math.floor(Math.random() * character.damage) + 1 - opponent.detriment;
+      console.log("before", opponent.health)
+      let opponentDamage = (Math.floor(Math.random() * character.damage) + 1) - opponent.detriment;
       if (opponentDamage < 0) opponentDamage = 0;
       // opponent.health -= opponentDamage;
       opponent.health -= 8;
@@ -122,20 +123,21 @@ class Battle extends Component {
             `You deal ${opponentDamage} damage.  Attacking a ${this.props.opponent.name} was a terrible idea.`,
         );
       }
+      console.log("after", opponent.health)
     }
     // damage to both
     else if (dam <= opponent.tradeHigh && dam >= opponent.tradeLow) {
-      let opponentDamage = Math.floor(Math.random() * character.damage) + 1 - opponent.detriment;
+      console.log("before", opponent.health)
+      let opponentDamage = (Math.floor(Math.random() * character.damage) + 1) - opponent.detriment;
       let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
       character.health -= characterDamage - character.armor;
       opponent.health -= opponentDamage;
-      battleText.push(opponent.tradeText);
       if (opponentDamage > 0) {
-        battleText.push(`You deal ${opponentDamage} damage.  `);
+        battleText.push(opponent.tradeText, `You deal ${opponentDamage} damage.  `);
       } else {
         battleText.push(
           opponent.tradeText +
-            `You deal ${opponentDamage} damage.  Attack a ${this.props.opponent.name} was a terrible idea.`,
+            `the ${opponent.name} deals ${characterDamage} to you.  You deal ${opponentDamage} damage.  Attack a ${this.props.opponent.name} was a terrible idea.`,
         );
       }
     }
@@ -143,15 +145,18 @@ class Battle extends Component {
     else if (dam === 0) {
       battleText.push(opponent.dodgeText);
     } else {
+      console.log("before", opponent.health)
       let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
       character.health -= characterDamage - character.armor;
       battleText.push(opponent.hitText);
+      console.log("after", opponent.health)
     }
     if (character.health <= 0) {
       this.props.handle_death(this.props.opponent.deathMessage);
       this.props.handle_transition(Death);
       return;
     }
+    console.log(opponent);
     if (opponent.health <= 0) this.handleVictory(this.props.currentRoom);
     this.setState({ rolls, character, opponent, battleText, roll: true });
   };
