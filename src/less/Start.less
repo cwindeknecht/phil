@@ -1,34 +1,63 @@
-.StartContainer {
-  height: 100vh;
-  width: 100vw;
-  font-family: Papyrus, fantasy;
-  .StartBody {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    height: 95%;
-    .StartTitle {
-      font-size: 6rem;
+@import 'mixins.less';
+
+@media (min-width: 320px) {
+  .start {
+    .containers(@height: 100vh, @width:100vw);
+    .start__body {
+      .containers(@justifyContent: space-around, @height: 97%);
+      .start__body__title {
+        .titles(@fontSize: 2rem);
+      }
+      .start__body__button {
+        .commonButtons(@fontSize:1.5rem, @height: 2.5rem, @width:5rem);
+      }
     }
-    .StartButton {
-      border: 0;
-      width: 8rem;
-      background-color: black;
-      color: white;
-      font-size: 2rem;
-      font-family: Papyrus, fantasy;
-      border-radius: 25rem;
-    }
-    .StartButton:hover {
-      cursor: pointer;
-      background-color: white;
-      color: black;
+    .start__footer {
+      height: 3%;
+      align-self: flex-start;
+      padding-left: 0.5rem;
+      font-size: 1rem;
     }
   }
-  .StartFooter {
-    align-self: flex-start;
-    padding-left: 1rem;
-    font-size: 1.5rem;
+}
+
+@media (min-width: 480px) {
+  .start {
+    .start__body {
+      .containers(@justifyContent: space-around, @height: 93%);
+      .start__body__title {
+        .titles(@fontSize: 3.5rem);
+      }
+      .start__body__button {
+        .commonButtons(@fontSize:2rem, @height: 3rem, @width:10rem);
+      }
+    }
+    .start__footer {
+      height: 7%;
+      padding-left: 1rem;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .start {
+    .start__body {
+      .start__body__title {
+        .titles(@fontSize: 5rem);
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .start {
+    .start__body {
+      .start__body__title {
+        .titles(@fontSize: 8rem);
+      }
+      .start__body__button {
+        .commonButtons(@fontSize:3rem, @height: 4rem, @width:15rem);
+      }
+    }
   }
 }

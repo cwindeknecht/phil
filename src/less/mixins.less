@@ -1,0 +1,40 @@
+.commonButtons(@width: 10rem, @height:3rem, @border: none, @borderRadius:25rem, @fontSize:2rem) {
+  width: @width;
+  height: @height;
+  border: @border;
+  border-radius: @borderRadius;
+  background-color: black;
+  color: lightgrey;
+  font-size: @fontSize;
+  font-family: Papyrus, fantasy;
+  &:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+}
+
+.containers(@display: flex, @flexDirection: column, @justifyContent: center, @alignItems: center, @height: 100%, @width: 100%, @fontSize: 2rem, @lineHeight: 1,@padding: 0, @margin:0) {
+  display: @display;
+  flex-direction: @flexDirection;
+  justify-content: @justifyContent;
+  align-items: @alignItems;
+  height: @height;
+  width: @width;
+  font-family: Papyrus, fantasy;
+  font-size: @fontSize;
+  line-height: @lineHeight;
+  padding: @padding;
+  margin: @margin;
+}
+
+.titles(@fontSize: 6rem, @margin:2rem 0, @height: 20%) {
+  height: @height;
+  font-size: @fontSize;
+  margin: @margin;
+}
+
+.symbols(@backgroundSize: 3.125rem 3.125rem, @margin: 0 2rem) {
+  background-size: @backgroundSize;
+  margin: @margin;
+}

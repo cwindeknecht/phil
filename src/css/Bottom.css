@@ -1,59 +1,99 @@
-.BottomContainer {
+.bottom {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 100%;
   font-family: Papyrus, fantasy;
-}
-.BottomContainer .BottomIntro {
-  width: 50%;
-  max-height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.BottomContainer .BottomIntro .BottomIntroTitle {
-  font-size: 5rem;
-  margin: 2rem;
-}
-.BottomContainer .BottomIntro .BottomIntroBody {
   font-size: 2rem;
-  line-height: 2;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
 }
-.BottomContainer .BottomIntro .BottomIntroButton {
-  border: 0;
-  width: 25rem;
-  height: 3rem;
-  margin: 1rem;
-  background-color: black;
-  color: white;
-  font-size: 1.5rem;
+.bottom .bottom__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 80%;
+  width: 100%;
   font-family: Papyrus, fantasy;
-  border-radius: 25rem;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
 }
-.BottomContainer .BottomIntro .BottomIntroButton:hover {
-  cursor: pointer;
-  background-color: white;
-  color: black;
-}
-.BottomContainer .Clickable:hover {
+.bottom .bottom__main .clickable:hover {
   cursor: pointer;
 }
-.BottomContainer .BottomOptions {
+.bottom .bottom__main .bottom__main__options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
   width: 15rem;
   height: 5rem;
-  position: absolute;
-  background: lightgray;
-  border: 0.5rem solid black;
+  border: none;
+  border-radius: 10rem;
+  background-color: black;
+  color: lightgrey;
   font-size: 2rem;
-  border-radius: 5rem;
+  font-family: Papyrus, fantasy;
+}
+.bottom .bottom__main .bottom__main__options:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+  color: black;
+}
+.bottom .bottom__intro {
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-family: Papyrus, fantasy;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+}
+.bottom .bottom__intro .bottom__intro__title {
+  height: 20%;
+  font-size: 6rem;
+  margin: 2rem 0;
+}
+.bottom .bottom__intro .bottom__intro__body {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 70%;
+  width: 75%;
+  font-family: Papyrus, fantasy;
+  font-size: 2rem;
+  line-height: 1.25;
+  padding: 0;
+  margin: 0;
 }
-.BottomContainer .BottomOptions:hover {
+.bottom .bottom__intro .bottom__intro__button {
+  width: 10rem;
+  height: 3rem;
+  border: none;
+  border-radius: 25rem;
+  background-color: black;
+  color: lightgrey;
+  font-size: 2rem;
+  font-family: Papyrus, fantasy;
+}
+.bottom .bottom__intro .bottom__intro__button:hover {
   cursor: pointer;
-  background: white;
+  background-color: lightgrey;
   color: black;
 }

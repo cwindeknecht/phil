@@ -34,28 +34,26 @@ class Bottom extends Component {
 
   render() {
     document.addEventListener('click', this.mousePosition);
-    return (
-      <div id="Container" className="BottomContainer">
-        {this.props.intro ? this.getIntro() : this.getBottom()}
-      </div>
-    );
+    return <div className="bottom">{this.props.intro ? this.getIntro() : this.getBottom()}</div>;
   }
 
   getIntro = () => {
     return (
-      <div className="BottomIntro">
-        <div className="BottomIntroTitle">Intro</div>
-        <div className="BottomIntroBody">
-          {' '}
-          You are a villager and your village is under attack.
+      <div className="bottom__intro">
+        <div className="bottom__intro__title">Intro</div>
+        <div className="bottom__intro__body">
+          Your village is under attack. Being a lowly villager, you don't stand a chance fighting the horde of monsters,
+          but fighting them with combat isn't the only means of defeating them.
           <br />
           <br />
-          To help defend it, you have left in search of an ancient artifact --- the Categorical Imperative.
+          Being on the outskirts of town, escaping without notice is an easy feat. You scurry off into the forest in
+          search of an ancient artifact --- the Categorical Imperative.
           <br />
           <br />
-          Your search has brought you to the resting place of a great hero: Kant, the Paladin.
+          After traveling some distance, your search has brought you to the resting place of a great hero: Kant, the
+          Paladin.
         </div>
-        <button className="BottomIntroButton" onClick={this.handleIntro}>
+        <button className="bottom__intro__button" onClick={this.handleIntro}>
           Continue
         </button>
       </div>
@@ -63,24 +61,31 @@ class Bottom extends Component {
   };
 
   getBottom = () => {
-    console.log(this.props.character);
     return (
-      <div>
+      <div className="bottom__main">
         {this.props.currentRoom.objects.map(item => {
+          console.log(item);
           if (item.visible === true) {
             return (
               <img
                 alt={item.name}
                 id={item.id}
                 key={item.name}
-                className={item.clicked ? 'Clickable' : ''}
+                className={item.clicked ? 'clickable' : ''}
                 src={item.image}
-                style={{ position: 'absolute', left: item.x, top: item.y, zIndex: item.z }}
+                style={{
+                  position: 'relative',
+                  width: item.width,
+                  height: item.height,
+                  left: item.x,
+                  top: item.y,
+                  zIndex: item.z,
+                }}
                 onClick={this.handlePopup}
               />
             );
           }
-          return <div key={item.id} id="fuckyou" style={{display:'none'}}></div>;
+          return <div key={item.id} id="none" style={{ display: 'none' }} />;
         })}
         {this.state.popups.map(object => {
           if (object.clicked.show) {
@@ -97,14 +102,14 @@ class Bottom extends Component {
             return (
               <div
                 key={i}
-                className="BottomOptions"
+                className="bottom__main__options"
                 id={option.type}
                 onClick={
                   option.type === 'examine'
                     ? this.handleExamine.bind(this, option)
                     : this.handleBattle.bind(this, option.opponent)
                 }
-                style={{ position: 'absolute', left: option.x, top: option.y, zIndex: option.z }}>
+                style={{ left: option.x, top: option.y, zIndex: option.z }}>
                 {option.text}
               </div>
             );

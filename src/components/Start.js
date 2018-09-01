@@ -16,14 +16,14 @@ var parchmentBackground = {
 class Start extends Component {
   render() {
     return (
-      <div style={parchmentBackground} className="StartContainer">
-        <div className="StartBody">
-          <div className="StartTitle">Kant, the Paladin</div>
-          <button className="StartButton" onClick={this.handleTransition}>
+      <div style={parchmentBackground} className="start">
+        <div className="start__body">
+          <div className="start__body__title">Kant, the Paladin</div>
+          <button className="start__body__button" onClick={this.handleTransition}>
             Start
           </button>
         </div>
-        <div className="StartFooter">v 1.0 </div>
+        <div className="start__footer">v 1.0 </div>
       </div>
     );
   }

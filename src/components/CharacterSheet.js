@@ -40,93 +40,94 @@ class CharacterSheet extends Component {
     }
     gear.length % 2 === 1 ? gear.push('') : (gear = character.gear);
     return (
-      <div style={parchmentBackground} className="CSContainer">
-        <div className="CSTitle"> Villager </div>
-        <div className="CSStats">
-          <div className="CSStatsHalf">
-            <div className="CSStat">
-              Name: <div className="CSStats">{character.name}</div>
+      <div style={parchmentBackground} className="character">
+        <div className="character__title"> Villager </div>
+        <div className="character__statsContainer">
+          <div className="character__statsContainer__half">
+            <div className="character__statsContainer__half__stat">
+              Name: <div className="character__statsContainer__half__stat__value">{character.name}</div>
             </div>
-            <div className="CSStat">
-              Ethnicity: <div className="CSStats">{character.ethnicity}</div>
+            <div className="character__statsContainer__half__stat">
+              Ethnicity: <div className="character__statsContainer__half__stat__value">{character.ethnicity}</div>
             </div>
-            <div className="CSStat">
-              Physical Trait: <div className="CSStats">{character.physical}</div>
+            <div className="character__statsContainer__half__stat">
+              Physical Trait: <div className="character__statsContainer__half__stat__value">{character.physical}</div>
             </div>
           </div>
-          <div className="CSStatsHalf">
-            <div id="cslevel">
-              <div id="level" className="CSStat">
-                Level:{' '}
-                <div id="level" className="CSStats">
+          <div className="character__statsContainer__half">
+            <div id="levelxp">
+              <div id="levelxp__interior" className="character__statsContainer__half__stat">
+                Level:
+                <div id="levelxp__interior" className="character__statsContainer__half__stat__value">
                   {character.level}
                 </div>
               </div>
-              <div id="level" className="CSStat">
-                XP:{' '}
-                <div id="level" className="CSStats">
+              <div id="levelxp__interior" className="character__statsContainer__half__stat">
+                XP:
+                <div id="levelxp__interior" className="character__statsContainer__half__stat__value">
                   {character.xp}
                 </div>
               </div>
             </div>
-            <div className="CSStat">
-              Gender: <div className="CSStats">{character.gender}</div>{' '}
+            <div className="character__statsContainer__half__stat">
+              Gender: <div className="character__statsContainer__half__stat__value">{character.gender}</div>{' '}
             </div>
-            <div className="CSStat">
-              Personality Trait: <div className="CSStats">{character.personality} </div>
+            <div className="character__statsContainer__half__stat">
+              Personality Trait:{' '}
+              <div className="character__statsContainer__half__stat__value">{character.personality} </div>
             </div>
           </div>
         </div>
-        <div className="CSSymbols">
-          <div style={damage} className="CSSymbol">
-            <div className="CSSymbolStat">{character.damageText}</div>
+        <div className="character__symbols">
+          <div style={damage} className="character__symbols__symbol">
+            <div className="character__symbols__symbol__stat">{character.damageText}</div>
           </div>
-          <div style={armor} className="CSSymbol">
-            <div className="CSSymbolStat">{character.armor}</div>
+          <div style={armor} className="character__symbols__symbol">
+            <div className="character__symbols__symbol__stat">{character.armor}</div>
           </div>
-          <div style={health} className="CSSymbol">
-            <div className="CSSymbolStat">{character.health}</div>
+          <div style={health} className="character__symbols__symbol">
+            <div className="character__symbols__symbol__stat">{character.health}</div>
           </div>
         </div>
-        <div className="CSGear">
-          <div className="CSGearTitle"> Gear </div>
-          <div className="CSGearItems">
+        <div className="character__gear">
+          <div className="character__gear__title"> Gear </div>
+          <div className="character__gear__items">
             {gear.map((item, i) => {
               return (
-                <li key={i} className="CSGearItem" style={item === '' ? { opacity: '0' } : { opacity: '1' }}>
+                <li key={i} className="character__gear__items__item" style={item === '' ? { opacity: '0' } : { opacity: '1' }}>
                   {item}
                 </li>
               );
             })}
           </div>
         </div>
-        <div className="CSOptions">
+        <div className="character__options">
           {this.props.characterSaved ? (
-            <button className="CSButtonRoll" style={{ opacity: '0' }} />
+            <button className="character__options__buttons" style={{ opacity: '0' }} />
           ) : (
-            <button className="CSButtonRoll" onClick={this.createCharacter}>
+            <button className="character__options__buttons" onClick={this.createCharacter}>
               {character.name !== '' ? 'Reroll' : 'Roll'}
             </button>
           )}
           {this.props.characterCreated && !this.props.adventureStarted ? (
-            <button id="choose" className="CSButtonChoose" onClick={this.saveCharacter}>
+            <button id="choose" className="character__options__buttons" onClick={this.saveCharacter}>
               Choose This Character
             </button>
           ) : (
-            <button className="CSButtonChoose" style={{ opacity: '0' }} />
+            <button className="character__options__buttons" style={{ opacity: '0' }} />
           )}
           {this.props.characterCreated && this.props.characterSaved ? (
             this.props.adventureStarted ? (
-              <button className="CSButtonAdv" onClick={this.handleTransition}>
+              <button className="character__options__buttons" onClick={this.handleTransition}>
                 Return to Adventure
               </button>
             ) : (
-              <button className="CSButtonAdv" onClick={this.handleTransition}>
+              <button className="character__options__buttons" onClick={this.handleTransition}>
                 Begin Adventure
               </button>
             )
           ) : (
-            <button className="CSButtonAdv" style={{ opacity: '0' }} />
+            <button className="character__options__buttons" style={{ opacity: '0' }} />
           )}
         </div>
       </div>

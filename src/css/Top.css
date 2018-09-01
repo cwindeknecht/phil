@@ -1,9 +1,10 @@
 .TopContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   font-family: Papyrus, fantasy;
+  height: 20%;
 }
 .TopContainer .TopText {
   background: lightgray;
@@ -38,6 +39,7 @@
   width: 100px;
   height: 120px;
   opacity: 0.5;
+  margin-right: 2rem;
 }
 .TopContainer .TopSheet:hover {
   opacity: 1;

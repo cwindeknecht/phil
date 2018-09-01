@@ -1,34 +1,122 @@
-.StartContainer {
-  height: 100vh;
-  width: 100vw;
-  font-family: Papyrus, fantasy;
+@media (min-width: 320px) {
+  .start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .start .start__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 97%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .start .start__body .start__body__title {
+    height: 20%;
+    font-size: 2rem;
+    margin: 2rem 0;
+  }
+  .start .start__body .start__body__button {
+    width: 5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 1.5rem;
+    font-family: Papyrus, fantasy;
+  }
+  .start .start__body .start__body__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .start .start__footer {
+    height: 3%;
+    align-self: flex-start;
+    padding-left: 0.5rem;
+    font-size: 1rem;
+  }
 }
-.StartContainer .StartBody {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  height: 95%;
+@media (min-width: 480px) {
+  .start .start__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 93%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .start .start__body .start__body__title {
+    height: 20%;
+    font-size: 3.5rem;
+    margin: 2rem 0;
+  }
+  .start .start__body .start__body__button {
+    width: 10rem;
+    height: 3rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 2rem;
+    font-family: Papyrus, fantasy;
+  }
+  .start .start__body .start__body__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .start .start__footer {
+    height: 7%;
+    padding-left: 1rem;
+  }
 }
-.StartContainer .StartBody .StartTitle {
-  font-size: 6rem;
+@media (min-width: 640px) {
+  .start .start__body .start__body__title {
+    height: 20%;
+    font-size: 5rem;
+    margin: 2rem 0;
+  }
 }
-.StartContainer .StartBody .StartButton {
-  border: 0;
-  width: 8rem;
-  background-color: black;
-  color: white;
-  font-size: 2rem;
-  font-family: Papyrus, fantasy;
-  border-radius: 25rem;
-}
-.StartContainer .StartBody .StartButton:hover {
-  cursor: pointer;
-  background-color: white;
-  color: black;
-}
-.StartContainer .StartFooter {
-  align-self: flex-start;
-  padding-left: 1rem;
-  font-size: 1.5rem;
+@media (min-width: 1024px) {
+  .start .start__body .start__body__title {
+    height: 20%;
+    font-size: 8rem;
+    margin: 2rem 0;
+  }
+  .start .start__body .start__body__button {
+    width: 15rem;
+    height: 4rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 3rem;
+    font-family: Papyrus, fantasy;
+  }
+  .start .start__body .start__body__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
 }

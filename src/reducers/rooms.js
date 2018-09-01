@@ -33,12 +33,10 @@ export let outside = {
       id: 1,
       name: 'mound',
       image: mound,
-      width: 1200,
-      height: 700,
-      // x position from left of container
+      width: window.innerWidth > 1200 ? 1200 : window.innerWidth,
+      height: 500,
       x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
-      // y position from top of container
-      y: 200,
+      y: 0,
       z: 0,
       clicked: null,
       visible: true,
@@ -47,8 +45,8 @@ export let outside = {
       id: 2,
       name: 'doorway',
       image: doorway,
-      x: 690,
-      y: 420,
+      x: 168,
+      y: -279,
       z: 1,
       // what happens on click
       clicked: {
@@ -90,12 +88,10 @@ export let threeDoorsRoom = {
       id: 3,
       name: 'threeDoors',
       image: threeDoors,
-      // x position from left of container
-      width: 1200,
-      height: 700,
+      width: window.innerWidth > 1200 ? 1200 : window.innerWidth,
+      height: 500,
       x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
-      // y position from top of container
-      y: 200,
+      y: 0,
       z: 0,
       clicked: null,
       visible: true,
@@ -137,8 +133,8 @@ export let threeDoorsRoom = {
       id: 5,
       name: 'sword',
       image: sword,
-      x: 675,
-      y: 440,
+      x: 505,
+      y: -265,
       z: 2,
       // what happens on click
       clicked: {

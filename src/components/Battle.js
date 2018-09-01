@@ -133,7 +133,7 @@ class Battle extends Component {
         battleText.push(opponent.tradeText, `The ${opponent.name} deals ${characterDamage} to you.  You deal ${opponentDamage} damage.  `);
       } else {
         battleText.push(
-          opponent.tradeText +
+          opponent.tradeText,
             `The ${opponent.name} deals ${characterDamage} to you.  You deal ${opponentDamage} damage.  Attacking a ${this.props.opponent.name} was a terrible idea.`,
         );
       }

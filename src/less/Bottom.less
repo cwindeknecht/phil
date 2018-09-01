@@ -1,59 +1,27 @@
-.BottomContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: Papyrus, fantasy;
-  .BottomIntro {
-    width: 50%;
-    max-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .BottomIntroTitle {
-      font-size: 5rem;
-      margin: 2rem;
-    }
-    .BottomIntroBody {
-      font-size: 2rem;
-      line-height: 2;
-    }
-    .BottomIntroButton {
-      border: 0;
-      width: 25rem;
-      height: 3rem;
-      margin: 1rem;
-      background-color: black;
-      color: white;
-      font-size: 1.5rem;
-      font-family: Papyrus, fantasy;
-      border-radius: 25rem;
-    }
-    .BottomIntroButton:hover {
+@import 'mixins.less';
+
+.bottom {
+  .containers();
+  .bottom__main {
+    .containers(@height:80%, @justifyContent:flex-end);
+    .clickable:hover {
       cursor: pointer;
-      background-color: white;
-      color: black;
+    }
+    .bottom__main__options {
+      .containers();
+      .commonButtons(@width: 15rem, @height:5rem, @borderRadius:10rem);
     }
   }
-  .Clickable:hover {
-    cursor: pointer;
-  }
-  .BottomOptions {
-    width: 15rem;
-    height: 5rem;
-    position: absolute;
-    background: lightgray;
-    border: 0.5rem solid black;
-    font-size: 2rem;
-    border-radius: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .BottomOptions:hover {
-    cursor: pointer;
-    background: white;
-    color: black;
+  .bottom__intro {
+    .containers(@justifyContent: space-around);
+    .bottom__intro__title {
+      .titles();
+    }
+    .bottom__intro__body {
+      .containers(@width: 75%, @lineHeight: 1.25, @height: 70%);
+    }
+    .bottom__intro__button {
+      .commonButtons();
+    }
   }
 }

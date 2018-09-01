@@ -1,4 +1,4 @@
-.CSContainer {
+.character {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,28 +6,28 @@
   width: 100vw;
   height: 100vh;
   font-family: Papyrus, fantasy;
-  .CSTitle {
+  .character__title {
     font-size: 4rem;
     padding: 2rem;
     height: 15%;
   }
-  .CSStats {
+  .character__statsContainer {
     display: flex;
     flex-direction: row;
     align-content: space-around;
     width: 80%;
     height: 30%;
-    .CSStatsHalf {
+    .character__statsContainer__half {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 0 1rem 1rem 1rem;
       font-size: 2rem;
       width: 50%;
-      .CSStat {
+      .character__statsContainer__half__stat {
         padding: 1rem;
         align-items: center;
-        .CSStats {
+        .character__statsContainer__half__stat__value {
           padding-left: 1rem;
           font-size: 2rem;
           width: 50%;
@@ -36,55 +36,55 @@
       }
 
     }
-    #level {
+    #levelxp__interior {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       width: 50%;
     }
-    #cslevel {
+    #levelxp {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       width: 100%;
     }
   }
-  .CSSymbols {
+  .character__symbols {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
     height: 15%;
-    .CSSymbol {
+    .character__symbols__symbol {
       width: 6.25rem;
       height: 6.25rem;
       margin: 0 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      .CSSymbolStat {
+      .chracter__symbols__symbol__stat {
         position: relative;
         font-size: 2rem;
       }
     }
   }
-  .CSGear {
+  .character__gear {
     display: flex;
     flex-direction: column;
     width: 75%;
     height: 20%;
-    .CSGearTitle {
+    .character__gear__title {
       align-self: center;
       font-size: 3rem;
       padding: 1rem 0 0 0;
     }
-    .CSGearItems {
+    .character__gear__items {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-around;
-      .CSGearItem {
+      .character__gear__items__item {
         font-size: 1.5rem;
         padding: 0.2rem;
         width: 40%;
@@ -92,16 +92,16 @@
       }
     }
   }
-  .CSOptions {
+  .character__options {
     height: 20%;
     width: 80%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    .CSButtonRoll {
+    .character__options__buttons {
       border: 0;
       width: 20%;
-      height: 3rem;
+      height: 6rem;
       margin: .3rem;
       background-color: black;
       color: white;
@@ -109,39 +109,7 @@
       font-family: Papyrus, fantasy;
       border-radius: 25rem;
     }
-    .CSButtonRoll:hover {
-      cursor: pointer;
-      background-color: white;
-      color: black;
-    }
-    .CSButtonAdv {
-      border: 0;
-      width: 40%;
-      height: 3rem;
-      margin: .3rem;
-      background-color: black;
-      color: white;
-      font-size: 1.5rem;
-      font-family: Papyrus, fantasy;
-      border-radius: 25rem;
-    }
-    .CSButtonAdv:hover {
-      cursor: pointer;
-      background-color: white;
-      color: black;
-    }
-    .CSButtonChoose {
-      border: 0;
-      width: 40%;
-      height: 3rem;
-      margin: .3rem;
-      background-color: black;
-      color: white;
-      font-size: 1.5rem;
-      font-family: Papyrus, fantasy;
-      border-radius: 25rem;
-    }
-    .CSButtonChoose:hover {
+    .character__options__buttons:hover {
       cursor: pointer;
       background-color: white;
       color: black;
