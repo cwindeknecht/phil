@@ -13,6 +13,7 @@ disappear and I just altered the text to show that.
 9. Either remove the ability to talk to people after the original talking has been done, or make them say something different.
 10. Go all out with images.  Show rubble when the golem dies, or show him stepped aside.  Show the kobold point the spear and it turns blue, or if you kill him, have it leaning against the chest.  Have the warrior looking at the tv, and on examine, turn towards you.  Have her hold up the remote when she uses it to open the slab.
 11. Add music / fx.  
+12. Go through less files, take out any unnecessary things I left in there after the initial @media refactor.  I mean, in general, touch it it up too.  I'm just getting the bare minimum done right now.
 
 
 

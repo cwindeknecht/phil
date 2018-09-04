@@ -98,6 +98,17 @@
     margin: 2rem 0;
   }
 }
+@media screen and (min-width: 640px) and (min-height: 1024px) {
+  .start .start__body .start__body__title {
+    height: 20%;
+    font-size: 5rem;
+    margin: 2rem 0;
+  }
+  .start .start__footer {
+    height: 2%;
+    padding-left: 1.5rem;
+  }
+}
 @media (min-width: 1024px) {
   .start .start__body .start__body__title {
     height: 20%;
@@ -118,5 +129,9 @@
     cursor: pointer;
     background-color: lightgrey;
     color: black;
+  }
+  .start .start__footer {
+    height: 2%;
+    padding-left: 1.5rem;
   }
 }
