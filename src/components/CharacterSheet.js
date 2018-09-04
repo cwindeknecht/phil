@@ -51,29 +51,29 @@ class CharacterSheet extends Component {
               Ethnicity: <div className="character__statsContainer__half__stat__value">{character.ethnicity}</div>
             </div>
             <div className="character__statsContainer__half__stat">
-              Physical Trait: <div className="character__statsContainer__half__stat__value">{character.physical}</div>
+              Physical:<div className="character__statsContainer__half__stat__value">{character.physical}</div>
             </div>
           </div>
           <div className="character__statsContainer__half">
             <div id="levelxp">
-              <div id="levelxp__interior" className="character__statsContainer__half__stat">
+              <div id="levelxp__interior--left" className="character__statsContainer__half__stat">
                 Level:
-                <div id="levelxp__interior" className="character__statsContainer__half__stat__value">
+                <div id="levelxp__interior--left" className="character__statsContainer__half__stat__value">
                   {character.level}
                 </div>
               </div>
-              <div id="levelxp__interior" className="character__statsContainer__half__stat">
+              <div id="levelxp__interior--right" className="character__statsContainer__half__stat">
                 XP:
-                <div id="levelxp__interior" className="character__statsContainer__half__stat__value">
+                <div id="levelxp__interior--right" className="character__statsContainer__half__stat__value">
                   {character.xp}
                 </div>
               </div>
             </div>
             <div className="character__statsContainer__half__stat">
-              Gender: <div className="character__statsContainer__half__stat__value">{character.gender}</div>{' '}
+              Gender: <div className="character__statsContainer__half__stat__value">{character.gender}</div>
             </div>
             <div className="character__statsContainer__half__stat">
-              Personality Trait:{' '}
+              Personality:
               <div className="character__statsContainer__half__stat__value">{character.personality} </div>
             </div>
           </div>

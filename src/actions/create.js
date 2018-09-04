@@ -5,10 +5,10 @@ export default function create() {
   let xp = 0;
   let damageText = 'd4';
   // Damage set to 3, when "rolling", do math.random() * damage + 1
-  let damage = 3;
+  let damage = 4;
   let armor = 0;
   // health 1-4
-  let health = Math.floor(Math.random() * 3) + 1;
+  let health = Math.floor(Math.random() * 4) + 1;
   // 1-2 for gender
   let gender = Math.random() > 0.5 ? 'Male' : 'Female';
 
@@ -49,11 +49,11 @@ export default function create() {
   // 1-100 for gear
   let gear = data.equipment[Math.floor(Math.random() * 100)].split(',');
   gear.forEach((piece) => {
-    if (piece.includes('+1 Damage')) {
-      damage = 4;
+    if (piece.includes('+1d')) {
+      damage = 5;
       damageText = 'd4 + 1';
     }
-    if (piece.includes('+1 Armor')) {
+    if (piece.includes('+1a')) {
       armor = 1;
     }
   });
