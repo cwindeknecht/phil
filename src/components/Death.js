@@ -6,8 +6,8 @@ import '../css/Death.css';
 class Death extends Component {
   render() {
     return (
-      <div className="DeathContainer">
-        <div className="DeathMessage">{this.props.deathMessage}</div>
+      <div className="death">
+        <div className="death__message">{this.props.deathMessage}</div>
       </div>
     );
   }
