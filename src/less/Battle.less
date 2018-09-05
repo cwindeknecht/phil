@@ -84,12 +84,12 @@
             .containers(@flexDirection: row, @height: 60%);
             .battle__header__diceContainer__dice {
               margin: 0 2rem;
-              height: 12.5rem;
-              width: 12.5rem;
+              height: 6.25rem;
+              width: 6.25rem;
             }
           }
           .battle__header__button {
-            .commonButtons(@height: 5rem, @fontSize: 3rem, @width: 30%);
+            .commonButtons(@height: 4rem, @fontSize: 2rem, @width: 30%);
             margin-bottom: 1rem;
           }
         }
@@ -97,4 +97,30 @@
           .containers(@justifyContent: flex-start, @alignItems: flex-start, @fontSize: 2.5rem, @height: 50%);
         }
       }
+}
+
+@media screen and (min-width: 1024px) and (min-height: 1024px) {
+  .battle {
+      .battle__header {
+        .containers(@height: 50%);
+        .battle__header__title {
+          .titles(@fontSize: 3rem, @height: 40%, @margin: 2rem);
+        }
+        .battle__header__diceContainer {
+          .containers(@flexDirection: row, @height: 60%);
+          .battle__header__diceContainer__dice {
+            margin: 0 2rem;
+            height: 12.5rem;
+            width: 12.5rem;
+          }
+        }
+        .battle__header__button {
+          .commonButtons(@height: 5rem, @fontSize: 3rem, @width: 30%);
+          margin-bottom: 1rem;
+        }
+      }
+      .battle__textContainer {
+        .containers(@justifyContent: flex-start, @alignItems: flex-start, @fontSize: 2.5rem, @height: 50%);
+      }
+    }
 }

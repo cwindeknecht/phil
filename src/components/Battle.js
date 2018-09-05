@@ -111,7 +111,6 @@ class Battle extends Component {
     if (dam >= opponent.crit) {
       let opponentDamage = Math.floor(Math.random() * character.damage) + 1 - opponent.detriment;
       opponentDamage = opponentDamage > 0 ? opponentDamage : 1;
-      // opponent.health -= opponentDamage;
       opponent.health -= opponentDamage;
       if (opponentDamage > 0) {
         text += opponent.critText + `You deal ${opponentDamage} damage.`;
@@ -123,8 +122,7 @@ class Battle extends Component {
     else if (dam <= opponent.tradeHigh && dam >= opponent.tradeLow) {
       let opponentDamage = Math.floor(Math.random() * character.damage) + 1 - opponent.detriment;
       opponentDamage = opponentDamage > 0 ? opponentDamage : 0;
-      // let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
-      let characterDamage = 0;
+      let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
       character.health -= characterDamage - character.armor;
       opponent.health -= opponentDamage;
       if (opponentDamage > 0) {
@@ -141,8 +139,7 @@ class Battle extends Component {
     else if (dam === 0) {
       text += opponent.dodgeText;
     } else {
-      let characterDamage = 0;
-      // let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
+      let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
       character.health -= characterDamage - character.armor;
       text += opponent.hitText + `The ${opponent.name} does ${characterDamage} to you.`;
     }

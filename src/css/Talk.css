@@ -1,56 +1,389 @@
-.talk {
-  font-size: 2rem;
-  font-family: Papyrus, fantasy;
-  height: 100vh;
-  width: 100vw;
-  background-image: url(../imgs/parchment.jpg);
+@media (min-width: 320px) {
+  .talk {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    background-image: url(../imgs/parchment.jpg);
+  }
+  .talk .talk__elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    font-family: Arnoldboecklin, fantasy;
+    flex-wrap: wrap;
+  }
+  .talk .talk__elements .talk__elements__text {
+    width: 98%;
+    margin-bottom: 0.2rem;
+  }
+  .talk .talk__elements .talk__elements__button {
+    width: 95%;
+    height: auto;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 1.1rem;
+    font-family: Papyrus, fantasy;
+    text-overflow: clip;
+    padding: 0.5rem;
+    margin: 0.1rem 0;
+  }
+  .talk .talk__elements .talk__elements__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .talk .talk__elements .talk__elements__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    width: 40%;
+    height: 3rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 1.25rem;
+    font-family: Papyrus, fantasy;
+    margin: 0.1rem 0;
+  }
+  .talk .talk__elements .talk__elements__link:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
 }
-.talk .talk__elements {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+@media screen and (min-width: 320px) and (min-height: 520px) {
+  .talk {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    background-image: url(../imgs/parchment.jpg);
+  }
+  .talk .talk__elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    font-family: Arnoldboecklin, fantasy;
+    flex-wrap: wrap;
+  }
+  .talk .talk__elements .talk__elements__text {
+    width: 98%;
+    margin-bottom: 0.2rem;
+  }
+  .talk .talk__elements .talk__elements__button {
+    width: 95%;
+    height: auto;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 1.1rem;
+    font-family: Papyrus, fantasy;
+    text-overflow: clip;
+    padding: 0.5rem;
+    margin: 0.1rem 0;
+  }
+  .talk .talk__elements .talk__elements__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .talk .talk__elements .talk__elements__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    width: 40%;
+    height: 3rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 1.25rem;
+    font-family: Papyrus, fantasy;
+    margin: 0.1rem 0;
+  }
+  .talk .talk__elements .talk__elements__link:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
 }
-.talk .talk__elements .talk__elements__text {
-  width: 80%;
-  margin-top: 3rem;
+@media (min-width: 480px) {
+  .talk {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    background-image: url(../imgs/parchment.jpg);
+  }
+  .talk .talk__elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+  .talk .talk__elements .talk__elements__text {
+    font-family: Arnoldboecklin, fantasy;
+    width: 98%;
+    margin-bottom: 0.2rem;
+  }
+  .talk .talk__elements .talk__elements__button {
+    width: 40%;
+    height: 6rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 1rem;
+    font-family: Papyrus, fantasy;
+    font-family: Arnoldboecklin, fantasy;
+    padding: 0.5rem;
+    margin: 0.1rem 0;
+  }
+  .talk .talk__elements .talk__elements__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .talk .talk__elements .talk__elements__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    width: 20%;
+    height: 3rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 1.25rem;
+    font-family: Papyrus, fantasy;
+    margin: 0.1rem 0;
+  }
+  .talk .talk__elements .talk__elements__link:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
 }
-.talk .talk__elements .talk__elements__button {
-  border: 0;
-  height: 10rem;
-  width: 40%;
-  background-color: black;
-  color: white;
-  padding: 1rem;
-  font-size: 1.5rem;
-  font-family: Papyrus, fantasy;
-  border-radius: 25rem;
-  margin: 2rem;
+@media screen and (min-width: 640px) and (min-height: 800px) {
+  .talk {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    background-image: url(../imgs/parchment.jpg);
+  }
+  .talk .talk__elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+  .talk .talk__elements .talk__elements__text {
+    width: 98%;
+    margin-bottom: 0.5rem;
+  }
+  .talk .talk__elements .talk__elements__button {
+    width: 45%;
+    height: auto;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 2rem;
+    font-family: Papyrus, fantasy;
+    padding: 3rem;
+    margin: 0.1rem;
+  }
+  .talk .talk__elements .talk__elements__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .talk .talk__elements .talk__elements__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    width: 20%;
+    height: 3rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 2rem;
+    font-family: Papyrus, fantasy;
+    margin: 0.1rem;
+  }
+  .talk .talk__elements .talk__elements__link:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
 }
-.talk .talk__elements .talk__elements__button:hover {
-  background-color: white;
-  color: black;
-  cursor: pointer;
-}
-.talk .talk__elements .talk__elements__link {
-  border: 0;
-  width: 25%;
-  height: 5rem;
-  margin: 2rem;
-  padding: 1rem;
-  background-color: black;
-  color: white;
-  font-size: 2rem;
-  font-family: Papyrus, fantasy;
-  border-radius: 25rem;
-  text-align: center;
-}
-.talk .talk__elements .talk__elements__link:hover {
-  background-color: white;
-  color: black;
-  cursor: pointer;
-}
-#return {
-  width: 21%;
-  height: 5rem;
+@media (min-width: 1024px) {
+  .talk {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    background-image: url(../imgs/parchment.jpg);
+  }
+  .talk .talk__elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2.5rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+  .talk .talk__elements .talk__elements__text {
+    width: 98%;
+    margin-bottom: 1rem;
+  }
+  .talk .talk__elements .talk__elements__button {
+    width: 45%;
+    height: auto;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 2.5rem;
+    font-family: Papyrus, fantasy;
+    padding: 3.5rem;
+    margin: 0.1rem;
+  }
+  .talk .talk__elements .talk__elements__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .talk .talk__elements .talk__elements__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    width: 20%;
+    height: 3rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 2rem;
+    font-family: Papyrus, fantasy;
+    margin: 0.1rem;
+  }
+  .talk .talk__elements .talk__elements__link:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
 }

@@ -265,13 +265,13 @@ export let golemRoom = {
                 {
                   type: 'div',
                   className: 'talk__elements__text',
-                  value: '*The golem is muttering to himself "you shall not..." over and over*',
+                  value: 'The golem is muttering to himself "you shall not..." over and over',
                 },
                 {
                   type: 'div',
                   className: 'talk__elements__text',
                   value:
-                    "Oh what's the use... Do you know my purpose, the whole reason I exist, is to stand in front of this doorway? What sort of life is that...",
+                    '"Oh what\'s the use... Do you know my purpose, the whole reason I exist, is to stand in front of this doorway? What sort of life is that..."',
                 },
                 {
                   id: 1,
@@ -328,7 +328,7 @@ export let golemRoom = {
                   id: 1,
                   type: 'div',
                   className: 'talk__elements__text',
-                  value: 'Summoning the force of a thousand gods, he explodes shards of splintered stone.',
+                  value: 'Summoning the force of a thousand gods, he explodes into shards of splintered stone.',
                   remove: [
                     { type: 'object', name: 'golem' },
                     { type: 'option', name: 'battle' },

@@ -19,6 +19,7 @@ disappear and I just altered the text to show that.
 15. After battle:
     * The examine option needs to display something different
     * The battle button needs to disappear.
+16. For whatever reason, no matter what you choose when you talk to the elf, you battle the bag of chips.  This is fine for now, since Ryan has yet to provide the fourth room, but that'll be a problem later on.
 
 
     

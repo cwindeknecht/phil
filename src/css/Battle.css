@@ -182,6 +182,73 @@
   }
   .battle .battle__header .battle__header__diceContainer .battle__header__diceContainer__dice {
     margin: 0 2rem;
+    height: 6.25rem;
+    width: 6.25rem;
+  }
+  .battle .battle__header .battle__header__button {
+    width: 30%;
+    height: 4rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 2rem;
+    font-family: Papyrus, fantasy;
+    margin-bottom: 1rem;
+  }
+  .battle .battle__header .battle__header__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .battle .battle__textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 50%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2.5rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+}
+@media screen and (min-width: 1024px) and (min-height: 1024px) {
+  .battle .battle__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .battle .battle__header .battle__header__title {
+    height: 40%;
+    font-size: 3rem;
+    margin: 2rem;
+  }
+  .battle .battle__header .battle__header__diceContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .battle .battle__header .battle__header__diceContainer .battle__header__diceContainer__dice {
+    margin: 0 2rem;
     height: 12.5rem;
     width: 12.5rem;
   }

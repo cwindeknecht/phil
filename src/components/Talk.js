@@ -36,7 +36,6 @@ class Talk extends Component {
     let index = -1;
     let flag = false;
     display = display.filter((option, i) => {
-      console.log(option, option.id, option.id === 11);
       if (id) {
         if (option.id === 11) {
           flag = true;
@@ -50,8 +49,6 @@ class Talk extends Component {
         return option;
       }
     });
-    console.log(index);
-    console.log(display);
     if (index > -1 && flag === true) {
       display.splice(index, 1);
     }
