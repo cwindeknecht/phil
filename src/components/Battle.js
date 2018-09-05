@@ -26,47 +26,42 @@ class Battle extends Component {
     roll: false,
   };
 
+  componentDidUpdate = () => {
+    if (this.state.battleText !== []) {
+      this.scrollBottom();
+    }
+  };
+
   render() {
-    // If I have time, make a villager character that looks puny
-    // have the opponent on one side, the villager on the other side
     return (
-      <div className="BattleContainer">
-        <div className="BattleHeader">
-          {/* have this be a modal that pops up */}
-          {/* <img className="BattleExplanation"> */}
-          <div className="BattleTitle"> {this.state.opponent.initialText}</div>
+      <div className="battle">
+        <div className="battle__header">
+          <div className="battle__header__title"> {this.state.opponent.initialText}</div>
           {this.state.roll ? (
-            <div className="BattleDiceContainer">
-              <img alt="dice1" src={this.state.rolls[0][0].image} className="BattleDice" />
-              <img alt="dice2" src={this.state.rolls[0][1].image} className="BattleDice" />
+            <div className="battle__header__diceContainer">
+              <img alt="dice1" src={this.state.rolls[0][0].image} className="battle__header__diceContainer__dice" />
+              <img alt="dice2" src={this.state.rolls[0][1].image} className="battle__header__diceContainer__dice" />
             </div>
           ) : (
-            <div className="BattleDiceContainer">
-              <img alt="dice1" className="BattleDice" style={{ opacity: '0' }} />
-              <img alt="dice2" className="BattleDice" style={{ opacity: '0' }} />
+            <div className="battle__header__diceContainer">
+              <img alt="dice1" className="battle__header__diceContainer__dice" style={{ opacity: '0' }} />
+              <img alt="dice2" className="battle__header__diceContainer__dice" style={{ opacity: '0' }} />
             </div>
-          )}
-          {this.state.roll ? (
-            <button className="BattleButton" style={{ opacity: '0' }} />
-          ) : (
-            <button className="BattleButton" onClick={this.handleTransition}>
-              Nevermind
-            </button>
           )}
           {this.state.victory ? (
-            <button className="BattleButton" onClick={this.handleCharacterUpdate}>
+            <button className="battle__header__button " onClick={this.handleCharacterUpdate}>
               Victory!
             </button>
           ) : (
-            <button className="BattleButton" onClick={this.handleRoll}>
+            <button className="battle__header__button " onClick={this.handleRoll}>
               Roll
             </button>
           )}
         </div>
-        <div className="BattleTextContainer">
+        <div id="scroll" className="battle__textContainer">
           {this.state.battleText.map((text, i) => {
             return (
-              <li className="BattleText" key={i}>
+              <li className="battle__textContainer__text" key={i}>
                 {text}
               </li>
             );
@@ -78,10 +73,14 @@ class Battle extends Component {
   handleTransition = () => {
     this.props.handle_transition(Main);
   };
-  // I NEED TO MAKE IT SO IT ROLLS A D4 FOR THIS SHIT TOO IF THEY LAND A HIT
-  // EVEN THOUGH THAT BASICALLY NEVER HAPPENS
-  // BUT THEN AGAIN NEITHER WILL FUCKING BATTLE
+
+  scrollBottom = () => {
+    let scroll = document.getElementById('scroll');
+    scroll.scrollTop = scroll.scrollHeight;
+  };
+
   handleRoll = () => {
+    let text = '';
     let rolls = [];
     let opponent = this.state.opponent;
     let character = this.state.character;
@@ -110,41 +109,42 @@ class Battle extends Component {
     let dam = diceArray[0].num + diceArray[1].num - opponent.detriment;
     // damage to opponent
     if (dam >= opponent.crit) {
-      let opponentDamage = (Math.floor(Math.random() * character.damage) + 1) - opponent.detriment;
-      if (opponentDamage < 0) opponentDamage = 0;
+      let opponentDamage = Math.floor(Math.random() * character.damage) + 1 - opponent.detriment;
+      opponentDamage = opponentDamage > 0 ? opponentDamage : 1;
       // opponent.health -= opponentDamage;
-      opponent.health -= 8;
+      opponent.health -= opponentDamage;
       if (opponentDamage > 0) {
-        battleText.push(opponent.critText + `You deal ${opponentDamage} damage.  `);
+        text += opponent.critText + `You deal ${opponentDamage} damage.`;
       } else {
-        battleText.push(
-          opponent.critText +
-            `You deal ${opponentDamage} damage.  Attacking a ${this.props.opponent.name} was a terrible idea.`,
-        );
+        text += opponent.critText + `You deal ${opponentDamage} damage.  Good job.`;
       }
     }
     // damage to both
     else if (dam <= opponent.tradeHigh && dam >= opponent.tradeLow) {
-      let opponentDamage = (Math.floor(Math.random() * character.damage) + 1) - opponent.detriment;
-      let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
+      let opponentDamage = Math.floor(Math.random() * character.damage) + 1 - opponent.detriment;
+      opponentDamage = opponentDamage > 0 ? opponentDamage : 0;
+      // let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
+      let characterDamage = 0;
       character.health -= characterDamage - character.armor;
       opponent.health -= opponentDamage;
       if (opponentDamage > 0) {
-        battleText.push(opponent.tradeText, `The ${opponent.name} deals ${characterDamage} to you.  You deal ${opponentDamage} damage.  `);
+        text +=
+          opponent.tradeText +
+          `The ${opponent.name} deals ${characterDamage} to you.  You deal ${opponentDamage} damage.`;
       } else {
-        battleText.push(
-          opponent.tradeText,
-            `The ${opponent.name} deals ${characterDamage} to you.  You deal ${opponentDamage} damage.  Attacking a ${this.props.opponent.name} was a terrible idea.`,
-        );
+        text +=
+          opponent.tradeText +
+          `The ${opponent.name} deals ${characterDamage} to you.  You deal ${opponentDamage} damage.  Nice work.`;
       }
     }
     // damage to player
     else if (dam === 0) {
-      battleText.push(opponent.dodgeText);
+      text += opponent.dodgeText;
     } else {
-      let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
+      let characterDamage = 0;
+      // let characterDamage = Math.floor(Math.random() * opponent.tradeDamageGive) + 1;
       character.health -= characterDamage - character.armor;
-      battleText.push(opponent.hitText, `The ${opponent.name} does ${characterDamage} to you.`);
+      text += opponent.hitText + `The ${opponent.name} does ${characterDamage} to you.`;
     }
     if (character.health <= 0) {
       this.props.handle_death(this.props.opponent.deathMessage);
@@ -152,15 +152,10 @@ class Battle extends Component {
       return;
     }
     if (opponent.health <= 0) this.handleVictory(this.props.currentRoom);
+    battleText.push(text);
     this.setState({ rolls, character, opponent, battleText, roll: true });
   };
-  // this is for if the character actually beats the opponent
-  // go back to main
-  // update the character in the store
-  // update the visibility of the creature
-  // update the topbar text with the victory text
-  // since the warrior is connected to the tv/bag, just say in the midst of battle you destroy the tv set and bag of holding.
-  // update the clickables on the screen (doors, chest, spear, etc)
+
   handleVictory = () => {
     this.setState({ victory: true });
   };

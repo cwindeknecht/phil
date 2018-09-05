@@ -1,58 +1,217 @@
-.BattleContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  font-family: Papyrus, fantasy;
-  background: url(../imgs/parchment.jpg);
-  height: 100vh;
-  width: 100vw;
+@media (min-width: 320px) {
+  .battle {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    background: url(../imgs/parchment.jpg);
+  }
+  .battle .battle__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .battle .battle__header .battle__header__title {
+    height: 40%;
+    font-size: 1.25rem;
+    margin: 1rem 1rem 0 1rem;
+  }
+  .battle .battle__header .battle__header__diceContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .battle .battle__header .battle__header__diceContainer .battle__header__diceContainer__dice {
+    margin: 0 2rem;
+    height: 3.125rem;
+    width: 3.125rem;
+  }
+  .battle .battle__header .battle__header__button {
+    width: 30%;
+    height: 3rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 1.5rem;
+    font-family: Papyrus, fantasy;
+    margin-bottom: 1rem;
+  }
+  .battle .battle__header .battle__header__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .battle .battle__textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 50%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: auto;
+  }
+  .battle .battle__textContainer .battle__textContainer__text {
+    width: 100%;
+    padding: 0.3rem;
+    border-bottom: 0.1rem solid black;
+  }
 }
-.BattleContainer .BattleHeader {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+@media (min-width: 480px) {
+  .battle .battle__header .battle__header__button {
+    margin: 0.5rem;
+  }
 }
-.BattleContainer .BattleHeader .BattleTitle {
-  margin: 2rem;
-  font-size: 2rem;
+@media screen and (min-width: 640px) and (min-height: 1024px) {
+  .battle .battle__header .battle__header__title {
+    height: auto;
+    font-size: 2.5rem;
+    margin: 1rem 1rem 0 1rem;
+  }
+  .battle .battle__header .battle__header__diceContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .battle .battle__header .battle__header__diceContainer .battle__header__diceContainer__dice {
+    margin: 0 3rem;
+    height: 6.25rem;
+    width: 6.25rem;
+  }
+  .battle .battle__header .battle__header__button {
+    width: 30%;
+    height: 4rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 2rem;
+    font-family: Papyrus, fantasy;
+    margin-bottom: 1rem;
+  }
+  .battle .battle__header .battle__header__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .battle .battle__textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 50%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 1.75rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .battle .battle__textContainer .battle__textContainer__text {
+    padding: 0.5rem;
+  }
 }
-.BattleContainer .BattleHeader .BattleDiceContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.BattleContainer .BattleHeader .BattleDiceContainer .BattleDice {
-  margin: 0 2rem;
-  height: 6.25rem;
-  width: 6.25rem;
-}
-.BattleContainer .BattleHeader .BattleButton {
-  border: 0;
-  width: 10rem;
-  height: 3rem;
-  margin: 0.2rem;
-  background-color: black;
-  color: white;
-  font-size: 1.5rem;
-  font-family: Papyrus, fantasy;
-  border-radius: 25rem;
-}
-.BattleContainer .BattleHeader .BattleButton:hover {
-  cursor: pointer;
-  background-color: white;
-  color: black;
-}
-.BattleContainer .BattleTextContainer {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  font-size: 1.5rem;
-}
-.BattleContainer .BattleTextContainer .BattleText {
-  margin: 2rem 2rem;
+@media (min-width: 1024px) {
+  .battle .battle__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .battle .battle__header .battle__header__title {
+    height: 40%;
+    font-size: 3rem;
+    margin: 2rem;
+  }
+  .battle .battle__header .battle__header__diceContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .battle .battle__header .battle__header__diceContainer .battle__header__diceContainer__dice {
+    margin: 0 2rem;
+    height: 12.5rem;
+    width: 12.5rem;
+  }
+  .battle .battle__header .battle__header__button {
+    width: 30%;
+    height: 5rem;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 3rem;
+    font-family: Papyrus, fantasy;
+    margin-bottom: 1rem;
+  }
+  .battle .battle__header .battle__header__button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
+  .battle .battle__textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 50%;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2.5rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
 }

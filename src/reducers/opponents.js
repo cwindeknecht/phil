@@ -1,7 +1,7 @@
 export let golem = {
   name: 'golem',
   health: 8,
-  initialText: 'The golem towers over you.  Larger than a doorway, he dwarfs your tiny human body.',
+  initialText: 'The golem towers over you.  Larger than a doorway, dwarfing your tiny human body.',
   // how much their roll/damage is affected
   detriment: 2,
   // what character has to roll to hit
