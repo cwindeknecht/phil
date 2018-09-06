@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: auto;
     width: 100%;
     font-family: Papyrus, fantasy;
     font-size: 2rem;
@@ -105,7 +105,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: auto;
     width: 100%;
     font-family: Papyrus, fantasy;
     font-size: 2rem;
@@ -116,9 +116,9 @@
   .bottom .bottom__main {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    height: 80%;
+    height: 100%;
     width: 100%;
     font-family: Papyrus, fantasy;
     font-size: 2rem;
@@ -206,7 +206,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: auto;
     width: 100%;
     font-family: Papyrus, fantasy;
     font-size: 2rem;
@@ -217,9 +217,9 @@
   .bottom .bottom__main {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    height: 80%;
+    height: 100%;
     width: 100%;
     font-family: Papyrus, fantasy;
     font-size: 2rem;
@@ -279,7 +279,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: auto;
     width: 100%;
     font-family: Papyrus, fantasy;
     font-size: 2rem;
@@ -290,9 +290,9 @@
   .bottom .bottom__main {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    height: 80%;
+    height: 100%;
     width: 100%;
     font-family: Papyrus, fantasy;
     font-size: 2rem;
@@ -380,7 +380,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: auto;
     width: 100%;
     font-family: Papyrus, fantasy;
     font-size: 2rem;

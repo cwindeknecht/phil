@@ -24,6 +24,8 @@ disappear and I just altered the text to show that.
 18. On phone / tablet sizes, it is possible for the popup elements to go beyond the size of the screen.  Either a) fix the height/width of the popups (easier) or check the screen width, add the x position of the click and the width of the element, see if it escapes the bounds, then pass on a different x instead to the popup component (fancier, harder).  I like the second idea better, but it is definitely a bigger pain in the ass.
 19. Similarly to how I have popups change width based on screen size, do the same with objects.  Things look a little janky.
 20. Similarly to opponents, have a talk file as well to remove some of it from rooms.
+21. Apparently vh doesn't work for mobile... so yay.  Wish I had known that at some point...
+22. Ryan wants the torches interactable.  I see no reason to be able to pick them up if the rooms are all alit.  If he changes this, I'll bother with that.
 
 
 

@@ -2,7 +2,7 @@
 
 @media (min-width: 320px) {
   .bottom {
-    .containers();
+    .containers(@height: auto);
     .bottom__main {
       .containers();
       .clickable:hover {
@@ -30,9 +30,9 @@
 
 @media (min-width: 480px) {
   .bottom {
-    .containers();
+    .containers(@height: auto);
     .bottom__main {
-      .containers(@height:80%, @justifyContent:flex-end);
+      .containers();
       .clickable:hover {
         cursor: pointer;
       }
@@ -58,9 +58,9 @@
 
 @media (min-width: 640px) {
   .bottom {
-    .containers();
+    .containers(@height: auto);
     .bottom__main {
-      .containers(@height:80%, @justifyContent:flex-end);
+      .containers();
       .clickable:hover {
         cursor: pointer;
       }
@@ -80,9 +80,9 @@
 
 @media screen and (min-width: 640px) and (min-height: 1024px) {
   .bottom {
-    .containers();
+    .containers(@height: auto);
     .bottom__main {
-      .containers(@height:80%, @justifyContent:flex-end);
+      .containers();
       .clickable:hover {
         cursor: pointer;
       }
@@ -108,7 +108,7 @@
 
 @media (min-width: 1024px) {
   .bottom {
-    .containers(@height:80vh);
+    .containers(@height: auto);
     .bottom__main {
       .containers();
       .clickable:hover {
