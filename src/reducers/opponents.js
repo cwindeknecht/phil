@@ -102,7 +102,7 @@ export let bagOfChips = {
   // what character has to roll to hit
   // subtract detriment
   crit: 10,
-  // max damage a character can deal, 1-2
+  // max damage a character can deal
   // subtrack detriment
   critDamage: 4,
   // what is displayed on a crit
@@ -112,7 +112,7 @@ export let bagOfChips = {
   // minimum they have to roll to trade blows
   tradeLow: 4,
   // max damage the golem can do on a trade
-  tradeDamageGive: 2,
+  tradeDamageGive: 1,
   // what is displayed on a trade
   tradeText: 'You eat some chips and you can feel your arteries clogging.',
   hitText: 'You begin developing diabetes.',
@@ -121,5 +121,5 @@ export let bagOfChips = {
   dodgeText:
     "You regurgitate into the bag.  More chips, yay!",
   victory: "You finished the whole bag and didn't die.  Awesome.",
-  deathMessage: 'Your foot falls off, so you grab more chips and watch Stranger Dragons.',
+  deathMessage: 'Your foot falls off from the diabetes, so you grab more chips and watch Stranger Dragons.',
 };

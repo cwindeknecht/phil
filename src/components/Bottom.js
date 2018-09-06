@@ -21,7 +21,7 @@ class Bottom extends Component {
     this.handleInitial();
   };
 
-  componentDidUpdate = prevState => {
+  componentDidUpdate = () => {
     if (this.state.objects !== this.props.currentRoom.objects && !this.props.intro) {
       this.setState({ objects: this.props.currentRoom.objects, roomOptions: this.props.currentRoom.options });
       this.handleInitial();
@@ -61,12 +61,10 @@ class Bottom extends Component {
   };
 
   getBottom = () => {
-    let main = null;
     return (
       <div className="bottom__main">
         {this.props.currentRoom.objects.map(item => {
           if (item.visible === true) {
-            if (item.id === 1) main = item;
             return (
               <img
                 alt={item.name}

@@ -873,7 +873,7 @@ export let warriorRoom = {
             text: 'Yes',
             action: {
               type: ['transition'],
-              location: 'warriorRoom',
+              location: 'FourthRoom',
               link: {
                 show: false,
                 page: 0,
@@ -887,7 +887,7 @@ export let warriorRoom = {
         ],
       },
       related: null,
-      visible: true,
+      visible: false,
     },
     {
       id: 8,
