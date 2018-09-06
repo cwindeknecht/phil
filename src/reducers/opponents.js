@@ -96,7 +96,7 @@ export let bagOfChips = {
   name: 'bagOfChips',
   health: 1000,
   initialText:
-    "Your greatest foe.  Your own sloth and gluttony in etheral form.",
+    "Your greatest foe.  Your own sloth and gluttony in etheral form... the bag of potato chips sits there, mocking you.",
   // how much their roll/damage is affected
   detriment: 0,
   // what character has to roll to hit

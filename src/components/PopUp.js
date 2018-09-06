@@ -16,7 +16,7 @@ class PopUp extends Component {
         style={{
           left: this.props.x,
           top: this.props.y,
-          width: item.clicked.width < 50 ? '50%' : item.clicked.width + '%',
+          width: window.innerWidth < 1024 ? '50%' : item.clicked.width + '%',
           height: item.clicked.height < 20 ? '20%' : item.clicked.height + '%',
         }}>
         {item.clickable === false ? item.unclickable : item.clicked.text}

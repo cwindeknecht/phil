@@ -34,7 +34,6 @@ class Bottom extends Component {
 
   render() {
     document.addEventListener('click', this.mousePosition);
-    console.log('height', window.innerHeight, 'width', window.innerWidth)
     return <div className="bottom">{this.props.intro ? this.getIntro() : this.getBottom()}</div>;
   }
 
@@ -111,7 +110,14 @@ class Bottom extends Component {
                     ? this.handleExamine.bind(this, option)
                     : this.handleBattle.bind(this, option.opponent)
                 }
-                style={{ position: 'absolute', left: option.x, top: option.y, zIndex: option.z }}>
+                style={{
+                  position: 'absolute',
+                  width: window.innerWidth < 1024 ? '50%' : option.width + '%',
+                  height: option.height < 15 ? '15%' : option.height + '%',
+                  left: window.innerWidth < 1024 && i !== 0 ? '50%' : option.x + '%',
+                  top: option.y + '%',
+                  zIndex: option.z,
+                }}>
                 {option.text}
               </div>
             );

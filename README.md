@@ -22,6 +22,8 @@ disappear and I just altered the text to show that.
 16. For whatever reason, no matter what you choose when you talk to the elf, you battle the bag of chips.  This is fine for now, since Ryan has yet to provide the fourth room, but that'll be a problem later on.
 17. I have no clue as to why, but the image resizes for onClick events if the height is set to anything besides .5 and the width is set to anything but .8 in Bottom (also works in varying other combinations...).  Assuming this doesn't break down the road, I'm just going to roll with it for now, but I would desperately like to know why this is happening.
 18. On phone / tablet sizes, it is possible for the popup elements to go beyond the size of the screen.  Either a) fix the height/width of the popups (easier) or check the screen width, add the x position of the click and the width of the element, see if it escapes the bounds, then pass on a different x instead to the popup component (fancier, harder).  I like the second idea better, but it is definitely a bigger pain in the ass.
+19. Similarly to how I have popups change width based on screen size, do the same with objects.  Things look a little janky.
+20. Similarly to opponents, have a talk file as well to remove some of it from rooms.
 
 
 

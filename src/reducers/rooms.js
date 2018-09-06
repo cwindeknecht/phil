@@ -54,7 +54,7 @@ export let outside = {
       clicked: {
         show: false,
         text: 'Go inside?',
-        width: 15,
+        width: 20,
         height: 15,
         options: [
           {
@@ -102,16 +102,16 @@ export let threeDoorsRoom = {
       id: 4,
       name: 'rightDoorway',
       image: rightDoorway,
-      width: 10,
-      height: 17,
-      x: 45,
-      y: 56,
+      width: 11,
+      height: 19,
+      x: 62,
+      y: 50,
       z: 1,
       clicked: {
         text: 'Go inside?',
         show: false,
-        width: '15rem',
-        height: '5rem',
+        width: 25,
+        height: 15,
         options: [
           {
             text: 'Yes',
@@ -137,17 +137,17 @@ export let threeDoorsRoom = {
       id: 5,
       name: 'sword',
       image: sword,
-      width: 10,
-      height: 17,
-      x: 45,
-      y: 56,
+      width: 7,
+      height: 14,
+      x: 43.5,
+      y: 58,
       z: 1,
       // what happens on click
       clicked: {
         show: false,
         text: 'Take the Sword',
-        width: '20rem',
-        height: '5rem',
+        width: 25,
+        height: 15,
         options: [
           {
             text: 'Yes',
@@ -177,8 +177,10 @@ export let threeDoorsRoom = {
   options: [
     {
       visible: true,
-      x: 400,
-      y: 600,
+      width: 30,
+      height: 15,
+      x: 0,
+      y: 80,
       z: 2,
       type: 'examine',
       text: 'Examine?',
@@ -201,11 +203,11 @@ export let golemRoom = {
       name: 'golemDoorway',
       image: corridorFacing,
       // x position from left of container
-      width: 1200,
-      height: 700,
-      x: 0,
+      width: 80,
+      height: 50,
+      x: 10,
       // y position from top of container
-      y: 200,
+      y: 20,
       z: 0,
       clicked: null,
       visible: true,
@@ -214,15 +216,19 @@ export let golemRoom = {
       id: 7,
       name: 'doorway',
       image: doorway,
-      x: 690,
-      y: 410,
+      width: 10,
+      height: 21,
+      x: 45,
+      y: 41,
       z: 1,
       // what happens on click
       clicked: {
         text: 'Go inside?',
         show: false,
-        width: '15rem',
-        height: '5rem',
+        height: 14,
+        x: 43.5,
+        y: 58,
+        z: 1,
         options: [
           {
             id: 7,
@@ -249,15 +255,17 @@ export let golemRoom = {
       id: 8,
       name: 'golem',
       image: golem,
-      x: 600,
-      y: 350,
+      width: 20,
+      height: 33,
+      x: 40,
+      y: 35,
       z: 2,
       // what happens on click
       clicked: {
         show: false,
         text: 'Talk to the Golem?',
-        width: '25rem',
-        height: '5rem',
+        width: 20,
+        height: 10,
         options: [
           {
             id: 8,
@@ -442,8 +450,10 @@ export let golemRoom = {
   options: [
     {
       visible: true,
-      x: 350,
-      y: 600,
+      width: 30,
+      height: 15,
+      x: 0,
+      y: 80,
       z: 2,
       type: 'examine',
       text: 'Examine?',
@@ -453,8 +463,10 @@ export let golemRoom = {
     },
     {
       visible: true,
-      x: 925,
-      y: 600,
+      width: 30,
+      height: 15,
+      x: 70,
+      y: 80,
       z: 2,
       type: 'battle',
       text: 'Battle?',
@@ -475,11 +487,11 @@ export let koboldRoom = {
       name: 'koboldDoorway',
       image: corridorFacingRightBlocked,
       // x position from left of container
-      width: 1200,
-      height: 700,
-      x:0,
+      width: 80,
+      height: 50,
+      x:10,
       // y position from top of container
-      y: 200,
+      y: 20,
       z: 0,
       clicked: null,
       visible: true,
@@ -488,16 +500,18 @@ export let koboldRoom = {
       id: 7,
       name: 'kobold',
       image: kobold,
-      x: 540,
-      y: 216,
+      width: 30,
+      height: 50,
+      x: 20,
+      y: 34,
       z: 3,
       // what happens on click
       clickable: true,
       clicked: {
         show: false,
         text: 'Talk to the Kobold?',
-        width: '25rem',
-        height: '5rem',
+        width: 20,
+        height: 15,
         options: [
           {
             id: 7,
@@ -674,16 +688,18 @@ export let koboldRoom = {
       id: 8,
       name: 'doorway',
       image: doorway,
-      x: 1100,
-      y: 310,
+      width: 10, 
+      height: 20,
+      x: 72.3,
+      y: 31,
       z: 1,
       // what happens on click
       clickable: true,
       clicked: {
         text: 'Go inside?',
         show: false,
-        width: '15rem',
-        height: '5rem',
+        width: 15,
+        height: 10,
         options: [
           {
             text: 'Yes',
@@ -709,8 +725,10 @@ export let koboldRoom = {
       id: 9,
       name: 'koboldSpear',
       image: koboldSpear,
-      x: 815,
-      y: 216,
+      width: 6,
+      height: 62,
+      x: 44,
+      y: 23,
       z: 2,
       clickable: false,
       // what happens on click
@@ -718,8 +736,8 @@ export let koboldRoom = {
       clicked: {
         show: false,
         text: 'Take the Spear',
-        width: '20rem',
-        height: '5rem',
+        width: 25,
+        height: 15,
         options: [
           {
             text: 'Yes',
@@ -749,8 +767,10 @@ export let koboldRoom = {
       id: 10,
       name: 'koboldTreasure',
       image: koboldTreasure,
-      x: 325,
-      y: 400,
+      width:28,
+      height: 26,
+      x: 5,
+      y: 34,
       z: 1,
       // what happens on click
       clickable: false,
@@ -758,8 +778,8 @@ export let koboldRoom = {
       clicked: {
         show: false,
         text: 'Take the Treasure',
-        width: '20rem',
-        height: '5rem',
+        width: 25,
+        height: 15,
         options: [
           {
             text: 'Yes',
@@ -786,8 +806,10 @@ export let koboldRoom = {
   options: [
     {
       visible: true,
-      x: 350,
-      y: 600,
+      width: 30,
+      height: 15,
+      x: 0,
+      y: 85,
       z: 2,
       type: 'examine',
       text: 'Examine?',
@@ -795,9 +817,12 @@ export let koboldRoom = {
       link: null,
     },
     {
+      
       visible: true,
-      x: 925,
-      y: 600,
+      width: 30,
+      height: 15,
+      x: 70,
+      y: 85,
       z: 2,
       type: 'battle',
       text: 'Battle?',
@@ -818,11 +843,11 @@ export let warriorRoom = {
       name: 'warriorDoorway',
       image: corridorFacingRightBlocked,
       // x position from left of container
-      width: 1200,
-      height: 700,
+      width: 80,
+      height: 50,
       x: 0,
       // y position from top of container
-      y: 200,
+      y: 30,
       z: 0,
       clicked: null,
       visible: true,
@@ -831,15 +856,18 @@ export let warriorRoom = {
       id: 7,
       name: 'doorway',
       image: doorway,
-      x: 1100,
-      y: 310,
+      width: 10, 
+      height: 20,
+      x: 62.3,
+      y: 41,
       z: 1,
+      // what happens on click
       clickable: true,
       clicked: {
         text: 'Go inside?',
         show: false,
-        width: '15rem',
-        height: '5rem',
+        width: 15,
+        height: 10,
         options: [
           {
             text: 'Yes',
@@ -859,22 +887,24 @@ export let warriorRoom = {
         ],
       },
       related: null,
-      visible: false,
+      visible: true,
     },
     {
       id: 8,
       name: 'warrior',
       image: warrior,
-      x: 325,
-      y: 325,
+      width: 40,
+      height: 40,
+      x: 0,
+      y: 45,
       z: 1,
       // what happens on click
       clickable: true,
       clicked: {
         show: false,
         text: 'Talk to the Warrior?',
-        width: '25rem',
-        height: '5rem',
+        width: 20,
+        height: 10,
         options: [
           {
             id: 8,
@@ -950,6 +980,14 @@ export let warriorRoom = {
                   add: 'doorway',
                 },
                 {
+                  id: 2,
+                  type: 'div',
+                  className: 'talk__elements__text',
+                  value: '<<< +1 XP >>>',
+                  remove: [{ type: 'option', name: 'battle' }, { type: 'option', name: 'examine' }],
+                  add: 'doorway',
+                },
+                {
                   id: 10,
                   type: 'button',
                   className: 'talk__elements__link',
@@ -1019,8 +1057,10 @@ export let warriorRoom = {
   options: [
     {
       visible: true,
-      x: 350,
-      y: 600,
+      width: 30,
+      height: 15,
+      x: 0,
+      y: 85,
       z: 2,
       type: 'examine',
       text: 'Examine?',
@@ -1030,8 +1070,10 @@ export let warriorRoom = {
     },
     {
       visible: true,
-      x: 925,
-      y: 600,
+      width: 30,
+      height: 15,
+      x: 70,
+      y: 85,
       z: 2,
       type: 'battle',
       text: 'Battle?',

@@ -27,6 +27,7 @@
     margin: 0;
     font-family: Arnoldboecklin, fantasy;
     flex-wrap: wrap;
+    text-align: center;
   }
   .talk .talk__elements .talk__elements__text {
     width: 98%;
