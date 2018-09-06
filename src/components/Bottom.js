@@ -34,6 +34,7 @@ class Bottom extends Component {
 
   render() {
     document.addEventListener('click', this.mousePosition);
+    console.log('height', window.innerHeight, 'width', window.innerWidth)
     return <div className="bottom">{this.props.intro ? this.getIntro() : this.getBottom()}</div>;
   }
 
@@ -61,11 +62,12 @@ class Bottom extends Component {
   };
 
   getBottom = () => {
+    let main = null;
     return (
       <div className="bottom__main">
         {this.props.currentRoom.objects.map(item => {
-          console.log(item);
           if (item.visible === true) {
+            if (item.id === 1) main = item;
             return (
               <img
                 alt={item.name}
@@ -74,11 +76,11 @@ class Bottom extends Component {
                 className={item.clicked ? 'clickable' : ''}
                 src={item.image}
                 style={{
-                  position: 'relative',
-                  width: item.width,
-                  height: item.height,
-                  left: item.x,
-                  top: item.y,
+                  position: 'absolute',
+                  width: item.width + '%',
+                  height: item.height + '%',
+                  left: item.x + '%',
+                  top: item.y + '%',
                   zIndex: item.z,
                 }}
                 onClick={this.handlePopup}
@@ -109,7 +111,7 @@ class Bottom extends Component {
                     ? this.handleExamine.bind(this, option)
                     : this.handleBattle.bind(this, option.opponent)
                 }
-                style={{ left: option.x, top: option.y, zIndex: option.z }}>
+                style={{ position: 'absolute', left: option.x, top: option.y, zIndex: option.z }}>
                 {option.text}
               </div>
             );

@@ -4,7 +4,7 @@
   .bottom {
     .containers();
     .bottom__main {
-      .containers(@height:80%, @justifyContent:flex-end);
+      .containers();
       .clickable:hover {
         cursor: pointer;
       }
@@ -108,11 +108,15 @@
 
 @media (min-width: 1024px) {
   .bottom {
-    .containers();
+    .containers(@height:80vh);
     .bottom__main {
-      .containers(@height:80%, @justifyContent:flex-end);
+      .containers();
       .clickable:hover {
         cursor: pointer;
+      }
+      .main {
+        height: 80%;
+        width: 100%;
       }
       .bottom__main__options {
         .containers();

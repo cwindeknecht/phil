@@ -23,7 +23,6 @@ class Start extends Component {
             Start
           </button>
         </div>
-        <div className="start__footer">v 1.0 </div>
       </div>
     );
   }

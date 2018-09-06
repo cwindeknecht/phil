@@ -6,16 +6,10 @@ import '../css/Main.css';
 import Top from './Top';
 import Bottom from './Bottom';
 
-import parchment from '../imgs/parchment.jpg';
-
-let parchmentBackground = {
-  backgroundImage: `url(${parchment})`,
-};
-
 class Main extends Component {
   render() {
     return (
-      <div className="MainContainer" style={parchmentBackground}>
+      <div className="MainContainer">
         {this.props.intro ? null : <Top />}
         <Bottom />
       </div>

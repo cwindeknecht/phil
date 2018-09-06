@@ -1,32 +1,85 @@
-.PopUpContainer {
-  position: absolute;
-  background: lightgray;
-  border: 0.5rem solid black;
-  z-index: 5;
-  font-size: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5rem;
-  .PopUpOptions {
+@import 'mixins.less';
+
+@media (min-width: 320px) {
+  .PopUpContainer {
+    position: absolute;
+    background: lightgray;
+    border: 0.5rem solid black;
+    z-index: 5;
+    font-size: 1.5rem;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    .PopUpButton {
-      cursor: pointer;
-      background-color: black;
-      border: 0;
-      color: white;
-      font-family: Papyrus, fantasy;
-      font-size: 1rem;
-      border-radius: 5rem;
-      width: 30%;
+    border-radius: 5rem;
+    .PopUpOptions {
+      .containers(@flexDirection: row, @justifyContent: space-around, @height: auto);
+      .PopUpButton {
+        .commonButtons(@fontSize: 1rem, @width: 30%, @height: auto);
+      }
     }
-    .PopUpButton:hover{
-      background: white;
-      color: black;
+  }
+}
+
+@media screen and (min-width: 640px) and (min-height: 1024px) {
+  .PopUpContainer {
+    position: absolute;
+    background: lightgray;
+    border: 0.5rem solid black;
+    z-index: 5;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+    .PopUpOptions {
+      .containers(@flexDirection: row, @justifyContent: space-around, @height: auto);
+      .PopUpButton {
+        .commonButtons(@fontSize: 2rem, @width: 30%, @height: auto);
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .PopUpContainer {
+    position: absolute;
+    background: lightgray;
+    border: 0.5rem solid black;
+    z-index: 5;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+    .PopUpOptions {
+      .containers(@flexDirection: row, @justifyContent: space-around, @height: auto);
+      .PopUpButton {
+        .commonButtons(@fontSize: 1rem, @width: 30%, @height: auto);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) and (min-height: 1024px) {
+  .PopUpContainer {
+    position: absolute;
+    background: lightgray;
+    border: 0.5rem solid black;
+    z-index: 5;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+    .PopUpOptions {
+      .containers(@flexDirection: row, @justifyContent: space-around, @height: auto);
+      .PopUpButton {
+        .commonButtons(@fontSize: 2rem, @width: 30%, @height: auto);
+      }
     }
   }
 }

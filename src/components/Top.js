@@ -8,10 +8,6 @@ import character from '../imgs/clickables/CharacterSheet.png';
 import { handle_transition, handle_current_room  } from '../actions/index';
 import CharacterSheet from './CharacterSheet';
 
-let sheet = {
-  backgroundImage: `url(${character})`,
-};
-
 class Top extends Component {
   render() {
     let philosophyText = `https://www.earlymoderntexts.com/assets/pdfs/kant1785.pdf#page=${this.props.pageNumber}`;
@@ -26,7 +22,7 @@ class Top extends Component {
         ) : (
           <div className="TopLink" style={{ opacity: '0' }} />
         )}
-        <div style={sheet} className="TopSheet" onClick={this.handleCharacterView} />
+        <img alt="sheet" src={character} className="TopSheet" onClick={this.handleCharacterView}/>
       </div>
     );
   }

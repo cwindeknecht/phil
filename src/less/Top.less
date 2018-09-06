@@ -1,48 +1,194 @@
-.TopContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-family: Papyrus, fantasy;
-  height: 20%;
-  .TopText {
-    background: lightgray;
-    border: 0.5rem solid black;
-    width: 70vw;
-    height: 20vh;
-    font-size: 1.75rem;
-    border-radius: 2rem;
-    padding: 2rem;
-    margin: 2rem 0;
-    text-align: center;
-    overflow: unset;
+@import 'mixins.less';
+
+@media (min-width: 320px) {
+  .TopContainer {
+    .containers(@flexDirection: row, @justifyContent: space-between, @height: 30vh);
+    .TopText {
+      background: lightgray;
+      border: 0.1rem solid black;
+      width: 70vw;
+      height: 100%;
+      font-size: 1rem;
+      border-radius: 2rem;
+      padding: .3rem;
+      margin: .5rem 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.1;
+    }
+    .TopLink {
+      width: 15vw;
+      height: 5rem;
+      background: lightgray;
+      border: 0.1rem solid black;
+      font-size: 1rem;
+      border-radius: 5rem;
+      text-align:center;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Papyrus, fantasy;
+    }
+    .TopLink:hover {
+      cursor: pointer;
+      background: white;
+      color: black;
+    }
+    .TopSheet {
+      width: 15vw;
+      height: 80%;
+      opacity: 0.5;
+    }
+    .TopSheet:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
   }
-  .TopLink {
-    width: 15vw;
-    height: 5rem;
-    background: lightgray;
-    border: 0.5rem solid black;
-    font-size: 2rem;
-    border-radius: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Papyrus, fantasy;
+}
+
+@media screen and (min-width: 640px) and (min-height: 1024px) {
+  .TopContainer {
+    .containers(@flexDirection: row, @justifyContent: space-between, @height: 30vh);
+    .TopText {
+      background: lightgray;
+      border: 0.1rem solid black;
+      width: 70vw;
+      height: 100%;
+      font-size: 2rem;
+      border-radius: 2rem;
+      padding: .3rem;
+      margin: .5rem 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.1;
+    }
+    .TopLink {
+      width: 15vw;
+      height: 5rem;
+      background: lightgray;
+      border: 0.5rem solid black;
+      font-size: 2rem;
+      border-radius: 5rem;
+      text-align:center;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Papyrus, fantasy;
+    }
+    .TopLink:hover {
+      cursor: pointer;
+      background: white;
+      color: black;
+    }
+    .TopSheet {
+      width: 15vw;
+      height: 80%;
+      opacity: 0.5;
+    }
+    .TopSheet:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
   }
-  .TopLink:hover {
-    cursor: pointer;
-    background: white;
-    color: black;
+}
+
+
+@media (min-width: 1024px) {
+  .TopContainer {
+    .containers(@flexDirection: row, @justifyContent: space-between, @height: 20vh);
+    .TopText {
+      background: lightgray;
+      border: 0.1rem solid black;
+      width: 70vw;
+      height: 100%;
+      font-size: 2rem;
+      border-radius: 2rem;
+      padding: .3rem;
+      margin: .5rem 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.1;
+    }
+    .TopLink {
+      width: 15vw;
+      height: 5rem;
+      background: lightgray;
+      border: 0.5rem solid black;
+      font-size: 2rem;
+      border-radius: 5rem;
+      text-align:center;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Papyrus, fantasy;
+    }
+    .TopLink:hover {
+      cursor: pointer;
+      background: white;
+      color: black;
+    }
+    .TopSheet {
+      width: 15vw;
+      height: 80%;
+      opacity: 0.5;
+    }
+    .TopSheet:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
   }
-  .TopSheet {
-    width: 100px;
-    height: 120px;
-    opacity: 0.5;
-    margin-right:2rem;
-  }
-  .TopSheet:hover {
-    opacity: 1;
-    transform: scale(1.1);
-    cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) and (min-height: 1024px) {
+  .TopContainer {
+    .containers(@flexDirection: row, @justifyContent: space-between, @height: 20vh);
+    .TopText {
+      background: lightgray;
+      border: 0.1rem solid black;
+      width: 70vw;
+      height: 20vh;
+      font-size: 2rem;
+      border-radius: 2rem;
+      padding: .3rem;
+      margin: .5rem 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.1;
+    }
+    .TopLink {
+      width: 15vw;
+      height: 5rem;
+      background: lightgray;
+      border: 0.5rem solid black;
+      font-size: 2rem;
+      border-radius: 5rem;
+      text-align:center;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Papyrus, fantasy;
+    }
+    .TopLink:hover {
+      cursor: pointer;
+      background: white;
+      color: black;
+    }
+    .TopSheet {
+      width: 15vw;
+      height: inherit;
+      opacity: 0.5;
+    }
+    .TopSheet:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
   }
 }

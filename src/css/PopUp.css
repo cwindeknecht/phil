@@ -1,32 +1,168 @@
-.PopUpContainer {
-  position: absolute;
-  background: lightgray;
-  border: 0.5rem solid black;
-  z-index: 5;
-  font-size: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5rem;
+@media (min-width: 320px) {
+  .PopUpContainer {
+    position: absolute;
+    background: lightgray;
+    border: 0.5rem solid black;
+    z-index: 5;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+  }
+  .PopUpContainer .PopUpOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .PopUpContainer .PopUpOptions .PopUpButton {
+    width: 30%;
+    height: auto;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 1rem;
+    font-family: Papyrus, fantasy;
+  }
+  .PopUpContainer .PopUpOptions .PopUpButton:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
 }
-.PopUpContainer .PopUpOptions {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
+@media screen and (min-width: 640px) and (min-height: 1024px) {
+  .PopUpContainer {
+    position: absolute;
+    background: lightgray;
+    border: 0.5rem solid black;
+    z-index: 5;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+  }
+  .PopUpContainer .PopUpOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .PopUpContainer .PopUpOptions .PopUpButton {
+    width: 30%;
+    height: auto;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 2rem;
+    font-family: Papyrus, fantasy;
+  }
+  .PopUpContainer .PopUpOptions .PopUpButton:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
 }
-.PopUpContainer .PopUpOptions .PopUpButton {
-  cursor: pointer;
-  background-color: black;
-  border: 0;
-  color: white;
-  font-family: Papyrus, fantasy;
-  font-size: 1rem;
-  border-radius: 5rem;
-  width: 30%;
+@media (min-width: 1024px) {
+  .PopUpContainer {
+    position: absolute;
+    background: lightgray;
+    border: 0.5rem solid black;
+    z-index: 5;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+  }
+  .PopUpContainer .PopUpOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .PopUpContainer .PopUpOptions .PopUpButton {
+    width: 30%;
+    height: auto;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 1rem;
+    font-family: Papyrus, fantasy;
+  }
+  .PopUpContainer .PopUpOptions .PopUpButton:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
 }
-.PopUpContainer .PopUpOptions .PopUpButton:hover {
-  background: white;
-  color: black;
+@media screen and (min-width: 1024px) and (min-height: 1024px) {
+  .PopUpContainer {
+    position: absolute;
+    background: lightgray;
+    border: 0.5rem solid black;
+    z-index: 5;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+  }
+  .PopUpContainer .PopUpOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    font-family: Papyrus, fantasy;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+  }
+  .PopUpContainer .PopUpOptions .PopUpButton {
+    width: 30%;
+    height: auto;
+    border: none;
+    border-radius: 25rem;
+    background-color: black;
+    color: lightgrey;
+    font-size: 2rem;
+    font-family: Papyrus, fantasy;
+  }
+  .PopUpContainer .PopUpOptions .PopUpButton:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+  }
 }

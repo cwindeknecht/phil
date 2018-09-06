@@ -33,10 +33,10 @@ export let outside = {
       id: 1,
       name: 'mound',
       image: mound,
-      width: window.innerWidth > 1200 ? 1200 : window.innerWidth,
-      height: 500,
-      x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
-      y: 0,
+      width: 80,
+      height: 40,
+      x: 10,
+      y: 40,
       z: 0,
       clicked: null,
       visible: true,
@@ -45,15 +45,17 @@ export let outside = {
       id: 2,
       name: 'doorway',
       image: doorway,
-      x: 168,
-      y: -279,
+      width: 10,
+      height: 17,
+      x: 45,
+      y: 56,
       z: 1,
       // what happens on click
       clicked: {
         show: false,
         text: 'Go inside?',
-        width: '15rem',
-        height: '5rem',
+        width: 15,
+        height: 15,
         options: [
           {
             text: 'Yes',
@@ -88,10 +90,10 @@ export let threeDoorsRoom = {
       id: 3,
       name: 'threeDoors',
       image: threeDoors,
-      width: window.innerWidth > 1200 ? 1200 : window.innerWidth,
-      height: 500,
-      x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
-      y: 0,
+      width: 80,
+      height: 40,
+      x: 10,
+      y: 40,
       z: 0,
       clicked: null,
       visible: true,
@@ -100,8 +102,10 @@ export let threeDoorsRoom = {
       id: 4,
       name: 'rightDoorway',
       image: rightDoorway,
-      x: 951,
-      y: 313,
+      width: 10,
+      height: 17,
+      x: 45,
+      y: 56,
       z: 1,
       clicked: {
         text: 'Go inside?',
@@ -133,9 +137,11 @@ export let threeDoorsRoom = {
       id: 5,
       name: 'sword',
       image: sword,
-      x: 505,
-      y: -265,
-      z: 2,
+      width: 10,
+      height: 17,
+      x: 45,
+      y: 56,
+      z: 1,
       // what happens on click
       clicked: {
         show: false,
@@ -197,7 +203,7 @@ export let golemRoom = {
       // x position from left of container
       width: 1200,
       height: 700,
-      x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
+      x: 0,
       // y position from top of container
       y: 200,
       z: 0,
@@ -471,7 +477,7 @@ export let koboldRoom = {
       // x position from left of container
       width: 1200,
       height: 700,
-      x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
+      x:0,
       // y position from top of container
       y: 200,
       z: 0,
@@ -814,7 +820,7 @@ export let warriorRoom = {
       // x position from left of container
       width: 1200,
       height: 700,
-      x: (window.innerWidth - 1200) / 2 < 0 ? 0 : (window.innerWidth - 1200) / 2,
+      x: 0,
       // y position from top of container
       y: 200,
       z: 0,
