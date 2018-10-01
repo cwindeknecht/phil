@@ -7,7 +7,7 @@ import * as rooms from './rooms';
 const initialState = {
   // start, character sheet, main, battle
   current: Start,
-  currentRoom: rooms.warriorRoom,
+  currentRoom: rooms.outside,
   intro: true,
   character: {
     name: '',
