@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import { handle_character_update, handle_current_room, handle_transition, handle_battle } from '../actions/index';
+import { handle_character_update, handle_current_room, handle_transition, handle_battle } from "../actions/index";
 
-import Main from './Main';
-import Battle from './Battle';
+import Main from "./Main";
+import Battle from "./Battle";
 
-import '../css/Talk.css';
+import "../css/Talk.css";
 
 class Talk extends Component {
   state = {
-    option: 'first',
+    option: "first",
     display: [],
     xp: 0,
     removed: [],
@@ -35,12 +35,15 @@ class Talk extends Component {
     let display = this.props.talk.action[next];
     let index = -1;
     let flag = false;
+    let dont = null;
     display = display.filter((option, i) => {
       if (id) {
-        if (option.id === 11) {
-          flag = true;
+        if (option.id === 15 && Number(id) === 1) {
+          dont = 10;
           return option;
-        } else if (option.id === Number(id) || option.id === 10 || Number(id) === 10) {
+        } else if (option.id === 15 && Number(id) === 2) {
+          return null;
+        } else if ((option.id === Number(id) || option.id === 10 || Number(id) === 10) && dont === null) {
           if (option.id === 10) index = i;
           return option;
         }
@@ -64,13 +67,13 @@ class Talk extends Component {
               target={element.target}
               onClick={
                 element.id
-                  ? element.action === 'return'
+                  ? element.action === "return"
                     ? this.handleReturn.bind(this, element)
                     : this.updateDisplay.bind(this, element)
                   : null
               }>
               {element.remove ? this.handleRemove(element) : null}
-              {element.hasOwnProperty('giveXP') ? this.handleCharacter() : null}
+              {element.hasOwnProperty("giveXP") ? this.handleCharacter() : null}
               {element.value}
             </element.type>
           );
@@ -82,7 +85,7 @@ class Talk extends Component {
   initializeDisplay = () => {
     let elements = this.elements();
     let display = [elements];
-    this.setState({ display, option: 'second' });
+    this.setState({ display, option: "second" });
   };
 
   updateDisplay = (element, event) => {
@@ -92,7 +95,9 @@ class Talk extends Component {
     let elements = this.elements(event.target.id, element.next);
     let display = [elements];
     this.setState({ display, option: element.next, xp });
-    if (element.transition) this.props.handle_battle(Battle, this.props.currentRoom.bonusOpponent);
+    if (element.transition) {
+      this.props.handle_battle(Battle, this.props.currentRoom.bonusOpponent);
+    }
   };
 
   handleRemove = element => {
@@ -100,7 +105,7 @@ class Talk extends Component {
     let objects = currentRoom.objects;
     let options = currentRoom.options;
     element.remove.forEach(remove => {
-      if (remove.type === 'option') {
+      if (remove.type === "option") {
         options = options.filter(option => {
           return option.type !== remove.name;
         });

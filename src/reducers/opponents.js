@@ -93,7 +93,7 @@ export let warrior = {
 };
 
 export let bagOfChips = {
-  name: 'bagOfChips',
+  name: 'bag of chips',
   health: 1000,
   initialText:
     "Your greatest foe.  Your own sloth and gluttony in etheral form... the bag of potato chips sits there, mocking you.",
@@ -122,4 +122,34 @@ export let bagOfChips = {
     "You regurgitate into the bag.  More chips, yay!",
   victory: "You finished the whole bag and didn't die.  Awesome.",
   deathMessage: 'Your foot falls off from the diabetes, so you grab more chips and watch Stranger Dragons.',
+};
+
+export let dragon = {
+  name: 'dragon',
+  health: 10,
+  initialText: 'The sad dragon that once was is no more.  She breaks free from the chains and tries to hide her happiness.  Her nostrils flare and expel fire as she sharpens her claws on the stone floor.',
+  // how much their roll/damage is affected
+  detriment: 2,
+  // what character has to roll to hit
+  // subtract detriment
+  crit: 10,
+  // max damage a character can deal, 1-2
+  // subtrack detriment
+  critDamage: 4,
+  // what is displayed on a crit
+  critText: 'You plunge the sword deep into her gullet.',
+  // maximum they have to roll to trade blows
+  tradeHigh: 9,
+  // minimum they have to roll to trade blows
+  tradeLow: 6,
+  // max damage the golem can do on a trade
+  tradeDamageGive: 4,
+  // what is displayed on a trade
+  tradeText: 'While striking the dragon, she lets out a sigh and passingly engulfs your body in flames.',
+  hitText: 'The dragon bats you around like a rag doll.',
+  // what they have to roll to dodge
+  dodge: 0,
+  dodgeText: 'A cone of fire shoots from the dragon\'s mouth but with the grace of a cat you bounce out of the way.',
+  victory: 'The once pitiful dragon lies in a pile on the side of the room, her face reminiscent of how it was upon your meeting.',
+  deathMessage: 'You were burned into a heap of ash.',
 };
