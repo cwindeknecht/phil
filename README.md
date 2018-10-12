@@ -1,3 +1,7 @@
+# Project Description
+
+A front-end React / Redux point-and-click game built for Ryan Windeknecht's philosophy class at the University of Tennessee at Knoxville.
+
 # To Do
 
 1. I have popups rending based on clickable !== false because it was faster than adding it to every clickable object.
